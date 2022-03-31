@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid x:Name="MainWindow1">
+        <Button x:Name="BookFlightButton" Content="Book Flight" HorizontalAlignment="Left" Height="48" Margin="293,90,0,0" VerticalAlignment="Top" Width="192"/>
+        <Button Content="Get Report" HorizontalAlignment="Left" Height="48" Margin="293,174,0,0" VerticalAlignment="Top" Width="192"/>
+
     </Grid>
 </Window>
