@@ -14,12 +14,21 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MayNazMuth {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+            EventHandlers();
+        }
+
+        public void EventHandlers() {
+            BookFlightButton.Click += ToBookFlightWindow;
+        }
+
+        public void ToBookFlightWindow(object sender, EventArgs args) {
+            BookFlightWindow ToBookFlight = new BookFlightWindow();
+            this.Visibility = Visibility.Hidden;
+            ToBookFlight.Show();
         }
     }
 }
