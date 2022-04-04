@@ -4,14 +4,16 @@ using MayNazMuth.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MayNazMuth.Migrations
 {
     [DbContext(typeof(CustomDbContext))]
-    partial class CustomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220404195534_AddedManyToManyBookingPassenger")]
+    partial class AddedManyToManyBookingPassenger
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,42 +34,6 @@ namespace MayNazMuth.Migrations
                     b.HasKey("AirlineId");
 
                     b.ToTable("Airlines");
-                });
-
-            modelBuilder.Entity("MayNazMuth.Airport", b =>
-                {
-                    b.Property<int>("AirportId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AirportAbbreviation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AirportAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AirportCity")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AirportCountry")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AirportEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AirportName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AirportPhoneno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AirportWebsite")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AirportId");
-
-                    b.ToTable("Airports");
                 });
 
             modelBuilder.Entity("MayNazMuth.Entities.Booking", b =>
@@ -124,22 +90,12 @@ namespace MayNazMuth.Migrations
                     b.Property<DateTime>("DepartureTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DestinationAirportId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FlightNo")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SourceAirportId")
-                        .HasColumnType("int");
 
                     b.HasKey("FlightId");
 
                     b.HasIndex("AirlineId");
-
-                    b.HasIndex("DestinationAirportId");
-
-                    b.HasIndex("SourceAirportId");
 
                     b.ToTable("Flights");
                 });
@@ -231,14 +187,6 @@ namespace MayNazMuth.Migrations
                     b.HasOne("MayNazMuth.Airline", "Airline")
                         .WithMany("Flights")
                         .HasForeignKey("AirlineId");
-
-                    b.HasOne("MayNazMuth.Airport", "DestinationAirport")
-                        .WithMany("DestinationFlights")
-                        .HasForeignKey("DestinationAirportId");
-
-                    b.HasOne("MayNazMuth.Airport", "SourceAirport")
-                        .WithMany("SourceFlights")
-                        .HasForeignKey("SourceAirportId");
                 });
 
             modelBuilder.Entity("MayNazMuth.Entities.Payment", b =>
