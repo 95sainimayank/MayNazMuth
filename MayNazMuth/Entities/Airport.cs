@@ -23,7 +23,8 @@ namespace MayNazMuth {
 
 
         public Airport() {
-
+            SourceFlights = new List<Flight>();
+            DestinationFlights = new List<Flight>();
         }
 
         public Airport(string nName, string nAddress, string nCity, string nCountry,

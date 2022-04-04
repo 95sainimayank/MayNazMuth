@@ -177,21 +177,25 @@
       <DependentUpon>BookFlightWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\BookingPassenger.cs" />
-    <Compile Include="Migrations\20220330014907_AddedOneToOneRelations.cs" />
-    <Compile Include="Migrations\20220330014907_AddedOneToOneRelations.designer.cs">
-      <DependentUpon>20220330014907_AddedOneToOneRelations.cs</DependentUpon>
+    <Compile Include="Migrations\20220404194033_AddedOneToOneRelation.cs" />
+    <Compile Include="Migrations\20220404194033_AddedOneToOneRelation.designer.cs">
+      <DependentUpon>20220404194033_AddedOneToOneRelation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220330015831_AddedOnetoManySingleFKRelation.cs" />
-    <Compile Include="Migrations\20220330015831_AddedOnetoManySingleFKRelation.designer.cs">
-      <DependentUpon>20220330015831_AddedOnetoManySingleFKRelation.cs</DependentUpon>
+    <Compile Include="Migrations\20220404194713_AddedOneToManyBookingFlight.cs" />
+    <Compile Include="Migrations\20220404194713_AddedOneToManyBookingFlight.designer.cs">
+      <DependentUpon>20220404194713_AddedOneToManyBookingFlight.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220330021941_AddedManytoManyRelation.cs" />
-    <Compile Include="Migrations\20220330021941_AddedManytoManyRelation.designer.cs">
-      <DependentUpon>20220330021941_AddedManytoManyRelation.cs</DependentUpon>
+    <Compile Include="Migrations\20220404195148_AddedOneToManyFlightAirline.cs" />
+    <Compile Include="Migrations\20220404195148_AddedOneToManyFlightAirline.designer.cs">
+      <DependentUpon>20220404195148_AddedOneToManyFlightAirline.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220330042109_AddedOnetoManyTwoFKRelation.cs" />
-    <Compile Include="Migrations\20220330042109_AddedOnetoManyTwoFKRelation.designer.cs">
-      <DependentUpon>20220330042109_AddedOnetoManyTwoFKRelation.cs</DependentUpon>
+    <Compile Include="Migrations\20220404195534_AddedManyToManyBookingPassenger.cs" />
+    <Compile Include="Migrations\20220404195534_AddedManyToManyBookingPassenger.designer.cs">
+      <DependentUpon>20220404195534_AddedManyToManyBookingPassenger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220404204546_AddedOneToManyAirportFlight2FK.cs" />
+    <Compile Include="Migrations\20220404204546_AddedOneToManyAirportFlight2FK.designer.cs">
+      <DependentUpon>20220404204546_AddedOneToManyAirportFlight2FK.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="Utilities\CustomDbContext.cs" />
