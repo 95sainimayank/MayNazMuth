@@ -17,13 +17,9 @@ namespace MayNazMuth.Utilities {
         
         public DbSet<Passenger> Passengers{ get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {            
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=MayNazMuthDB",
-                    builder => builder.EnableRetryOnFailure());
-            }
-            
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=MayNazMuthDB");
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,15 +35,7 @@ namespace MayNazMuth.Utilities {
                 .HasMany(p => p.Flights)
                 .WithOne(p => p.Airline);
 
-            //for one to many
-            modelBuilder.Entity<Airport>()
-                .HasMany(p => p.SourceFlights)
-                .WithOne(p => p.SourceAirport);
-
-            modelBuilder.Entity<Airport>()
-                .HasMany(p => p.DestinationFlights)
-                .WithOne(p => p.DestinationAirport);
-
+          
             //for m : n relation
             modelBuilder.Entity<BookingPassenger>()
                 .HasOne(p => p.Booking)
