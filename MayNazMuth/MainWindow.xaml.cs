@@ -23,12 +23,20 @@ namespace MayNazMuth {
 
         public void EventHandlers() {
             BookFlightButton.Click += ToBookFlightWindow;
+            AddAirportButton.Click += AddAirportWindow;
         }
 
         public void ToBookFlightWindow(object sender, EventArgs args) {
             BookFlightWindow ToBookFlight = new BookFlightWindow();
             this.Visibility = Visibility.Hidden;
             ToBookFlight.Show();
+        }
+
+        public void AddAirportWindow(object sender, EventArgs args)
+        {
+            AirportWindow Airport = new AirportWindow();
+            this.Visibility = Visibility.Hidden;
+            Airport.Show();
         }
     }
 }
