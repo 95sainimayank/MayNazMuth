@@ -54,7 +54,7 @@ namespace MayNazMuth
         {
             using (var ctx = new CustomDbContext())
             {
-                airportsList = ctx.Airports.ToList<Airport>();
+                //airportsList = ctx.Airports.ToList<Airport>();
                 AirportDataGrid.ItemsSource = airportsList;
             }
         }
@@ -224,6 +224,11 @@ namespace MayNazMuth
             WebsiteTextBox.Text = "";
             DoneSlider.Value = 0;
            
+
+        }
+
+        private void Menu_Loaded(object sender, RoutedEventArgs e)
+        {
 
         }
     }

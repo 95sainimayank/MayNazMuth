@@ -173,6 +173,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPassengerWindow.xaml.cs">
+      <DependentUpon>AddPassengerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AirportWindow.xaml.cs">
       <DependentUpon>AirportWindow.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,12 @@
       <DependentUpon>BookFlightWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\BookingPassenger.cs" />
+    <Compile Include="FlightDetailWindow.xaml.cs">
+      <DependentUpon>FlightDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20220330014907_AddedOneToOneRelations.cs" />
     <Compile Include="Migrations\20220330014907_AddedOneToOneRelations.designer.cs">
       <DependentUpon>20220330014907_AddedOneToOneRelations.cs</DependentUpon>
@@ -197,12 +206,26 @@
       <DependentUpon>20220330042109_AddedOnetoManyTwoFKRelation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
+    <Compile Include="PassengerReportWindow.xaml.cs">
+      <DependentUpon>PassengerReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentReportWindow.xaml.cs">
+      <DependentUpon>PaymentReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
+    <Page Include="AddPassengerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AirportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookFlightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlightDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +247,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PassengerReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaymentReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

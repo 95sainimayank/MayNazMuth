@@ -10,18 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MayNazMuth {
-    public partial class MainWindow : Window {
-        public MainWindow() {
+namespace MayNazMuth
+{
+    /// <summary>
+    /// Interaction logic for FlightDetailWindow.xaml
+    /// </summary>
+    public partial class FlightDetailWindow : Window
+    {
+        public FlightDetailWindow()
+        {
             InitializeComponent();
-
-            
         }
-
-        
-
     }
 }
