@@ -6,20 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MayNazMuth.Utilities {
-    class CustomDbContext: DbContext {
-        public DbSet<Booking> Bookings{ get; set; }
-        public DbSet<Flight> Flights{ get; set; }
-        public DbSet<Payment> Payments{ get; set; }
+namespace MayNazMuth.Utilities
+{
+    class CustomDbContext : DbContext
+    {
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Flight> Flights { get; set; }
+        public DbSet<Payment> Payments { get; set; }
         public DbSet<Airline> Airlines { get; set; }
-        
+
         public DbSet<Airport> Airports { get; set; }
-        
-        public DbSet<Passenger> Passengers{ get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+        public DbSet<Passenger> Passengers { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=MayNazMuthDB");
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,7 +37,6 @@ namespace MayNazMuth.Utilities {
                 .HasMany(p => p.Flights)
                 .WithOne(p => p.Airline);
 
-          
             //for m : n relation
             modelBuilder.Entity<BookingPassenger>()
                 .HasOne(p => p.Booking)
