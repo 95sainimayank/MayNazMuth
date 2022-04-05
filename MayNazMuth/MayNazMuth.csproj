@@ -176,6 +176,9 @@
     <Compile Include="AddPassengerWindow.xaml.cs">
       <DependentUpon>AddPassengerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AirportFlightReportWindow.xaml.cs">
+      <DependentUpon>AirportFlightReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AirportWindow.xaml.cs">
       <DependentUpon>AirportWindow.xaml</DependentUpon>
     </Compile>
@@ -238,6 +241,10 @@
     </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
     <Page Include="AddPassengerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AirportFlightReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

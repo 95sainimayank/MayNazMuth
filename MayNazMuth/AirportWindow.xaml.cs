@@ -48,6 +48,7 @@ namespace MayNazMuth
             EditBtn.IsEnabled = false;
             DeleteBtn.IsEnabled = false;
             AirportIdTextBox.IsEnabled = false;
+            AirportFlightReportButton.IsEnabled = false;
         }
 
         private void Updategrid()
@@ -75,6 +76,7 @@ namespace MayNazMuth
                 AirportDataGrid.SelectionChanged += updateAirportInfo;
                 EditBtn.Click += EditButtonClick;
                 DeleteBtn.Click += DeleteButtonClick;
+                AirportFlightReportButton.Click += OpenAirportFlightWindow;
             }
             else
             {
@@ -82,9 +84,23 @@ namespace MayNazMuth
                 AirportDataGrid.SelectionChanged -= updateAirportInfo;
                 EditBtn.Click -= EditButtonClick;
                 DeleteBtn.Click -= DeleteButtonClick;
+                AirportFlightReportButton.Click -= OpenAirportFlightWindow;
             }
         }
 
+        private void OpenAirportFlightWindow(object s, EventArgs e)
+        {
+            AirportFlightReportWindow AirportFlightReport = new AirportFlightReportWindow();
+            CloseAllWindows();
+            AirportFlightReport.Show();
+        }
+        public void CloseAllWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                window.Hide();
+            }
+        }
         private void DeleteButtonClick(object s, EventArgs e)
         {
             using (var ctx = new CustomDbContext())
@@ -157,6 +173,7 @@ namespace MayNazMuth
                 //Enable the edit button becuase the user selected a airport
                 EditBtn.IsEnabled = true;
                 DeleteBtn.IsEnabled = true;
+                AirportFlightReportButton.IsEnabled = true;
                 DoneSlider.IsEnabled = false;                
             }
             else
