@@ -14,11 +14,10 @@ namespace MayNazMuth.Entities {
         //Navigational Properties
         public List<Booking> Bookings{ get; set; }
         public Airline Airline { get; set; }
-        public int? SourceAirportId { get; set; }
-        public int? DestinationAirportId { get; set; }
-        public Airport SourceAirport { get; set; }
-        public Airport DestinationAirport { get; set; }
-        
+
+        public Airline SourceAirport { get; set; }
+        public Airline DestinationAirport { get; set; }
+
         public Flight() {
             Bookings = new List<Booking>();
         }
