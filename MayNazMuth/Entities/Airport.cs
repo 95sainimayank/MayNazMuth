@@ -27,6 +27,11 @@ namespace MayNazMuth {
             DestinationFlights = new List<Flight>();
         }
 
+        public Airport(string nAirportName)
+        {
+            AirportName = nAirportName;
+        }
+
         public Airport(string nName, string nAddress, string nCity, string nCountry,
             string nAbr, string nEmail, string nWebsite, string nPhone) {
             AirportName = nName;
@@ -38,5 +43,7 @@ namespace MayNazMuth {
             AirportWebsite = nWebsite;
             AirportPhoneno = nPhone;
         }
+
+
     }
 }

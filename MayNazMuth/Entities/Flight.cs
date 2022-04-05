@@ -23,10 +23,16 @@ namespace MayNazMuth.Entities {
             Bookings = new List<Booking>();
         }
 
-        public Flight(string nNo, DateTime nDepart, DateTime nArrival) {
-            FlightNo = nNo;
-            DepartureTime = nDepart;
-            ArrivalTime = nArrival;
+        public Flight(string nFlightNo, DateTime nDepartureTime, DateTime nArrivalTime, Airline nAirline, 
+            Airport nSourceAirport, Airport nDestinationAirport)
+        {
+            FlightNo = nFlightNo;
+            DepartureTime = nDepartureTime;
+            ArrivalTime = nArrivalTime;
+            Airline = nAirline;
+            SourceAirport = nSourceAirport;
+            DestinationAirport = nDestinationAirport;
+            
         }
     }
 }
