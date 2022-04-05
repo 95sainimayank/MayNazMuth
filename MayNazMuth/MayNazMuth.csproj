@@ -209,6 +209,14 @@
     <Compile Include="Migrations\20220404204546_AddedOneToManyAirportFlight2FK.designer.cs">
       <DependentUpon>20220404204546_AddedOneToManyAirportFlight2FK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220405044856_firstMigrationonTestDBBranch.cs" />
+    <Compile Include="Migrations\20220405044856_firstMigrationonTestDBBranch.designer.cs">
+      <DependentUpon>20220405044856_firstMigrationonTestDBBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220405045807_secondMigration.cs" />
+    <Compile Include="Migrations\20220405045807_secondMigration.designer.cs">
+      <DependentUpon>20220405045807_secondMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>

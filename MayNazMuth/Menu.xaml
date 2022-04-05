@@ -15,7 +15,7 @@
                     <MenuItem Header="_Flight's Detail" Click="OpenFlightDetailWindow" />
                 </MenuItem>
                 <MenuItem Header="_Airport">
-                    <MenuItem Header="_Add Airport" Click="OpenAddAirportWindow" />
+                    <MenuItem Header="_Add / View " Click="OpenAddAirportWindow" />
                 </MenuItem>
                 <MenuItem Header="_Passengers">
                     <MenuItem Header="_Add A Passenger" Click="OpenAddPassengerWindow" />

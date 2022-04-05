@@ -34,6 +34,5 @@
         <Label Content="Slide right to Add" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.447,0.308"/>
         <Button x:Name="EditBtn" Content="Edit" HorizontalAlignment="Left" Margin="229,347,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="DeleteBtn" Content="Delete" HorizontalAlignment="Left" Margin="331,348,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="UploadBtn" Content="Upload" HorizontalAlignment="Left" Margin="546,345,0,0" VerticalAlignment="Top" Width="236"/>
     </Grid>
 </Window>

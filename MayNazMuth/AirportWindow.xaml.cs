@@ -54,7 +54,7 @@ namespace MayNazMuth
         {
             using (var ctx = new CustomDbContext())
             {
-                //airportsList = ctx.Airports.ToList<Airport>();
+                airportsList = ctx.Airports.ToList<Airport>();
                 AirportDataGrid.ItemsSource = airportsList;
             }
         }
@@ -157,15 +157,13 @@ namespace MayNazMuth
                 //Enable the edit button becuase the user selected a airport
                 EditBtn.IsEnabled = true;
                 DeleteBtn.IsEnabled = true;
-                DoneSlider.IsEnabled = false;
-                UploadBtn.IsEnabled = false;
+                DoneSlider.IsEnabled = false;                
             }
             else
             {
                 EditBtn.IsEnabled = false;
                 DeleteBtn.IsEnabled = false;
-                DoneSlider.IsEnabled = true;
-                UploadBtn.IsEnabled = true;
+                DoneSlider.IsEnabled = true;              
             }
         }
 
