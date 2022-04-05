@@ -224,11 +224,7 @@ namespace MayNazMuth
            
 
         }
-
-        private void Menu_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }
 
