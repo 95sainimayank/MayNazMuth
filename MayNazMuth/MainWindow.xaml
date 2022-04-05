@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
+        xmlns:uc="clr-namespace:MayNazMuth"
         Title="MainWindow" Height="450" Width="800">
+   
     <Grid x:Name="MainWindow1">
-        <Button x:Name="BookFlightButton" Content="Book Flight" HorizontalAlignment="Left" Height="48" Margin="293,90,0,0" VerticalAlignment="Top" Width="192"/>
-        <Button Content="Get Report" HorizontalAlignment="Left" Height="48" Margin="293,174,0,0" VerticalAlignment="Top" Width="192"/>
-
+        <uc:Menu Margin="0,0,0,384" />
     </Grid>
 </Window>
