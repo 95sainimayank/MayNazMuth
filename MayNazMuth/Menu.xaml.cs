@@ -20,52 +20,64 @@ namespace MayNazMuth
     /// </summary>
     public partial class Menu : UserControl
     {
+        
+       
+       
         public Menu()
         {
+            
             InitializeComponent();
         }
         public void ToBookFlightWindow(object sender, EventArgs args)
-        {
+        {            
+            
             BookFlightWindow ToBookFlight = new BookFlightWindow();
-            this.Visibility = Visibility.Hidden;
+            CloseAllWindows();
             ToBookFlight.Show();
-        }
 
-        public void AddAirportWindow(object sender, EventArgs args)
-        {
-            AirportWindow Airport = new AirportWindow();
-            this.Visibility = Visibility.Hidden;
-            Airport.Show();
         }
+        
         public void OpenAddAirportWindow(object sender, EventArgs args)
-        {
+        {            
+           
             AirportWindow Airport = new AirportWindow();
-            this.Visibility = Visibility.Hidden;
+            CloseAllWindows();
             Airport.Show();
+            
+            
         }
         public void OpenAddPassengerWindow(object sender, EventArgs args)
         {
+           
             AddPassengerWindow Passenger = new AddPassengerWindow();
-            this.Visibility = Visibility.Hidden;
+            CloseAllWindows();
             Passenger.Show();
         }
         public void OpenFlightDetailWindow(object sender, EventArgs args)
         {
             FlightDetailWindow flightDetail = new FlightDetailWindow();
-            this.Visibility = Visibility.Hidden;
+            CloseAllWindows();
             flightDetail.Show();
         }
         public void OpenPassengerReportWindow(object sender, EventArgs args)
         {
             PassengerReportWindow PassengerReport = new PassengerReportWindow();
-            this.Visibility = Visibility.Hidden;
+            CloseAllWindows();
             PassengerReport.Show();
         }
         public void OpenPaymentReportWindow(object sender, EventArgs args)
         {
             PaymentReportWindow PaymentReport = new PaymentReportWindow();
-            this.Visibility = Visibility.Hidden;
+            CloseAllWindows();
             PaymentReport.Show();
-        }      
+        }  
+        
+        public void CloseAllWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                window.Hide();
+            }
+        }
     }
 }
