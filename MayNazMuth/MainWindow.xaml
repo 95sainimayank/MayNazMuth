@@ -9,6 +9,6 @@
         Title="MainWindow" Height="450" Width="800">
    
     <Grid x:Name="MainWindow1">
-        <uc:Menu Margin="0,0,0,384" />
+        <uc:Menu Margin="0,0,0,367" />
     </Grid>
 </Window>

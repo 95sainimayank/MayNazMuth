@@ -6,23 +6,25 @@
              xmlns:local="clr-namespace:MayNazMuth"
              mc:Ignorable="d" 
              x:Name="MenuUserControl"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Height="46" VerticalAlignment="Top">
-        <StackPanel HorizontalAlignment="Left" Height="18" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
-            <Menu Height="30">
-                <MenuItem Header="_Flight">
+             d:DesignHeight="50" d:DesignWidth="800">
+    <Grid Height="45" VerticalAlignment="Top">
+        <StackPanel HorizontalAlignment="Left" Height="40
+                    " Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+            <Menu Height="40" Background="#FFCBCBCB" VerticalAlignment="Center" FontSize="14">
+                <MenuItem Header="_Flight" Foreground="#FF1D1D1D" VerticalAlignment="Center" Margin="0">
                     <MenuItem Header="_Book A Flight" Click="ToBookFlightWindow" />
                     <MenuItem Header="_Flight's Detail" Click="OpenFlightDetailWindow" />
                 </MenuItem>
-                <MenuItem Header="_Airport">
+                <MenuItem Header="_Airport" Margin="8">
                     <MenuItem Header="_Add / View " Click="OpenAddAirportWindow" />
                 </MenuItem>
-                <MenuItem Header="_Passengers">
+                <MenuItem Header="_Passengers" Margin="0">
                     <MenuItem Header="_Add A Passenger" Click="OpenAddPassengerWindow" />
                     <MenuItem Header="_Report" Click="OpenPassengerReportWindow" />
                 </MenuItem>
-                <MenuItem Header="_Payment">
-                    <MenuItem Header="_Report" Click="OpenPaymentReportWindow" />
+                <MenuItem Header="_Payment" Margin="0">
+                    <MenuItem Header="_Payment Window" Click="OpenPaymentReportWindow" />
+                    <MenuItem Header="_Report" />
                 </MenuItem>
             </Menu>
         </StackPanel>

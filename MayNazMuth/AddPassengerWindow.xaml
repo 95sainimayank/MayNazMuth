@@ -8,7 +8,7 @@
         xmlns:uc="clr-namespace:MayNazMuth"
         Title="AddPassengerWindow" Height="450" Width="800">
     <Grid>
-        <uc:Menu Margin="0,0,20,384" />
+        <uc:Menu Margin="0,0,20,367" />
         <Label Content="Add Passenger Window" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Height="36" Width="173"/>
 
     </Grid>

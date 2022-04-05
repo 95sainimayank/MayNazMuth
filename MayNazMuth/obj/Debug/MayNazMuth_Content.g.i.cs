@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("xmlfile1.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/payment-method-png-transparent-images.png")]
 
 

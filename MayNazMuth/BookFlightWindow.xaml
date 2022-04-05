@@ -8,6 +8,6 @@
         xmlns:uc="clr-namespace:MayNazMuth"
         Title="BookFlightWindow" Height="450" Width="800">
     <Grid>
-        <uc:Menu Margin="0,0,0,384" />
+        <uc:Menu Margin="0,0,0,367" />
     </Grid>
 </Window>

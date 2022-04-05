@@ -11,6 +11,9 @@ namespace MayNazMuth.Entities {
         public double PaymentAmount { get; set; }
         public string PaymentMethod { get; set; }
         public string PaymentStatus { get; set; }
+        public string CardHolderName { get; set; }
+        public string CardNumber { get; set; }
+        
 
         //navigational properties
         public int BookingId { get; set; }
@@ -20,11 +23,14 @@ namespace MayNazMuth.Entities {
 
         }
 
-        public Payment(DateTime nDt, double nAmount, string nMethod, string nStatus) {
+
+        public Payment(DateTime nDt, double nAmount, string nMethod, string nStatus, string nHolderName, string nCardNo) {
             PaymentDatetime = nDt;
             PaymentAmount = nAmount;
             PaymentMethod = nMethod;
             PaymentStatus = nStatus;
+            CardHolderName = nHolderName;
+            CardNumber = nCardNo;
         }
     }
 }
