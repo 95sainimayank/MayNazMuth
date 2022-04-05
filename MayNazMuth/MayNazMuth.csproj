@@ -217,6 +217,10 @@
     <Compile Include="Migrations\20220405045807_secondMigration.designer.cs">
       <DependentUpon>20220405045807_secondMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220405061301_migrationOnMainBranch.cs" />
+    <Compile Include="Migrations\20220405061301_migrationOnMainBranch.designer.cs">
+      <DependentUpon>20220405061301_migrationOnMainBranch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>
