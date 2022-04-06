@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MayNazMuth.Migrations
 {
     [DbContext(typeof(CustomDbContext))]
-    [Migration("20220405061301_migrationOnMainBranch")]
-    partial class migrationOnMainBranch
+    [Migration("20220406044450_OneBigMigration")]
+    partial class OneBigMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -185,6 +185,12 @@ namespace MayNazMuth.Migrations
 
                     b.Property<int>("BookingId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CardHolderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("PaymentAmount")
                         .HasColumnType("float");
