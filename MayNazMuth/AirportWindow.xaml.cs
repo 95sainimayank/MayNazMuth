@@ -118,7 +118,7 @@ namespace MayNazMuth
                 ctx.SaveChanges();
                 //update the data grid
                 Updategrid();
-
+                AirportFlightReportButton.IsEnabled = false;
                 resetForm();
 
             }
@@ -141,13 +141,23 @@ namespace MayNazMuth
                 AP.AirportEmail = EmailTextBox.Text;
                 AP.AirportWebsite = WebsiteTextBox.Text;
 
+                if (!AP.AirportName.Equals("") && !AP.AirportAddress.Equals("") && !AP.AirportCity.Equals("") && !AP.AirportCountry.Equals("")
+                   && !AP.AirportAbbreviation.Equals("") && !AP.AirportPhoneno.Equals("") && !AP.AirportEmail.Equals("") && !AP.AirportWebsite.Equals(""))
+                {
+                    //Update the object
+                    ctx.Airports.Update(AP);
+                    //Save my changes
+                    ctx.SaveChanges();
+                    //update the data grid
+                    Updategrid();
+                    AirportFlightReportButton.IsEnabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Please fill all fields.");
+                }
 
-                //Update the object
-                ctx.Airports.Update(AP);
-                //Save my changes
-                ctx.SaveChanges();
-                //update the data grid
-                Updategrid();
+               
 
             }
         }

@@ -5,10 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
-        Title="Airport-Flight Report" Height="450" Width="800">
+        Title="Airport-Flight Report" Height="650" Width="800">
     <Grid Margin="0,0,0,0">
-        <DataGrid x:Name="AirportFlightGrid" HorizontalAlignment="Left" Height="335" Margin="10,10,0,0" VerticalAlignment="Top" Width="762"/>
-        <Button Background="BlueViolet" Foreground="white" x:Name="backToAirportButon" Content="Back to Airport list" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Width="132" RenderTransformOrigin="-0.472,0.066" Height="28"/>
+        <DataGrid x:Name="AirportFlightGrid" HorizontalAlignment="Left" Height="335" Margin="10,83,0,0" VerticalAlignment="Top" Width="762"/>
+        <Button Background="BlueViolet" Foreground="white" x:Name="backToAirportButon" Content="Back to Airport list" HorizontalAlignment="Left" Margin="10,443,0,0" VerticalAlignment="Top" Width="132" RenderTransformOrigin="-0.472,0.066" Height="28"/>
+        <Label Content="Total Arriving Flights" HorizontalAlignment="Left" Margin="505,426,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalArrivingValueLable" Content="" HorizontalAlignment="Left" Margin="639,426,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.099,-1.31"/>
+        <Label Content="Total Departing Flights" HorizontalAlignment="Left" Margin="505,456,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalDepartingValueLable" Content="" HorizontalAlignment="Left" Margin="639,456,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="filterComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.252"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+            <ComboBoxItem IsSelected="True" Content="All Flights"></ComboBoxItem>
+            <ComboBoxItem Content="Arriving Flights"></ComboBoxItem>
+            <ComboBoxItem Content="Departing Flights"></ComboBoxItem>
+        </ComboBox>
+        <Label Content="From:" HorizontalAlignment="Left" Margin="386,29,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="fromDatePicker" HorizontalAlignment="Left" Margin="428,31,0,0" VerticalAlignment="Top"/>
+        <Label Content="To:" HorizontalAlignment="Left" Margin="548,29,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="toDatePicker" HorizontalAlignment="Left" Margin="575,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.759,0.479"/>
+        <Button x:Name="FilterButton" Background="Green" Foreground="White" Content="Filter" HorizontalAlignment="Left" Margin="682,27,0,0" VerticalAlignment="Top" Width="90" Height="27" FontSize="14"/>
 
     </Grid>
 </Window>
