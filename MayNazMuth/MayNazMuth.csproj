@@ -193,6 +193,14 @@
     <Compile Include="Migrations\20220406044450_OneBigMigration.designer.cs">
       <DependentUpon>20220406044450_OneBigMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220406083639_DBcheckup.cs" />
+    <Compile Include="Migrations\20220406083639_DBcheckup.designer.cs">
+      <DependentUpon>20220406083639_DBcheckup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220407012849_DBDeleted.cs" />
+    <Compile Include="Migrations\20220407012849_DBDeleted.designer.cs">
+      <DependentUpon>20220407012849_DBDeleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>
