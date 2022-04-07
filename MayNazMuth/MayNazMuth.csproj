@@ -176,6 +176,9 @@
     <Compile Include="AddPassengerWindow.xaml.cs">
       <DependentUpon>AddPassengerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AirportFlightReportWindow.xaml.cs">
+      <DependentUpon>AirportFlightReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AirportWindow.xaml.cs">
       <DependentUpon>AirportWindow.xaml</DependentUpon>
     </Compile>
@@ -193,13 +196,9 @@
     <Compile Include="Migrations\20220406044450_OneBigMigration.designer.cs">
       <DependentUpon>20220406044450_OneBigMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220406083639_DBcheckup.cs" />
-    <Compile Include="Migrations\20220406083639_DBcheckup.designer.cs">
-      <DependentUpon>20220406083639_DBcheckup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220407012849_DBDeleted.cs" />
-    <Compile Include="Migrations\20220407012849_DBDeleted.designer.cs">
-      <DependentUpon>20220407012849_DBDeleted.cs</DependentUpon>
+    <Compile Include="Migrations\20220407030829_dbCheckup.cs" />
+    <Compile Include="Migrations\20220407030829_dbCheckup.designer.cs">
+      <DependentUpon>20220407030829_dbCheckup.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
@@ -210,6 +209,10 @@
     </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
     <Page Include="AddPassengerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AirportFlightReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

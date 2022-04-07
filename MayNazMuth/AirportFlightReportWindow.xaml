@@ -1,0 +1,14 @@
+﻿<Window x:Class="MayNazMuth.AirportFlightReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MayNazMuth"
+        mc:Ignorable="d"
+        Title="Airport-Flight Report" Height="450" Width="800">
+    <Grid Margin="0,0,0,0">
+        <DataGrid x:Name="AirportFlightGrid" HorizontalAlignment="Left" Height="335" Margin="10,10,0,0" VerticalAlignment="Top" Width="762"/>
+        <Button Background="BlueViolet" Foreground="white" x:Name="backToAirportButon" Content="Back to Airport list" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Width="132" RenderTransformOrigin="-0.472,0.066" Height="28"/>
+
+    </Grid>
+</Window>
