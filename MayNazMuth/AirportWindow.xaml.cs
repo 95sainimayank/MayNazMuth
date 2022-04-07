@@ -48,7 +48,7 @@ namespace MayNazMuth
             EditBtn.IsEnabled = false;
             DeleteBtn.IsEnabled = false;
             AirportIdTextBox.IsEnabled = false;
-            AirportFlightReportButton.IsEnabled = false;
+            AirportFlightReportButton.IsEnabled = false;            
         }
 
         private void Updategrid()
@@ -58,6 +58,7 @@ namespace MayNazMuth
                 airportsList = ctx.Airports.ToList<Airport>();
                 AirportDataGrid.ItemsSource = airportsList;
             }
+            totalAriportCountLable.Content = airportsList.Count();
         }
 
         private void SetupGrid()
