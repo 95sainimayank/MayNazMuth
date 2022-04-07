@@ -192,45 +192,9 @@
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220330014907_AddedOneToOneRelations.cs" />
-    <Compile Include="Migrations\20220330014907_AddedOneToOneRelations.designer.cs">
-      <DependentUpon>20220330014907_AddedOneToOneRelations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220404194713_AddedOneToManyBookingFlight.cs" />
-    <Compile Include="Migrations\20220404194713_AddedOneToManyBookingFlight.designer.cs">
-      <DependentUpon>20220404194713_AddedOneToManyBookingFlight.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220404195148_AddedOneToManyFlightAirline.cs" />
-    <Compile Include="Migrations\20220404195148_AddedOneToManyFlightAirline.designer.cs">
-      <DependentUpon>20220404195148_AddedOneToManyFlightAirline.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220404195534_AddedManyToManyBookingPassenger.cs" />
-    <Compile Include="Migrations\20220404195534_AddedManyToManyBookingPassenger.designer.cs">
-      <DependentUpon>20220404195534_AddedManyToManyBookingPassenger.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220404204546_AddedOneToManyAirportFlight2FK.cs" />
-    <Compile Include="Migrations\20220404204546_AddedOneToManyAirportFlight2FK.designer.cs">
-      <DependentUpon>20220404204546_AddedOneToManyAirportFlight2FK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220405044856_firstMigrationonTestDBBranch.cs" />
-    <Compile Include="Migrations\20220405044856_firstMigrationonTestDBBranch.designer.cs">
-      <DependentUpon>20220405044856_firstMigrationonTestDBBranch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220405045807_secondMigration.cs" />
-    <Compile Include="Migrations\20220405045807_secondMigration.designer.cs">
-      <DependentUpon>20220405045807_secondMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220405061301_migrationOnMainBranch.cs" />
-    <Compile Include="Migrations\20220405061301_migrationOnMainBranch.designer.cs">
-      <DependentUpon>20220405061301_migrationOnMainBranch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220405074503_paymentUpdated.cs" />
-    <Compile Include="Migrations\20220405074503_paymentUpdated.designer.cs">
-      <DependentUpon>20220405074503_paymentUpdated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220405075520_thirdMigration.cs" />
-    <Compile Include="Migrations\20220405075520_thirdMigration.designer.cs">
-      <DependentUpon>20220405075520_thirdMigration.cs</DependentUpon>
+    <Compile Include="Migrations\20220406044450_OneBigMigration.cs" />
+    <Compile Include="Migrations\20220406044450_OneBigMigration.designer.cs">
+      <DependentUpon>20220406044450_OneBigMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
