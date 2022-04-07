@@ -90,7 +90,8 @@ namespace MayNazMuth
 
         private void OpenAirportFlightWindow(object s, EventArgs e)
         {
-            AirportFlightReportWindow AirportFlightReport = new AirportFlightReportWindow();
+
+            AirportFlightReportWindow AirportFlightReport = new AirportFlightReportWindow(AirportIdTextBox.Text);
             CloseAllWindows();
             AirportFlightReport.Show();
         }

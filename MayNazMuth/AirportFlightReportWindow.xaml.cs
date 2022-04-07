@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MayNazMuth.Entities;
 
 namespace MayNazMuth
 {
@@ -20,8 +21,16 @@ namespace MayNazMuth
     /// </summary>
     public partial class AirportFlightReportWindow : Window
     {
-        public AirportFlightReportWindow()
+
+        List<Flight> FlightList = new List<Flight>();        
+        int ApId;
+
+        public AirportFlightReportWindow(string airportId)
         {
+            //incoming AirportId of selected row from Airport window
+            ApId = Convert.ToInt32(airportId);
+
+
             InitializeComponent();
 
             //turn the event handlers off
@@ -66,10 +75,16 @@ namespace MayNazMuth
         }
         private void Updategrid()
         {
+            //backToAirportButon.Content = ApId.ToString();
             using (var ctx = new CustomDbContext())
             {
-                //airportsList = ctx.Airports.ToList<Airport>();
-                //AirportFlightGrid.ItemsSource = airportsList;
+                FlightList = ctx.Flights.ToList<Flight>();
+                var FoundFlights = FlightList.Where(x => x.SourceAirportId == ApId || x.DestinationAirportId == ApId);
+                foreach (var a in FoundFlights)
+                {
+                    Console.WriteLine(a);
+                }
+                 AirportFlightGrid.ItemsSource = FoundFlights;
             }
         }
 
