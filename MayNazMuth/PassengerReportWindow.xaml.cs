@@ -23,35 +23,48 @@ namespace MayNazMuth {
         }
 
         public void searchData(object sender, EventArgs args) {
-            using(var db = new CustomDbContext()) {
+            using (var db = new CustomDbContext()) {
                 string name = txtPassengerName.Text;
                 string contactNo = txtPassengerContact.Text;
                 string passport = txtPassengerPassport.Text;
-/*
-                var h = from f in db.Flights
-                        from b in db.Bookings
-                        where f.FlightId == b.Flight
+
+
+                var query = db.Passengers
+                              .Join(db.BookingPassengers,
+                                    passengers => passengers.PassengerId,
+                                    pid => pid.PassengerId,
+                                    (passengers, pid) => new {
+                                        passengers, pid
+                                    })
+                              .Join(db.Bookings,
+                                     bookings => bookings.pid.BookingId,
+                                     bid => bid.BookingId,
+                                     (bookings, bid) => new {
+                                         bookings, bid
+                                     })
+                              .Select(m => new {
+                                  passengerName = m.bookings.passengers.FullName,
+                                  passengerPhone = m.bookings.passengers.PhoneNo,
+                                  passengerPassport = m.bookings.passengers.PassportNo,
+                                  flightArrival = m.bid.Flight.ArrivalTime,
+                                  flightDeparture = m.bid.Flight.DepartureTime,
+                                  flightArrivalAirport = m.bid.Flight.DestinationAirport.AirportName,
+                                  flightDepartureAirport = m.bid.Flight.SourceAirport.AirportName,
+                                  bookingDateTime = m.bid.BookingDatetime,
+                              });
+
+                var selectedPassenger = from x in query
+                                        where x.passengerName.Contains(name) && x.passengerPassport.Contains(passport) && x.passengerPhone.Contains(contactNo)
+                                        select x;
+
+                PassengerReportDatagrid.ItemsSource = selectedPassenger.ToList();
+                /*foreach (var pass in selectedPassenger) {
+                    Console.WriteLine(pass.passengerName + " " + pass.bookingDateTime + " " + pass.flightArrivalAirport + " " + pass.flightDepartureAirport);
+                }
 */
-
-
-                /*var allPassengers = from z in db.Passengers
-                    where z.FullName.Contains(name) && z.PassportNo.Contains(passport) && z.PhoneNo.Contains(contactNo)
-                    select z;
-*/
-                /*from s in allPassengers
-                from c in db.Bookings
-                from x in db.BookingPassengers
-                from f in db.Flights
-                where s.PassengerId == x.PassengerId && x.BookingId == c.BookingId;
-                foreach (Passenger p in allPassengers) {
-                    
-                    P
-
-                }*/
-
                 db.SaveChanges();
             }
-            
+
         }
     }
 }
