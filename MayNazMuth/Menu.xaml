@@ -19,7 +19,7 @@
                     <MenuItem Header="_Add / View " Click="OpenAddAirportWindow" />
                 </MenuItem>
                 <MenuItem Header="_Passengers" Margin="0">
-                    <MenuItem Header="_Add A Passenger" Click="OpenAddPassengerWindow" />
+                    <MenuItem Header="_Add or Delete Passenger" Click="OpenAddPassengerWindow" />
                     <MenuItem Header="_Update Passenger" Click="OpenUpdatePassengerWindow" />
                     <MenuItem Header="_Report" Click="OpenPassengerReportWindow" />
                 </MenuItem>

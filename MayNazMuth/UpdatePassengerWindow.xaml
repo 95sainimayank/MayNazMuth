@@ -9,24 +9,26 @@
         Title="UpdatePassengerWindow" Height="450" Width="800">
     <Grid Margin="-2,0,2,0">
         <uc:Menu Margin="0,0,20,367" />
-        <Label Content="Full Name" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Height="30" Width="119"/>
-        <Label Content="Passport Number" HorizontalAlignment="Left" Height="30" Margin="10,108,0,0" VerticalAlignment="Top" Width="119"/>
-        <Label Content="Email" HorizontalAlignment="Left" Height="30" Margin="10,144,0,0" VerticalAlignment="Top" Width="119"/>
-        <Label Content="Phone Number" HorizontalAlignment="Left" Height="30" Margin="10,178,0,0" VerticalAlignment="Top" Width="119"/>
-        <Label Content="Date Of Birth" HorizontalAlignment="Left" Height="32" Margin="10,214,0,0" VerticalAlignment="Top" Width="119"/>
-        <Label Content="Gender" HorizontalAlignment="Left" Height="28" Margin="10,250,0,0" VerticalAlignment="Top" Width="119"/>
-        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="30" Margin="134,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="txtPassport" HorizontalAlignment="Left" Height="30" Margin="134,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="30" Margin="134,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="30" Margin="134,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <DatePicker x:Name="txtDate" HorizontalAlignment="Left" Height="32" Margin="134,214,0,0" VerticalAlignment="Top" Width="158"/>
-        <ComboBox x:Name="comboGender" HorizontalAlignment="Left" Height="28" Margin="134,250,0,0" VerticalAlignment="Top" Width="158">
+        <Label Content="Full Name" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="30" Width="119"/>
+        <Label Content="Passport Number" HorizontalAlignment="Left" Height="30" Margin="10,147,0,0" VerticalAlignment="Top" Width="119"/>
+        <Label Content="Email" HorizontalAlignment="Left" Height="30" Margin="10,183,0,0" VerticalAlignment="Top" Width="119"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Height="30" Margin="10,217,0,0" VerticalAlignment="Top" Width="119"/>
+        <Label Content="Date Of Birth" HorizontalAlignment="Left" Height="32" Margin="10,253,0,0" VerticalAlignment="Top" Width="119"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Height="28" Margin="10,289,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="30" Margin="134,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="txtPassport" HorizontalAlignment="Left" Height="30" Margin="134,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="30" Margin="134,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="30" Margin="134,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <DatePicker x:Name="txtDate" HorizontalAlignment="Left" Height="32" Margin="134,253,0,0" VerticalAlignment="Top" Width="158"/>
+        <ComboBox x:Name="comboGender" HorizontalAlignment="Left" Height="28" Margin="134,289,0,0" VerticalAlignment="Top" Width="158">
             <ComboBoxItem>Male</ComboBoxItem>
             <ComboBoxItem>Female</ComboBoxItem>
             <ComboBoxItem>Other</ComboBoxItem>
         </ComboBox>
-        <Button Content="Update" HorizontalAlignment="Left" Height="50" Margin="70,302,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button x:Name="btnUpdatePassenger" Content="Update" HorizontalAlignment="Left" Height="50" Margin="70,341,0,0" VerticalAlignment="Top" Width="174"/>
         <DataGrid x:Name="AllPassengerDataGrid" HorizontalAlignment="Left" Height="340" Margin="310,69,0,0" VerticalAlignment="Top" Width="472"/>
+        <Label Content="Passenger Id" HorizontalAlignment="Left" Height="26" Margin="10,82,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="lblPassengerId" Content="" HorizontalAlignment="Left" Height="26" Margin="134,82,0,0" VerticalAlignment="Top" Width="110"/>
 
     </Grid>
 </Window>
