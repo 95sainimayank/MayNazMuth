@@ -208,6 +208,10 @@
     <Compile Include="Migrations\20220408063242_initi.designer.cs">
       <DependentUpon>20220408063242_initi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220408195301_UpdateFlight.cs" />
+    <Compile Include="Migrations\20220408195301_UpdateFlight.designer.cs">
+      <DependentUpon>20220408195301_UpdateFlight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>

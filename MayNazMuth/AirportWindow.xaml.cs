@@ -243,7 +243,11 @@ namespace MayNazMuth
            
 
         }
-       
+
+        private void AirportDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 

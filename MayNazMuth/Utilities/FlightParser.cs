@@ -10,7 +10,7 @@ namespace MayNazMuth.Utilities
 {
     class FlightParser
     {
-        public static List<Flight> flights2 = new List<Flight>();
+        public static List<Flight> flightsList = new List<Flight>();
         public static List<Flight> parseFlightFile(String contents)
         {
             /////List<Flight> flightList = new List<Flight>();
@@ -27,7 +27,7 @@ namespace MayNazMuth.Utilities
 
                 string[] fields = line.Trim().Split(',');
 
-                if (fields.Length != 6)
+                if (fields.Length != 9)
                 {
                     //MessageBox.Show("Problem parsing file, check format");
                     break;
@@ -47,12 +47,17 @@ namespace MayNazMuth.Utilities
                              fields[0].Trim(),
                             Convert.ToDateTime(fields[1]),
                             Convert.ToDateTime(fields[2]),
-                             fields[3].Trim(),
+                            Convert.ToInt32(fields[3]),
                              fields[4].Trim(),
-                             fields[5].Trim()
+                             Convert.ToInt32(fields[5]),
+                             fields[6].Trim(),
+                             Convert.ToInt32(fields[7]),
+                             fields[8].Trim()
+                             
+                                                          
                             );
 
-                        flights2.Add(newFlight);
+                        flightsList.Add(newFlight);
                     }
                     catch (Exception ex)
                     {
@@ -64,7 +69,7 @@ namespace MayNazMuth.Utilities
 
             }
            
-            return flights2;
+            return flightsList;
         }
     }
 }
