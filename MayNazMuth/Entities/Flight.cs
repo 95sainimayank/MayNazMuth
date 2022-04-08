@@ -35,10 +35,10 @@ namespace MayNazMuth.Entities {
             DepartureTime = nDepart;
             ArrivalTime = nArrival;
             Airline = new Airline(nAirline);
-            //Airline.AirlineName = nAirline;
-            //SourceAirport.AirportName = nSourceAirport;
-            //DestinationAirport.AirportName = nDestinationAirport;
-            
+            Airline.AirlineName = nAirline;
+            SourceAirport.AirportName = nSourceAirport;
+            DestinationAirport.AirportName = nDestinationAirport;
+
 
         }
     }
