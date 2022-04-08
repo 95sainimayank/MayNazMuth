@@ -192,17 +192,9 @@
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220406044450_OneBigMigration.cs" />
-    <Compile Include="Migrations\20220406044450_OneBigMigration.designer.cs">
-      <DependentUpon>20220406044450_OneBigMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220407030829_dbCheckup.cs" />
-    <Compile Include="Migrations\20220407030829_dbCheckup.designer.cs">
-      <DependentUpon>20220407030829_dbCheckup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20220407031746_forCreatingDB.cs" />
-    <Compile Include="Migrations\20220407031746_forCreatingDB.designer.cs">
-      <DependentUpon>20220407031746_forCreatingDB.cs</DependentUpon>
+    <Compile Include="Migrations\20220408053646_BigMig_ModifiedBookingAndPaymentEntities.cs" />
+    <Compile Include="Migrations\20220408053646_BigMig_ModifiedBookingAndPaymentEntities.designer.cs">
+      <DependentUpon>20220408053646_BigMig_ModifiedBookingAndPaymentEntities.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">

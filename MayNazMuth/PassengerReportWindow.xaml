@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MayNazMuth"
-        Title="PassengerReportWindow" Height="450" Width="800">
+        Title="PassengerReportWindow" Height="450" Width="900">
     <Grid>
-        <uc:Menu Margin="10,0,10,384" />
+        <uc:Menu Margin="10,0,10,370" />
+        <Label Content="Passenger Name" HorizontalAlignment="Left" Height="30" Margin="9,54,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Passport number" HorizontalAlignment="Left" Height="28" Margin="9,88,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Contact Number" HorizontalAlignment="Left" Height="32" Margin="9,120,0,0" VerticalAlignment="Top" Width="101"/>
+        <TextBox x:Name="txtPassengerName" HorizontalAlignment="Left" Height="30" Margin="115,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="txtPassengerPassport" HorizontalAlignment="Left" Height="28" Margin="115,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="txtPassengerContact" HorizontalAlignment="Left" Height="32" Margin="115,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <DataGrid x:Name="PassengerReportDatagrid" HorizontalAlignment="Left" Height="355" Margin="284,54,0,0" VerticalAlignment="Top" Width="598"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="36" Margin="40,176,0,0" VerticalAlignment="Top" Width="196"/>
     </Grid>
 </Window>
