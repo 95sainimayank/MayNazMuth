@@ -58,10 +58,6 @@ namespace MayNazMuth {
                                         select x;
 
                 PassengerReportDatagrid.ItemsSource = selectedPassenger.ToList();
-                /*foreach (var pass in selectedPassenger) {
-                    Console.WriteLine(pass.passengerName + " " + pass.bookingDateTime + " " + pass.flightArrivalAirport + " " + pass.flightDepartureAirport);
-                }
-*/
                 db.SaveChanges();
             }
 
