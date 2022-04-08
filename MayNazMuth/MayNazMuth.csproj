@@ -212,6 +212,8 @@
       <DependentUpon>PaymentReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
+    <Compile Include="Utilities\FileService.cs" />
+    <Compile Include="Utilities\FlightParser.cs" />
     <Page Include="AddPassengerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +283,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\FlightDetails.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

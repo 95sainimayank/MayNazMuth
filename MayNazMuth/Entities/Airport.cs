@@ -38,5 +38,10 @@ namespace MayNazMuth {
             AirportWebsite = nWebsite;
             AirportPhoneno = nPhone;
         }
+
+        public Airport(string nName)
+        {
+            this.AirportName = nName;
+        }
     }
 }

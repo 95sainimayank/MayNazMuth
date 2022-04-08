@@ -6,9 +6,24 @@
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MayNazMuth"
-        Title="MainWindow" Height="450" Width="800">
-   
-    <Grid x:Name="MainWindow1">
-        <uc:Menu Margin="0,0,0,367" />
+        Title="MainWindow" Height="681.87" Width="1073.092">
+
+    <Grid x:Name="MainWindow1" Margin="0,0,3.4,-20">
+        <uc:Menu Margin="0,0,275,595" />
+        <DataGrid x:Name="flightDataGrid" HorizontalAlignment="Left" Height="230" Margin="44,111,0,0" VerticalAlignment="Top" Width="714"/>
+        <Label Content="From" HorizontalAlignment="Left" Margin="20,80,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSourceAirport" HorizontalAlignment="Left" Height="23" Margin="62,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="To" HorizontalAlignment="Left" Margin="187,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.179,0.555"/>
+        <TextBox x:Name="txtDestinationAirport" HorizontalAlignment="Left" Height="23" Margin="209,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="dtDepartureDate" HorizontalAlignment="Left" Margin="398,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Departure" HorizontalAlignment="Left" Margin="334,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.487,0.492"/>
+        <DatePicker x:Name="dtArrivalDate" HorizontalAlignment="Left" Margin="550,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Return" HorizontalAlignment="Left" Margin="505,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Passengers" HorizontalAlignment="Left" Margin="664,80,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSourceAirport_Copy" HorizontalAlignment="Left" Height="23" Margin="732,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43"/>
+        <Label Content="Selected Flight Details" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="459,370,0,0" FontWeight="Bold" FontSize="15"/>
+        <TextBox x:Name="txtFlightDetails" HorizontalAlignment="Left" Height="221" Margin="458,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <Button x:Name="btnBookFlight" Content="Book a Flight" HorizontalAlignment="Left" Margin="181,378,0,0" VerticalAlignment="Top" Width="111" FontWeight="Bold" FontSize="13" Height="35"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="62,378,0,0" VerticalAlignment="Top" Width="80" FontSize="13" FontWeight="Bold" Height="35"/>
     </Grid>
 </Window>

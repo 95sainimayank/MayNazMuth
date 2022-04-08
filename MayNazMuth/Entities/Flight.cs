@@ -20,16 +20,26 @@ namespace MayNazMuth.Entities {
         public Airport SourceAirport { get; set; }
         public Airport DestinationAirport { get; set; }
 
+
         public Flight()
         {
             Bookings = new List<Booking>();
         }
 
-        public Flight(string nNo, DateTime nDepart, DateTime nArrival)
+        public Flight(string nNo, DateTime nDepart, DateTime nArrival,string nAirline, string nSourceAirport, string nDestinationAirport)
         {
+            //Airline = new Airline(nAirline);
+            //SourceAirport = new Airport(nSourceAirport);
+            //DestinationAirport = new Airport(nDestinationAirport);
             FlightNo = nNo;
             DepartureTime = nDepart;
             ArrivalTime = nArrival;
+            Airline = new Airline(nAirline);
+            //Airline.AirlineName = nAirline;
+            //SourceAirport.AirportName = nSourceAirport;
+            //DestinationAirport.AirportName = nDestinationAirport;
+            
+
         }
     }
 }
