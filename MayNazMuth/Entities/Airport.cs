@@ -43,5 +43,9 @@ namespace MayNazMuth {
         {
             this.AirportName = nName;
         }
+        public Airport(int nid)
+        {
+            this.AirportId = nid;
+        }
     }
 }

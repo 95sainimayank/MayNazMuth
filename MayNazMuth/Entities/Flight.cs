@@ -15,6 +15,7 @@ namespace MayNazMuth.Entities {
         //Navigational Properties
         public List<Booking> Bookings { get; set; }
         public Airline Airline { get; set; }
+        public string AirlineName { get; set; }
         public int? SourceAirportId { get; set; }
         public int? DestinationAirportId { get; set; }
         public Airport SourceAirport { get; set; }
@@ -26,16 +27,38 @@ namespace MayNazMuth.Entities {
             Bookings = new List<Booking>();
         }
 
-        public Flight(string nNo, DateTime nDepart, DateTime nArrival,string nAirline, string nSourceAirport, string nDestinationAirport)
+        //public Flight(string nNo, DateTime nDepart, DateTime nArrival,string nAirline, int nSourceAirport, int nDestinationAirport)
+        //{
+        //   // Airline = new Airline();
+        //    AirlineName = nAirline;
+        //    FlightNo = nNo;
+        //    DepartureTime = nDepart;
+        //    ArrivalTime = nArrival;
+        //    SourceAirportId = nSourceAirport;
+        //    DestinationAirportId = nDestinationAirport;
+        //    // SourceAirport = new Airport();
+        //    // DestinationAirport = new Airport();
+
+        //    // Airline = new Airline(nAirline);
+
+
+
+
+
+        //}
+
+        public Flight(string nNo, DateTime nDepart, DateTime nArrival, string nAirline, string nSourceAirport, string nDestinationAirport)
         {
-            //Airline = new Airline(nAirline);
-            //SourceAirport = new Airport(nSourceAirport);
-            //DestinationAirport = new Airport(nDestinationAirport);
+            AirlineName = new Airline(nAirline).AirlineName;
+            SourceAirport = new Airport();
+            DestinationAirport = new Airport();
+            SourceAirportId = new Airport(nSourceAirport).AirportId;
+            DestinationAirportId = new Airport(nDestinationAirport).AirportId;
             FlightNo = nNo;
             DepartureTime = nDepart;
             ArrivalTime = nArrival;
-            Airline = new Airline(nAirline);
-            Airline.AirlineName = nAirline;
+            // Airline = new Airline(nAirline);
+            //Airline.AirlineName = nAirline;
             SourceAirport.AirportName = nSourceAirport;
             DestinationAirport.AirportName = nDestinationAirport;
 

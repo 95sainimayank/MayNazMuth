@@ -58,15 +58,15 @@ namespace MayNazMuth {
 
             DataGridTextColumn AirlineColumn = new DataGridTextColumn();
             AirlineColumn.Header = "Airline";
-            AirlineColumn.Binding = new Binding("Airline");
+            AirlineColumn.Binding = new Binding("AirlineName");
 
             DataGridTextColumn SourceAirportColumn = new DataGridTextColumn();
             SourceAirportColumn.Header = "Departure Airport";
-            SourceAirportColumn.Binding = new Binding("SourceAirport");
+            SourceAirportColumn.Binding = new Binding("SourceAirportId");
 
             DataGridTextColumn DestinationAirportColumn = new DataGridTextColumn();
             DestinationAirportColumn.Header = "Destination Airport";
-            DestinationAirportColumn.Binding = new Binding("DestinationAirport");
+            DestinationAirportColumn.Binding = new Binding("DestinationAirportId");
 
             flightDataGrid.Columns.Add(FlightNumberColumn);
             flightDataGrid.Columns.Add(DepartureTimeColumn);

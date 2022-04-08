@@ -10,9 +10,10 @@ namespace MayNazMuth.Utilities
 {
     class FlightParser
     {
-        public static List<Flight> parseFlightFile(string contents)
+        public static List<Flight> flights2 = new List<Flight>();
+        public static List<Flight> parseFlightFile(String contents)
         {
-            List<Flight> flightList = new List<Flight>();
+            /////List<Flight> flightList = new List<Flight>();
             //Airline airline = new Airline();
             //Airport sAirport = new Airport();
             //Airport dAirport = new Airport();
@@ -20,57 +21,50 @@ namespace MayNazMuth.Utilities
 
             //Get the file into Lines
             string[] lines = contents.Split('\n');
-
-            for (int i = 1; i < lines.Length; i++)
+            foreach (string line in lines)
             {
-                string[] fields = lines[i].Split(',');
+                //Cut the line into the fileds
+
+                string[] fields = line.Trim().Split(',');
 
                 if (fields.Length != 6)
                 {
-                    continue;
+                    //MessageBox.Show("Problem parsing file, check format");
+                    break;
+
                 }
                 else
                 {
                     try
-                    {
+                    {                       
 
-                        //Sanitize the data
-                        //for (int f = 0; f < fields.Length; f++)
-                        //{
-                        //    fields[f] = (fields[f]).Trim();
-                        //}
+                        //string[] myFields = fields[0].Split('\\');
+                        //fields[1] = PlayerFields[0];
+                        //fields[0] = fields[0].AirlineName
+                        Flight newFlight = new Flight(                           
 
-                        //Airline airline;
-                        //Airport sourceAirport;
-                        //Airport destinaionsAirport;
-                        //string nFlightNo, DateTime nDepartureTime, DateTime nArrivalTime,
-                        // int nBookingId, Airline nAirline, Airline nSourceAirport,
-                        // Airline nDestinationAirport
-                        Flight newFlight = new Flight(
-                            fields[0],
+                           
+                             fields[0].Trim(),
                             Convert.ToDateTime(fields[1]),
                             Convert.ToDateTime(fields[2]),
-                             new Airline(fields[3]),
-                             new Airport(fields[4]),
-                             new Airport(fields[5])
+                             fields[3].Trim(),
+                             fields[4].Trim(),
+                             fields[5].Trim()
+                            );
 
-                         );
-                        
-
-                        flightList.Add(newFlight);
+                        flights2.Add(newFlight);
                     }
-
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Problem parsing file at line " + (i + 1));
-                        Console.WriteLine(ex.ToString());
+                        Console.WriteLine(ex.Message);
                     }
-
-
                 }
 
+
+
             }
-            return flightList;
+           
+            return flights2;
         }
     }
 }
