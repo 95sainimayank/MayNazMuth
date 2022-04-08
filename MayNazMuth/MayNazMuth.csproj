@@ -203,6 +203,9 @@
     <Compile Include="PaymentReportWindow.xaml.cs">
       <DependentUpon>PaymentReportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdatePassengerWindow.xaml.cs">
+      <DependentUpon>UpdatePassengerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
     <Page Include="AddPassengerWindow.xaml">
       <SubType>Designer</SubType>
@@ -251,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PaymentReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdatePassengerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

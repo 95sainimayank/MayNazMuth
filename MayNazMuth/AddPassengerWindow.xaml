@@ -6,10 +6,28 @@
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MayNazMuth"
-        Title="AddPassengerWindow" Height="450" Width="800">
+        Title="AddPassengerWindow" Height="500" Width="800">
     <Grid>
         <uc:Menu Margin="0,0,20,367" />
-        <Label Content="Add Passenger Window" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Height="36" Width="173"/>
+        <Label Content="Full Name" HorizontalAlignment="Left" Height="25" Margin="11,67,0,0" VerticalAlignment="Top" Width="66"/>
+        <Label Content="Email" HorizontalAlignment="Left" Height="25" Margin="11,92,0,0" VerticalAlignment="Top" Width="66"/>
+        <Label Content="Passport Number" HorizontalAlignment="Left" Height="32" Margin="11,122,0,0" VerticalAlignment="Top" Width="105"/>
+        <Label Content="Phone number" HorizontalAlignment="Left" Height="26" Margin="11,154,0,0" VerticalAlignment="Top" Width="105"/>
+        <Label Content="Date of Birth" HorizontalAlignment="Left" Height="30" Margin="11,185,0,0" VerticalAlignment="Top" Width="105"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Height="26" Margin="11,220,0,0" VerticalAlignment="Top" Width="66" RenderTransformOrigin="0.53,1.731"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="25" Margin="125,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" />
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="125,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="txtPassportNumber" HorizontalAlignment="Left" Height="27" Margin="125,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="26" Margin="125,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <DatePicker x:Name="dateOfBirth" HorizontalAlignment="Left" Height="30" Margin="125,185,0,0" VerticalAlignment="Top" Width="128"/>
+        <ComboBox x:Name="gender" HorizontalAlignment="Left" Height="31" Margin="125,220,0,0" VerticalAlignment="Top" Width="141">
+            <ComboBoxItem>Male</ComboBoxItem>
+            <ComboBoxItem>Female</ComboBoxItem>
+            <ComboBoxItem>Other</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="btnAddPassenger" Content="Add Passenger" HorizontalAlignment="Left" Height="34" Margin="59,283,0,0" VerticalAlignment="Top" Width="158"/>
+        <DataGrid x:Name="AllPassengersDataGrid" HorizontalAlignment="Left" Height="352" Margin="283,57,0,0" VerticalAlignment="Top" Width="499"/>
+        <Button x:Name="btnDeletePassenger" Content="Delete selected Passenger" HorizontalAlignment="Left" Margin="478,428,0,0" VerticalAlignment="Top" Width="187" Height="31"/>
 
     </Grid>
 </Window>
