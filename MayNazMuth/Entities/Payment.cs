@@ -14,7 +14,6 @@ namespace MayNazMuth.Entities {
         public string CardHolderName { get; set; }
         public string CardNumber { get; set; }
         
-
         //navigational properties
         public int BookingId { get; set; }
         public Booking Booking { get; set; }
