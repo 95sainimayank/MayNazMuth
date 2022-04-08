@@ -28,13 +28,13 @@ namespace MayNazMuth.Entities {
 
         public Flight(string nNo, DateTime nDepart, DateTime nArrival,string nAirline, string nSourceAirport, string nDestinationAirport)
         {
-            //Airline = new Airline(nAirline);
-            //SourceAirport = new Airport(nSourceAirport);
-            //DestinationAirport = new Airport(nDestinationAirport);
+            Airline = new Airline(nAirline);
+            SourceAirport = new Airport(nSourceAirport);
+            DestinationAirport = new Airport(nDestinationAirport);
             FlightNo = nNo;
             DepartureTime = nDepart;
             ArrivalTime = nArrival;
-            Airline = new Airline(nAirline);
+           // Airline = new Airline(nAirline);
             Airline.AirlineName = nAirline;
             SourceAirport.AirportName = nSourceAirport;
             DestinationAirport.AirportName = nDestinationAirport;

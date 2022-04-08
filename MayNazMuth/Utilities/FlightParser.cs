@@ -50,9 +50,9 @@ namespace MayNazMuth.Utilities
                             fields[0],
                             Convert.ToDateTime(fields[1]),
                             Convert.ToDateTime(fields[2]),
-                             new Airline(fields[3]),
-                             new Airport(fields[4]),
-                             new Airport(fields[5])
+                             fields[3],
+                             fields[4],
+                             fields[5]
 
                          );
                         
