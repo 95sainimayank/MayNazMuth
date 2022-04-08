@@ -204,6 +204,10 @@
     <Compile Include="Migrations\20220407031746_forCreatingDB.designer.cs">
       <DependentUpon>20220407031746_forCreatingDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220408040451_AddedBookingPassengerDbSetToDbContext.cs" />
+    <Compile Include="Migrations\20220408040451_AddedBookingPassengerDbSetToDbContext.designer.cs">
+      <DependentUpon>20220408040451_AddedBookingPassengerDbSetToDbContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>
