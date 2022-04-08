@@ -27,13 +27,13 @@ namespace MayNazMuth.Utilities {
             /*modelBuilder.Entity<Payment>()
                .HasOne(p => p.Booking)
                .WithOne(b => b.Payment)
-               .HasForeignKey<Booking>(f => f.BookingId);
-*/
+               .HasForeignKey<Booking>(f => f.BookingId);*/
+
             //one to many - no need to add manual mapping
-           /* modelBuilder.Entity<Booking>()
+            modelBuilder.Entity<Booking>()
                 .HasOne(f => f.Flight)
                 .WithMany(b => b.Bookings)
-                .HasForeignKey(f => f.FlightId);*/
+                .HasForeignKey(f => f.FlightId);
 
 
             //composite key for m:n

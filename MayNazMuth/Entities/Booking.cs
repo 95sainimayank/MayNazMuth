@@ -11,7 +11,7 @@ namespace MayNazMuth.Entities {
         public string BookingStatus { get; set; }
 
         //navigational properties
-        public Payment Payment { get; set; }
+        public int FlightId { get; set; }
         public Flight Flight { get; set;}
         public List<BookingPassenger> BookingPassengers { get; set; }
 
