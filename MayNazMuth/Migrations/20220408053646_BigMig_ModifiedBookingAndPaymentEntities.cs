@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MayNazMuth.Migrations
 {
-    public partial class OneBigMigration : Migration
+    public partial class BigMig_ModifiedBookingAndPaymentEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -102,7 +102,7 @@ namespace MayNazMuth.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BookingDatetime = table.Column<DateTime>(nullable: false),
                     BookingStatus = table.Column<string>(nullable: true),
-                    FlightId = table.Column<int>(nullable: true)
+                    FlightId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,11 +112,11 @@ namespace MayNazMuth.Migrations
                         column: x => x.FlightId,
                         principalTable: "Flights",
                         principalColumn: "FlightId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookingPassenger",
+                name: "BookingPassengers",
                 columns: table => new
                 {
                     BookingId = table.Column<int>(nullable: false),
@@ -124,15 +124,15 @@ namespace MayNazMuth.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookingPassenger", x => new { x.BookingId, x.PassengerId });
+                    table.PrimaryKey("PK_BookingPassengers", x => new { x.BookingId, x.PassengerId });
                     table.ForeignKey(
-                        name: "FK_BookingPassenger_Bookings_BookingId",
+                        name: "FK_BookingPassengers_Bookings_BookingId",
                         column: x => x.BookingId,
                         principalTable: "Bookings",
                         principalColumn: "BookingId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookingPassenger_Passengers_PassengerId",
+                        name: "FK_BookingPassengers_Passengers_PassengerId",
                         column: x => x.PassengerId,
                         principalTable: "Passengers",
                         principalColumn: "PassengerId",
@@ -165,8 +165,8 @@ namespace MayNazMuth.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookingPassenger_PassengerId",
-                table: "BookingPassenger",
+                name: "IX_BookingPassengers_PassengerId",
+                table: "BookingPassengers",
                 column: "PassengerId");
 
             migrationBuilder.CreateIndex(
@@ -192,14 +192,13 @@ namespace MayNazMuth.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Payments_BookingId",
                 table: "Payments",
-                column: "BookingId",
-                unique: true);
+                column: "BookingId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BookingPassenger");
+                name: "BookingPassengers");
 
             migrationBuilder.DropTable(
                 name: "Payments");

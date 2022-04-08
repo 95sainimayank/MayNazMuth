@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MayNazMuth.Migrations
 {
     [DbContext(typeof(CustomDbContext))]
-    [Migration("20220407030829_dbCheckup")]
-    partial class dbCheckup
+    [Migration("20220408053646_BigMig_ModifiedBookingAndPaymentEntities")]
+    partial class BigMig_ModifiedBookingAndPaymentEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,7 +85,7 @@ namespace MayNazMuth.Migrations
                     b.Property<string>("BookingStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FlightId")
+                    b.Property<int>("FlightId")
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
@@ -107,7 +107,7 @@ namespace MayNazMuth.Migrations
 
                     b.HasIndex("PassengerId");
 
-                    b.ToTable("BookingPassenger");
+                    b.ToTable("BookingPassengers");
                 });
 
             modelBuilder.Entity("MayNazMuth.Entities.Flight", b =>
@@ -206,8 +206,7 @@ namespace MayNazMuth.Migrations
 
                     b.HasKey("PaymentId");
 
-                    b.HasIndex("BookingId")
-                        .IsUnique();
+                    b.HasIndex("BookingId");
 
                     b.ToTable("Payments");
                 });
@@ -216,7 +215,9 @@ namespace MayNazMuth.Migrations
                 {
                     b.HasOne("MayNazMuth.Entities.Flight", "Flight")
                         .WithMany("Bookings")
-                        .HasForeignKey("FlightId");
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MayNazMuth.Entities.BookingPassenger", b =>
@@ -252,8 +253,8 @@ namespace MayNazMuth.Migrations
             modelBuilder.Entity("MayNazMuth.Entities.Payment", b =>
                 {
                     b.HasOne("MayNazMuth.Entities.Booking", "Booking")
-                        .WithOne("Payment")
-                        .HasForeignKey("MayNazMuth.Entities.Payment", "BookingId")
+                        .WithMany()
+                        .HasForeignKey("BookingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

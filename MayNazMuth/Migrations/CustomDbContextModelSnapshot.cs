@@ -83,7 +83,7 @@ namespace MayNazMuth.Migrations
                     b.Property<string>("BookingStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FlightId")
+                    b.Property<int>("FlightId")
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
@@ -204,8 +204,7 @@ namespace MayNazMuth.Migrations
 
                     b.HasKey("PaymentId");
 
-                    b.HasIndex("BookingId")
-                        .IsUnique();
+                    b.HasIndex("BookingId");
 
                     b.ToTable("Payments");
                 });
@@ -214,7 +213,9 @@ namespace MayNazMuth.Migrations
                 {
                     b.HasOne("MayNazMuth.Entities.Flight", "Flight")
                         .WithMany("Bookings")
-                        .HasForeignKey("FlightId");
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MayNazMuth.Entities.BookingPassenger", b =>
@@ -250,8 +251,8 @@ namespace MayNazMuth.Migrations
             modelBuilder.Entity("MayNazMuth.Entities.Payment", b =>
                 {
                     b.HasOne("MayNazMuth.Entities.Booking", "Booking")
-                        .WithOne("Payment")
-                        .HasForeignKey("MayNazMuth.Entities.Payment", "BookingId")
+                        .WithMany()
+                        .HasForeignKey("BookingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
