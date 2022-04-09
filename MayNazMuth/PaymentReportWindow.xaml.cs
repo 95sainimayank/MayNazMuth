@@ -52,7 +52,7 @@ namespace MayNazMuth
 
         Payment newPayment = new Payment();
             newPayment.PaymentDatetime = new DateTime();
-            newPayment.PaymentAmount = 0;
+            newPayment.TotalPrice = 0;
             newPayment.PaymentMethod = "Online";
             newPayment.PaymentStatus = "Awaiting Payment";
             newPayment.CardHolderName = CardHolderNameTextBox.Text;

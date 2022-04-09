@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 
 namespace MayNazMuth {
     public partial class AddPassengerWindow : Window {
+        List<Booking> bookingLsit = new List<Booking>();
+        int bookingId;
         public AddPassengerWindow() {
             InitializeComponent();
 
@@ -23,8 +25,27 @@ namespace MayNazMuth {
 
             btnAddPassenger.Click += AddPassenger;
             btnDeletePassenger.Click += DeletePassenger;
+            btnOpenPayment.Click  += btnOpenPaymentWindow;
         }
 
+        private void btnOpenPaymentWindow(object sender, RoutedEventArgs e)
+        {
+            using (var ctx = new CustomDbContext())
+            {                 
+                bookingLsit = ctx.Bookings.ToList<Booking>();
+                bookingId= bookingLsit[bookingLsit.Count() - 1].BookingId;
+            }
+            PaymentWindow Payment = new PaymentWindow(bookingId);
+            CloseAllWindows();
+            Payment.Show();
+        }
+        public void CloseAllWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                window.Hide();
+            }
+        }
         public void InitializeDataGrid() {
             using(var db = new CustomDbContext()) {
                 AllPassengersDataGrid.ItemsSource =  db.Passengers.ToList();

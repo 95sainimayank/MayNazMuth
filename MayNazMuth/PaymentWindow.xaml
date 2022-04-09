@@ -16,9 +16,9 @@
             </Image.Source>
         </Image>
         <Label Content="Reservation Status: " HorizontalAlignment="Left" Margin="13,184,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.795,-0.522" FontSize="13"/>
-        <Label Foreground="Orange" Content="Awaiting Payment" HorizontalAlignment="Left" Margin="131,184,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="bookingStatusLabel" Foreground="Orange" Content="Awaiting Payment" HorizontalAlignment="Left" Margin="131,184,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label Content="Booking Refrence No." HorizontalAlignment="Left" Margin="13,216,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <Label x:Name="BookingRefrenceNoValueLabel" Content="12345" HorizontalAlignment="Left" Margin="153,218,0,0" VerticalAlignment="Top" FontSize="13"/>
+        <Label x:Name="BookingRefrenceNoValueLabel" HorizontalAlignment="Left" Margin="153,218,0,0" VerticalAlignment="Top" FontSize="13"/>
         <Label Foreground="Gray" Content="Your Reservation will be confirmed once you submit payment. Make sure you" HorizontalAlignment="Left" Margin="329,87,0,0" VerticalAlignment="Top" FontSize="13"/>
         <Label Foreground="Gray" Content="write down your booking reference, as it may be required in future " HorizontalAlignment="Left" Margin="329,108,0,0" VerticalAlignment="Top" FontSize="13"/>
         <Label Foreground="Gray" Content="communication with us." HorizontalAlignment="Left" Margin="329,133,0,0" VerticalAlignment="Top" FontSize="13"/>

@@ -81,7 +81,8 @@ namespace MayNazMuth
         }
         public void OpenPaymentWindow(object sender, EventArgs args)
         {
-            PaymentWindow Payment = new PaymentWindow();
+            var bookingId = 10;
+            PaymentWindow Payment = new PaymentWindow(bookingId);
             CloseAllWindows();
             Payment.Show();
         }
