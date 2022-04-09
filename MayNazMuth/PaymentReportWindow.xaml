@@ -4,44 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MayNazMuth"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"        
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MayNazMuth"
         ResizeMode="NoResize"
         Title="PaymentReportWindow" Height="600" Width="805">
     <Grid>
         <uc:Menu Margin="0,0,0,507" />
-        <Image Margin="17,81,496,409" >
-            <Image.Source>
-                <BitmapImage DecodePixelWidth="722" UriSource="/images/payment-methods.png" />
-            </Image.Source>
-        </Image>
-        <Label Content="Reservation Status: " HorizontalAlignment="Left" Margin="13,184,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.795,-0.522" FontSize="13"/>
-        <Label Foreground="Orange" Content="Awaiting Payment" HorizontalAlignment="Left" Margin="131,184,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Booking Refrence No." HorizontalAlignment="Left" Margin="13,216,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <Label x:Name="BookingRefrenceNoValueLabel" Content="12345" HorizontalAlignment="Left" Margin="153,218,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <Label Foreground="Gray" Content="Your Reservation will be confirmed once you submit payment. Make sure you" HorizontalAlignment="Left" Margin="329,87,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <Label Foreground="Gray" Content="write down your booking reference, as it may be required in future " HorizontalAlignment="Left" Margin="329,108,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <Label Foreground="Gray" Content="communication with us." HorizontalAlignment="Left" Margin="329,133,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <Border BorderBrush="Gray" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="1" Margin="0,165,0,0" VerticalAlignment="Top" Width="792"/>
-        <Label Content="Card Holder Name" HorizontalAlignment="Left" Margin="17,268,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <TextBox x:Name="CardHolderNameTextBox" HorizontalAlignment="Left" Height="23" Margin="141,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
-        <Label Content="Card Number" HorizontalAlignment="Left" Margin="416,268,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <TextBox x:Name="CardNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="509,273,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="271"/>
-        <Label Content="Expiry Date (01/23)" HorizontalAlignment="Left" Margin="17,307,0,0" VerticalAlignment="Top" FontSize="13" />
-        <TextBox x:Name="ExpiryDateTextBox" HorizontalAlignment="Left" Height="23" Margin="141,310,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
-        <Label Content="CVV" HorizontalAlignment="Left" Margin="418,305,0,0" VerticalAlignment="Top" FontSize="13"/>
-        <TextBox x:Name="CVVTextBox" HorizontalAlignment="Left" Height="23" Margin="511,310,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="271"/>
-        <Label Foreground="Gray" Content="Ticket Price" HorizontalAlignment="Left" Margin="202,379,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.809,0.539" FontSize="13"/>
-        <Label Foreground="Gray" Content="Fare Tax" HorizontalAlignment="Left" Margin="202,415,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.809,0.539" FontSize="13"/>
-        <Label Content="$" HorizontalAlignment="Left" Margin="301,379,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="ticketPriceValueLabel" Content="0" HorizontalAlignment="Left" Margin="313,380,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" RenderTransformOrigin="2.605,0.49"/>
-        <Label Content="$" HorizontalAlignment="Left" Margin="301,418,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="taxPriceValueLabel" Content="0" HorizontalAlignment="Left" Margin="316,418,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" RenderTransformOrigin="2.605,0.49"/>
-        <Border BorderBrush="Gray" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="1" Margin="0,364,0,0" VerticalAlignment="Top" Width="792"/>
-        <Label Foreground="Orange" Content="Total Amount" HorizontalAlignment="Left" Margin="202,456,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
-        <Label Content="$" HorizontalAlignment="Left" Margin="302,455,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="taxPriceValueLabel_Copy" Content="0" HorizontalAlignment="Left" Margin="317,455,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" RenderTransformOrigin="2.605,0.49"/>
-        <Button x:Name="paymentButton" Background="Green" Foreground="White" Content="Pay" HorizontalAlignment="Left" Margin="202,505,0,0" VerticalAlignment="Top" Width="368" Height="45" FontSize="14" FontWeight="Bold"/>
+        <Label Content="From:" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{x:Static sys:DateTime.Now}" x:Name="fromDatePicker" HorizontalAlignment="Left" Margin="55,100,0,0" VerticalAlignment="Top" Width="93" />
+        <Label Content="To:" HorizontalAlignment="Left" Margin="171,98,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{x:Static sys:DateTime.Now}" x:Name="toDatePicker" HorizontalAlignment="Left" Margin="201,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.759,0.479" Width="91"/>
+
+        <Button x:Name="FilterButton" Background="Green" Foreground="White" Content="Filter" HorizontalAlignment="Left" Margin="317,98,0,0" VerticalAlignment="Top" Width="90" Height="27" FontSize="14"/>
+        <DataGrid x:Name="paymentsDataGrid" HorizontalAlignment="Left" Height="295" Margin="10,151,0,0" VerticalAlignment="Top" Width="525"/>
+        <Label Content="Total Sale:" HorizontalAlignment="Left" Margin="559,151,0,0" VerticalAlignment="Top" FontSize="14px" />
+        <Label x:Name="TotalSaleValueLabel" HorizontalAlignment="Left" Margin="650,149,0,0" VerticalAlignment="Top" FontSize="14px" />
+        <Label Content="$" HorizontalAlignment="Left" Margin="630,151,0,0" VerticalAlignment="Top" FontSize="14px" Width="17" />
+        <Label Content="Number of Transacions:" HorizontalAlignment="Left" Margin="559,195,0,0" VerticalAlignment="Top" FontSize="14px" RenderTransformOrigin="0.484,2.045" />
+        <Label x:Name="transactionCountValueLabel" HorizontalAlignment="Left" Margin="727,197,0,0" VerticalAlignment="Top"/>
+
+
 
     </Grid>
 </Window>

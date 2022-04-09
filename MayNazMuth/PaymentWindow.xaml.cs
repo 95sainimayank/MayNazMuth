@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,7 +70,8 @@ namespace MayNazMuth
             
             Payment newPayment = new Payment();
             newPayment.BookingId = bkId;
-            newPayment.PaymentDatetime = new DateTime();     
+            DateTime thisDay = DateTime.Today;
+            newPayment.PaymentDatetime = thisDay;     
             newPayment.PaymentStatus = "Completed";
             newPayment.PaymentMethod = "Online";
             newPayment.CardHolderName = CardHolderNameTextBox.Text;
@@ -79,15 +81,40 @@ namespace MayNazMuth
 
             using (var ctx = new CustomDbContext())
             {
+                if (newPayment.CardNumber.Equals(""))
+                {
+                    MessageBox.Show("Card Number is empty.");
+                }                
+                else if (!IsCreditNumberValid(newPayment.CardNumber))
+                {
+                    MessageBox.Show("Card Number is not valid.");
+                }
+                else if (!CVVTextBox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("CVV must be numeric.");
+                    
+                }
+                else if (CVVTextBox.Text.Equals(""))
+                {
+                    MessageBox.Show("CVV is empty.");
+                }
+                else if (!IsCVvValid(CVVTextBox.Text))
+                {
+                    MessageBox.Show("CVV is not valid.");
+                }
                 
-                if (!newPayment.CardHolderName.Equals("") && !newPayment.CardNumber.Equals(""))
-                {                   
-                    ctx.Payments.Add(newPayment);
-                    ctx.SaveChanges();                   
+                else if(string.IsNullOrEmpty(newPayment.CardHolderName))
+                {
+                    MessageBox.Show("Card holder name is empty.");
+                }
+                else if (!IsCreditExpiryValid(ExpiryDateTextBox.Text))
+                {
+                    MessageBox.Show("Expity date is not valid.");
                 }
                 else
                 {
-                    MessageBox.Show("Please fill all fields.");
+                    ctx.Payments.Add(newPayment);
+                    ctx.SaveChanges();
                 }
 
                 Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();
@@ -96,7 +123,52 @@ namespace MayNazMuth
                 ctx.Bookings.Update(AP);
                 //Save my changes
                 ctx.SaveChanges();
+                MessageBox.Show("Payment is done successfully !");
+
             }
+        }
+
+        //this function checks credit card format by using Regex
+        public static bool IsCreditNumberValid(string cardNo)
+        {
+            var cardCheck = new Regex(@"([\-\s]?[0-9]{4}){3}$");
+
+            //check card number is valid
+            if (!cardCheck.IsMatch(cardNo))
+                 return false;
+            else return true;                       
+        }
+
+        //this function checks credit card CVV by using Regex
+        public static bool IsCVvValid(string cvv)
+        {            
+            var cvvCheck = new Regex(@"^\d{3}$");
+
+            //check cvv is valid as "999"
+            if (!cvvCheck.IsMatch(cvv))
+                return false;
+            else return true;
+        }
+
+        //this function checks credit card Expiry by using Regex
+        public static bool IsCreditExpiryValid(string expiryDate)
+        {            
+            var monthCheck = new Regex(@"^(0[1-9]|1[0-2])$");
+            var yearCheck = new Regex(@"^[0-9]{2}$");
+
+            //expiry date format MM/yy
+            var dateParts = expiryDate.Split('/');
+            if (!monthCheck.IsMatch(dateParts[0]) || !yearCheck.IsMatch(dateParts[1]))
+                return false;
+            else return true;
+
+            //var year = int.Parse(dateParts[1]);
+            //var month = int.Parse(dateParts[0]);
+            //var lastDateOfExpiryMonth = DateTime.DaysInMonth(year, month); //get actual expiry date
+            //var cardExpiry = new DateTime(year, month, lastDateOfExpiryMonth, 23, 59, 59);
+
+            ////check expiry greater than today & within next 6 years 
+            //return (cardExpiry > DateTime.Now && cardExpiry < DateTime.Now.AddYears(6));
         }
     }
 }
