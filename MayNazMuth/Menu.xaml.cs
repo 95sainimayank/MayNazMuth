@@ -49,9 +49,9 @@ namespace MayNazMuth
         public void OpenAddPassengerWindow(object sender, EventArgs args)
         {
            
-            //AddPassengerWindow Passenger = new AddPassengerWindow();
+            AddPassengerWindow Passenger = new AddPassengerWindow();
             CloseAllWindows();
-            //Passenger.Show();
+            Passenger.Show();
         }
         public void OpenUpdatePassengerWindow(object sender, EventArgs args)
         {
@@ -86,7 +86,13 @@ namespace MayNazMuth
             CloseAllWindows();
             Payment.Show();
         }
-        
+        public void OpenBookingReportWindow(object sender, EventArgs args)
+        {
+            BookingReportWindow1 BookingReport = new BookingReportWindow1();
+            CloseAllWindows();
+            BookingReport.Show();
+        }
+
 
         public void CloseAllWindows()
         {

@@ -27,6 +27,9 @@
                     <MenuItem Header="_Payment Window" Click="OpenPaymentWindow" />
                     <MenuItem Header="_Report" Click="OpenPaymentReportWindow" />
                 </MenuItem>
+                <MenuItem Header="_Bookings" Margin="0">
+                    <MenuItem Header="_Report" Click="OpenBookingReportWindow" />
+                </MenuItem>
             </Menu>
         </StackPanel>
     </Grid>

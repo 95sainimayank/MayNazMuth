@@ -321,7 +321,7 @@ namespace MayNazMuth {
 
                 }
 
-                AddPassengerWindow Passeger = new AddPassengerWindow(newBooking.FlightId);
+                AddPassengerWindow Passeger = new AddPassengerWindow();
                 CloseAllWindows();
                 Passeger.Show();
             }

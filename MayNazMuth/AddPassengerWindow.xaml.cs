@@ -20,20 +20,10 @@ namespace MayNazMuth {
         List<Booking> bookingLsit = new List<Booking>();
         int bookingId;
 
-        int fid = 0;
-        int selectedFlightID;
-        public AddPassengerWindow(int flightID) {
+        public AddPassengerWindow() {
 
             InitializeComponent();
-            
-            fid = flightID;
-
-            //getting the selected flight ID from the database
-            using (var db = new CustomDbContext())
-            {
-                Flight FL = db.Flights.Where(x => x.FlightId == fid).First();
-                selectedFlightID = FL.FlightId;
-            }
+                       
 
             InitializeDataGrid();
 
@@ -47,8 +37,10 @@ namespace MayNazMuth {
             using (var ctx = new CustomDbContext())
             {                 
                 bookingLsit = ctx.Bookings.ToList<Booking>();
-                bookingId= bookingLsit[bookingLsit.Count() - 1].BookingId;
+                bookingId= bookingLsit[bookingLsit.Count() - 1].BookingId;               
+
             }
+            
             PaymentWindow Payment = new PaymentWindow(bookingId);
             CloseAllWindows();
             Payment.Show();
@@ -139,13 +131,7 @@ namespace MayNazMuth {
             }
         }
 
-        public void AddBookingPassengerRecord(object sender, EventArgs args)
-        {
-           
-                
-            
-
-        }
+              
 
     }
 

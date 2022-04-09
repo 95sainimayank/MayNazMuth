@@ -32,6 +32,7 @@ namespace MayNazMuth
             InitializeComponent();
             bkId = bookingId;
 
+            
             using (var ctx = new CustomDbContext())
             {
                 Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();

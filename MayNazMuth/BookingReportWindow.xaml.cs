@@ -1,4 +1,5 @@
-﻿using MayNazMuth.Utilities;
+﻿using MayNazMuth.Entities;
+using MayNazMuth.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,40 +25,150 @@ namespace MayNazMuth
         {
             InitializeComponent();
 
-            InitializeDataGrid();
+            ToggleEventHandlers(false);
+            populateDataGrid();
+            ToggleEventHandlers(true);
         }
+    
 
-        public void InitializeDataGrid()
+        private void ToggleEventHandlers(bool toggle)
         {
-            //using (var db = new CustomDbContext())
-            //{
-            //    var query = db.Bookings
-            //                  .Join(db.Flights,
-            //                        flights => flights.FlightId,                                  
-            //                        (flights, fid) => new {
-            //                            flights,
-            //                            fid
-            //                        })
-            //                  .Join(db.Payments,
-            //                         bookings => bookings.pid.BookingId,
-            //                         bid => bid.BookingId,
-            //                         (bookings, bid) => new {
-            //                             bookings,
-            //                             bid
-            //                         })
-            //                  .Select(m => new {
-            //                      passengerName = m.bookings.passengers.FullName,
-            //                      passengerPhone = m.bookings.passengers.PhoneNo,
-            //                      passengerPassport = m.bookings.passengers.PassportNo,
-            //                      flightArrival = m.bid.Flight.ArrivalTime,
-            //                      flightDeparture = m.bid.Flight.DepartureTime,
-            //                      flightArrivalAirport = m.bid.Flight.DestinationAirport.AirportName,
-            //                      flightDepartureAirport = m.bid.Flight.SourceAirport.AirportName,
-            //                      bookingDateTime = m.bid.BookingDatetime,
-            //                  });
+            if (toggle)
+            {
+                //turn on               
+                FilterButton.Click += searchData;
 
-            //    PassengerReportDatagrid.ItemsSource = query.ToList();
-            //}
+            }
+            else
+            {
+                //Turn off               
+
+                FilterButton.Click -= searchData;
+            }
         }
+
+        public void populateDataGrid()
+        {
+
+            //bookingID, flightID, from, to, departureDate, ArrivalDate, Card HolderName, bookingStatus
+            using (var db = new CustomDbContext())
+            {
+                var query = db.Passengers
+                              .Join(db.BookingPassengers,
+                                    passengers => passengers.PassengerId,
+                                    pid => pid.PassengerId,
+                                    (passengers, pid) => new {
+                                        passengers,
+                                        pid
+                                    })
+                              .Join(db.Bookings,
+                                     bookings => bookings.pid.BookingId,
+                                     bid => bid.BookingId,
+                                     (bookings, bid) => new {
+                                         bookings,
+                                         bid
+                                     })
+                              .Join(db.Flights,
+                                     flights => flights.bid.FlightId,
+                                     fid => fid.FlightId,
+                                     (flights, fid) => new {
+                                         flights,
+                                         fid
+                                     })
+
+                              .Select(m => new {
+                                  passengerName = m.flights.bookings.passengers.FullName,                                 
+                                  passengerPassport = m.flights.bookings.passengers.PassportNo,
+                                  flightNumber = m.flights.bid.Flight.FlightNo,
+                                  flightDeparture = m.flights.bid.Flight.DepartureTime,
+                                  flightArrival = m.flights.bid.Flight.ArrivalTime,
+                                  flightDepartureAirport = m.flights.bid.Flight.SourceAirport.AirportName,
+                                  flightArrivalAirport = m.flights.bid.Flight.DestinationAirport.AirportName,                                  
+                                  bookingDateTime = m.flights.bid.BookingDatetime,
+                                  bookingSatus = m.flights.bid.BookingStatus
+                              });
+
+                bookingsDataGrid.ItemsSource = query.ToList();
+                lblNumberOfBookings.Content = query.ToList().Count.ToString();
+            }
+        }
+
+        private void searchData(object sender, RoutedEventArgs e)
+        {
+            lblNumberOfBookings.Content = "";
+            var startFrom = fromDatePicker.SelectedDate;
+            var endTo = toDatePicker.SelectedDate;
+
+            using (var db = new CustomDbContext())
+            {
+                var query = db.Passengers
+                              .Join(db.BookingPassengers,
+                                    passengers => passengers.PassengerId,
+                                    pid => pid.PassengerId,
+                                    (passengers, pid) => new
+                                    {
+                                        passengers,
+                                        pid
+                                    })
+                              .Join(db.Bookings,
+                                     bookings => bookings.pid.BookingId,
+                                     bid => bid.BookingId,
+                                     (bookings, bid) => new
+                                     {
+                                         bookings,
+                                         bid
+                                     })
+                              .Join(db.Flights,
+                                     flights => flights.bid.FlightId,
+                                     fid => fid.FlightId,
+                                     (flights, fid) => new
+                                     {
+                                         flights,
+                                         fid
+                                     })
+
+                              .Select(m => new
+                              {
+                                  passengerName = m.flights.bookings.passengers.FullName,
+                                  passengerPassport = m.flights.bookings.passengers.PassportNo,
+                                  flightNumber = m.flights.bid.Flight.FlightNo,
+                                  flightDeparture = m.flights.bid.Flight.DepartureTime,
+                                  flightArrival = m.flights.bid.Flight.ArrivalTime,
+                                  flightDepartureAirport = m.flights.bid.Flight.SourceAirport.AirportName,
+                                  flightArrivalAirport = m.flights.bid.Flight.DestinationAirport.AirportName,
+                                  bookingDateTime = m.flights.bid.BookingDatetime,
+                                  bookingSatus = m.flights.bid.BookingStatus
+                              });
+
+
+                if (startFrom <= endTo)
+                {
+                    var searchResult = query.Where(x => (x.flightDeparture >= startFrom && x.flightDeparture <= endTo));
+                    bookingsDataGrid.ItemsSource = searchResult.ToList();
+
+                    lblNumberOfBookings.Content = searchResult.ToList().Count().ToString();
+
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Start Date can not be later than End Date");
+                }
+
+            }
+        }
+
+
+        private void clearFilters(object sender, EventArgs args)
+        {
+
+            fromDatePicker.SelectedDate = null;
+            toDatePicker.SelectedDate = null;
+            populateDataGrid();
+        }
+
+
+
+
     }
 }
