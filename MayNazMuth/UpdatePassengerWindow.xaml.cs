@@ -116,7 +116,7 @@ namespace MayNazMuth {
                 }
             }
             else {
-                MessageBox.Show("One or two fields values are not correct!");
+                MessageBox.Show("Either user not selected OR One or more field values are not correct!");
             }
         }
 

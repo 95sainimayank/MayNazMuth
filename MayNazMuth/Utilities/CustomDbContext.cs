@@ -18,6 +18,7 @@ namespace MayNazMuth.Utilities {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=MayNazMuthDB");
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ProjectTestDB");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
