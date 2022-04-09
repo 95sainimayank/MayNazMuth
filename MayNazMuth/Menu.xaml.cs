@@ -92,6 +92,12 @@ namespace MayNazMuth
             CloseAllWindows();
             BookingReport.Show();
         }
+        public void OpenFlightReportWindow(object sender, EventArgs args)
+        {
+            FlightReportWindow FlightReport = new FlightReportWindow();
+            CloseAllWindows();
+            FlightReport.Show();
+        }
 
 
         public void CloseAllWindows()

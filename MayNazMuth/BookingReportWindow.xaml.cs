@@ -145,7 +145,7 @@ namespace MayNazMuth
 
                 if (startFrom <= endTo)
                 {
-                    var searchResult = query.Where(x => (x.flightDeparture >= startFrom && x.flightDeparture <= endTo));
+                    var searchResult = query.Where(x => (x.bookingDateTime >= startFrom && x.bookingDateTime <= endTo));
                     bookingsDataGrid.ItemsSource = searchResult.ToList();
 
                     lblNumberOfBookings.Content = searchResult.ToList().Count().ToString();

@@ -192,6 +192,9 @@
     <Compile Include="FlightDetailWindow.xaml.cs">
       <DependentUpon>FlightDetailWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlightReportWindow.xaml.cs">
+      <DependentUpon>FlightReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -256,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FlightDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlightReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
