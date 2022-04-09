@@ -1,0 +1,9 @@
+Flight No,DepatureDate,"	ArriveDate","	Airline ID",Airline,Source AirportID,Source Airport,Destination AirportID,Destination Airport
+UA835,3/14/2015 11:25,3/14/2015 14:50,1,Aircanada,3,Calgery,1,Vancouver
+UA199,3/20/2015 20:25,3/20/2015 16:55,1,Aircanada,2,Toronto,3,Calgery
+UA564,3/20/2015 22:45,3/20/2015 4:38,1,Aircanada,1,Vancouver,2,Toronto
+SQ12,8/19/2015 19:15,8/19/2015 13:25,1,Aircanada,2,Toronto,1,Vancouver
+UA833,3/14/2015 11:25,3/14/2015 14:50,1,Aircanada,3,Calgery,1,Vancouver
+UA192,3/20/2015 20:25,3/20/2015 16:55,1,Aircanada,2,Toronto,3,Calgery
+UA562,3/20/2015 22:45,3/20/2015 4:38,1,Aircanada,1,Vancouver,2,Toronto
+SQ122,8/19/2015 19:15,8/19/2015 13:25,1,Aircanada,2,Toronto,1,Vancouver
