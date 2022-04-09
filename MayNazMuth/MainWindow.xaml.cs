@@ -255,31 +255,40 @@ namespace MayNazMuth {
 
         private void addBooking(object sender, EventArgs arg)
         {
-            Booking newBooking = new Booking();
-            //Grab the selected flight
-            Flight selectedFlight = (Flight)flightDataGrid.SelectedItem;
-            string flightNo = selectedFlight.FlightNo;
-            DateTime bookingDateTime = DateTime.Now;
-            string bookingStatus = "In Progress";
+            
 
-
-            using (var ctx = new CustomDbContext())
+            if(!(flightDataGrid.SelectedItems.Count==1))
             {
-                Flight fl = ctx.Flights.Where(x => x.FlightNo == flightNo).First();
-                int flightId = fl.FlightId;
-
-                newBooking.BookingDatetime = bookingDateTime;
-                newBooking.BookingStatus = bookingStatus;
-                newBooking.FlightId = flightId;
-
-                ctx.Bookings.Add(newBooking);
-                ctx.SaveChanges();
-
+                MessageBox.Show("Please select a flight!");
             }
+            else
+            {
+                Booking newBooking = new Booking();
+                //Grab the selected flight
+                Flight selectedFlight = (Flight)flightDataGrid.SelectedItem;
+                string flightNo = selectedFlight.FlightNo;
+                DateTime bookingDateTime = DateTime.Now;
+                string bookingStatus = "In Progress";
 
-            AddPassengerWindow Passeger = new AddPassengerWindow();
-            CloseAllWindows();
-            Passeger.Show();
+                using (var ctx = new CustomDbContext())
+                {
+                    Flight fl = ctx.Flights.Where(x => x.FlightNo == flightNo).First();
+                    int flightId = fl.FlightId;
+
+                    newBooking.BookingDatetime = bookingDateTime;
+                    newBooking.BookingStatus = bookingStatus;
+                    newBooking.FlightId = flightId;
+
+                    ctx.Bookings.Add(newBooking);
+                    ctx.SaveChanges();
+
+                }
+
+                AddPassengerWindow Passeger = new AddPassengerWindow();
+                CloseAllWindows();
+                Passeger.Show();
+            }
+            
         }
 
         public void CloseAllWindows()
