@@ -102,7 +102,12 @@ namespace MayNazMuth
             {
                 FlightList = ctx.Flights.ToList<Flight>();
                 var DepartingList = FlightList.Where(x => x.SourceAirportId == ApId && x.DepartureTime >= startFrom && x.ArrivalTime <= endTo);
-                AirportFlightGrid.ItemsSource = DepartingList;
+               
+                AirportFlightGrid.Items.Clear();
+                foreach (Flight f in DepartingList)
+                {
+                    AirportFlightGrid.Items.Add(f);
+                }
             }
         }
 
@@ -114,7 +119,12 @@ namespace MayNazMuth
             {
                 FlightList = ctx.Flights.ToList<Flight>();
                 var ArrivalList = FlightList.Where(x => x.DestinationAirportId == ApId && x.DepartureTime >= startFrom && x.ArrivalTime <= endTo);
-                AirportFlightGrid.ItemsSource = ArrivalList;
+                
+                AirportFlightGrid.Items.Clear();
+                foreach (Flight f in ArrivalList)
+                {
+                    AirportFlightGrid.Items.Add(f);
+                }
             }
         }
 
@@ -125,8 +135,12 @@ namespace MayNazMuth
             using (var ctx = new CustomDbContext())
             {
                 FlightList = ctx.Flights.ToList<Flight>();
-                var AllList = FlightList.Where(x => (x.SourceAirportId == ApId || x.DestinationAirportId == ApId) && x.DepartureTime >= startFrom && x.ArrivalTime <= endTo);
-                AirportFlightGrid.ItemsSource = AllList;
+                var AllList = FlightList.Where(x => (x.SourceAirportId == ApId || x.DestinationAirportId == ApId) && x.DepartureTime >= startFrom && x.ArrivalTime <= endTo);               
+                AirportFlightGrid.Items.Clear();
+                foreach (Flight f in AllList)
+                {
+                    AirportFlightGrid.Items.Add(f);
+                }
             }
         }
 
@@ -151,8 +165,12 @@ namespace MayNazMuth
             using (var ctx = new CustomDbContext())
             {
                 FlightList = ctx.Flights.ToList<Flight>();               
-                var DepartingFlights = FlightList.Where(x => x.SourceAirportId == ApId);               
-                AirportFlightGrid.ItemsSource = DepartingFlights;               
+                var DepartingFlights = FlightList.Where(x => x.SourceAirportId == ApId);
+                AirportFlightGrid.Items.Clear();
+                foreach (Flight f in DepartingFlights)
+                {
+                    AirportFlightGrid.Items.Add(f);
+                }
             }
         }
 
@@ -162,8 +180,12 @@ namespace MayNazMuth
             using (var ctx = new CustomDbContext())
             {
                 FlightList = ctx.Flights.ToList<Flight>();               
-                var ArrivingFlights = FlightList.Where(x => x.DestinationAirportId == ApId);               
-                AirportFlightGrid.ItemsSource = ArrivingFlights;                
+                var ArrivingFlights = FlightList.Where(x => x.DestinationAirportId == ApId);                
+                AirportFlightGrid.Items.Clear();
+                foreach (Flight f in ArrivingFlights)
+                {
+                    AirportFlightGrid.Items.Add(f);
+                }
             }
         }
 
@@ -173,8 +195,12 @@ namespace MayNazMuth
             using (var ctx = new CustomDbContext())
             {
                 FlightList = ctx.Flights.ToList<Flight>();
-                var FoundFlights = FlightList.Where(x => x.SourceAirportId == ApId || x.DestinationAirportId == ApId);                
-                AirportFlightGrid.ItemsSource = FoundFlights;                
+                var FoundFlights = FlightList.Where(x => x.SourceAirportId == ApId || x.DestinationAirportId == ApId);
+                AirportFlightGrid.Items.Clear();
+                foreach (Flight f in FoundFlights)
+                {
+                    AirportFlightGrid.Items.Add(f);
+                }
             }
         }
 
@@ -206,11 +232,12 @@ namespace MayNazMuth
                 var FoundFlights = FlightList.Where(x => x.SourceAirportId == ApId || x.DestinationAirportId == ApId);
                 var ArrivingFlights = FlightList.Where(x => x.DestinationAirportId == ApId);
                 var DepartingFlights = FlightList.Where(x => x.SourceAirportId == ApId);
-                foreach (var a in FoundFlights)
+
+                AirportFlightGrid.Items.Clear();
+                foreach (Flight f in FoundFlights)
                 {
-                    Console.WriteLine(a);
+                    AirportFlightGrid.Items.Add(f);
                 }
-                AirportFlightGrid.ItemsSource = FoundFlights;
                 TotalArrivingValueLable.Content = ArrivingFlights.Count();
                 TotalDepartingValueLable.Content = DepartingFlights.Count();
             }
@@ -222,6 +249,38 @@ namespace MayNazMuth
             AirportFlightGrid.SelectionMode = DataGridSelectionMode.Single;
             //Make it read only
             AirportFlightGrid.IsReadOnly = true;
+
+            DataGridTextColumn FlightNumberColumn = new DataGridTextColumn();
+            FlightNumberColumn.Header = "Flight Number";
+            FlightNumberColumn.Binding = new Binding("FlightNo");
+
+            DataGridTextColumn AirlineNameColumn = new DataGridTextColumn();
+            AirlineNameColumn.Header = "Airline Name";
+            AirlineNameColumn.Binding = new Binding("AirlineName");
+
+            DataGridTextColumn DepartureTimeColumn = new DataGridTextColumn();
+            DepartureTimeColumn.Header = "Departure Date/Time";
+            DepartureTimeColumn.Binding = new Binding("DepartureTime");
+
+            DataGridTextColumn ArrivalTimeColumn = new DataGridTextColumn();
+            ArrivalTimeColumn.Header = "Arrival Date/Time";
+            ArrivalTimeColumn.Binding = new Binding("ArrivalTime");
+
+            DataGridTextColumn SourceAirportColumn = new DataGridTextColumn();
+            SourceAirportColumn.Header = "Source Airport";
+            SourceAirportColumn.Binding = new Binding("SourceAirportName");
+
+            DataGridTextColumn DestinationAirportColumn = new DataGridTextColumn();
+            DestinationAirportColumn.Header = "Destination Airport";
+            DestinationAirportColumn.Binding = new Binding("DestinationAirportName");
+
+            AirportFlightGrid.Columns.Add(FlightNumberColumn);
+            AirportFlightGrid.Columns.Add(AirlineNameColumn);
+            AirportFlightGrid.Columns.Add(DepartureTimeColumn);
+            AirportFlightGrid.Columns.Add(ArrivalTimeColumn);
+            AirportFlightGrid.Columns.Add(SourceAirportColumn);
+            AirportFlightGrid.Columns.Add(DestinationAirportColumn);
+
         }
     }
 }

@@ -24,8 +24,8 @@
                     <MenuItem Header="_Report" Click="OpenPassengerReportWindow" />
                 </MenuItem>
                 <MenuItem Header="_Payment" Margin="0">
-                    <MenuItem Header="_Payment Window" Click="OpenPaymentReportWindow" />
-                    <MenuItem Header="_Report" />
+                    <MenuItem Header="_Payment Window" Click="OpenPaymentWindow" />
+                    <MenuItem Header="_Report" Click="OpenPaymentReportWindow" />
                 </MenuItem>
             </Menu>
         </StackPanel>

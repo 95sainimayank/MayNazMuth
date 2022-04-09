@@ -11,7 +11,7 @@
 
     <Grid>
         <uc:Menu Margin="0,0,0,461" />
-        <DataGrid x:Name="AirportDataGrid" HorizontalAlignment="Left" Height="139" Margin="10,112,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="AirportDataGrid_SelectionChanged"/>
+        <DataGrid x:Name="AirportDataGrid" HorizontalAlignment="Left" Height="139" Margin="10,112,0,0" VerticalAlignment="Top" Width="772"/>
         <Label Content="ID" HorizontalAlignment="Left" Margin="10,287,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="AirportIdTextBox" HorizontalAlignment="Left" Height="23" Margin="56,289,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="210,288,0,0" VerticalAlignment="Top"/>

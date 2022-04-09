@@ -78,8 +78,16 @@ namespace MayNazMuth
             PaymentReportWindow PaymentReport = new PaymentReportWindow();
             CloseAllWindows();
             PaymentReport.Show();
-        }  
+        }
+        public void OpenPaymentWindow(object sender, EventArgs args)
+        {
+            var bookingId = 10;
+            PaymentWindow Payment = new PaymentWindow(bookingId);
+            CloseAllWindows();
+            Payment.Show();
+        }
         
+
         public void CloseAllWindows()
         {
             foreach (Window window in Application.Current.Windows)
