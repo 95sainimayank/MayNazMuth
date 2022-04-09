@@ -44,20 +44,26 @@ namespace MayNazMuth {
         {
             if (toggle)
             {
-                btnBackup.Click += addFlightData;
-                txtSourceAirport.TextChanged += searchFlights;
+                btnBackUp.Click += addFlightData;
+                btnAddPassenger.Click += addBooking;
                 flightDataGrid.SelectionChanged += displaySelectedFlightInfo;
                 btnAddPassenger.Click += addBooking;
+                btnSearch.Click += searchFlightsAllFilters;
+                btnSearch.Click += searchFlightsDepartureAndArrival;
+                btnClear.Click += clearFilters;
 
 
 
             }
             else
             {
-                btnBackup.Click -= addFlightData;
-                txtSourceAirport.TextChanged -= searchFlights;
+                btnBackUp.Click -= addFlightData;
+                btnAddPassenger.Click -= addBooking;
                 flightDataGrid.SelectionChanged -= displaySelectedFlightInfo;
                 btnAddPassenger.Click -= addBooking;
+                btnSearch.Click -= searchFlightsAllFilters;
+                btnSearch.Click -= searchFlightsDepartureAndArrival;
+                btnClear.Click -= clearFilters;
 
 
             }
@@ -115,7 +121,7 @@ namespace MayNazMuth {
             flightDataGrid.Columns.Add(SourceAirportColumn);
             flightDataGrid.Columns.Add(DestinationAirportIDColumn);
             flightDataGrid.Columns.Add(DestinationAirportColumn);
-            
+
 
         }
 
@@ -139,9 +145,9 @@ namespace MayNazMuth {
         {
             //Flight newFlight = new Flight();
 
-            foreach(Flight f in allFlightList)
+            foreach (Flight f in allFlightList)
             {
-             
+
                 string flightNumber = f.FlightNo;
                 DateTime departureTime = f.DepartureTime;
                 DateTime arrivalTime = f.ArrivalTime;
@@ -150,7 +156,7 @@ namespace MayNazMuth {
                 int? sourceAirportid = f.SourceAirportId;
                 int? destinationAirportid = f.DestinationAirportId;
                 string sourceAirport = f.SourceAirportName;
-                
+
 
 
 
@@ -197,41 +203,72 @@ namespace MayNazMuth {
 
         }
 
-        
 
-    
+
+
 
         public void populatefileredDataGrid()
         {
             flightDataGrid.Items.Clear();
-            foreach(Flight flight in filteredFlightList)
+            foreach (Flight flight in filteredFlightList)
             {
                 flightDataGrid.Items.Add(flight);
             }
         }
 
-        private void searchFlights(object sender, EventArgs args)
+        //filter flights when all 3 filters are given 
+        private void searchFlightsAllFilters(object sender, EventArgs args)
+        {
+            string searchSourceAirport = txtSourceAirport.Text.Trim();
+            string searchDestinationAirport = txtDestinationAirport.Text.Trim();
+            var searchDepartureDate = DepartureDatePicker.SelectedDate;
+
+
+
+
+            var searchResult = from s in allFlightList
+                               where s.SourceAirportName.Contains(searchSourceAirport) &&
+                               s.DestinationAirportName.Contains(searchDestinationAirport) &&
+                               s.DepartureTime == searchDepartureDate
+                               select s;
+
+            filteredFlightList = searchResult.ToList();
+            populatefileredDataGrid();
+
+        }
+
+        //filter flights when departure and arrival airport given
+        private void searchFlightsDepartureAndArrival(object sender, EventArgs args)
         {
             string searchSourceAirport = txtSourceAirport.Text.Trim();
             string searchDestinationAirport = txtDestinationAirport.Text.Trim();
 
-            if(!searchSourceAirport.Equals(""))
-            {
-                if (!(searchDestinationAirport.Equals("")))
-                {
-                    var searchResult = from s in allFlightList
-                                       where s.SourceAirportName.Contains(searchSourceAirport) || s.DestinationAirportName.Contains(searchDestinationAirport)
-                                       select s;
 
-                    filteredFlightList = searchResult.ToList();
-                }
+            if (searchSourceAirport.Equals("") || searchDestinationAirport.Equals(""))
+            {
+                MessageBox.Show("Please enter your departure and arrival aiports");
+                populateDataGrid();
             }
             else
             {
-                filteredFlightList = allFlightList;
-            }
+                var searchResult = from s in allFlightList
+                                   where s.SourceAirportName.Contains(searchSourceAirport) &&
+                                   s.DestinationAirportName.Contains(searchDestinationAirport)
+                                   select s;
 
-            populatefileredDataGrid();
+
+                filteredFlightList = searchResult.ToList();
+                populatefileredDataGrid();
+            }            
+
+        }
+
+        private void clearFilters(object sender, EventArgs args)
+        {
+            txtSourceAirport.Text = "";
+            txtDestinationAirport.Text = "";
+            DepartureDatePicker.SelectedDate = null;
+            populateDataGrid();
         }
 
         private void displaySelectedFlightInfo(object sender, EventArgs args)
@@ -284,7 +321,7 @@ namespace MayNazMuth {
 
                 }
 
-                AddPassengerWindow Passeger = new AddPassengerWindow();
+                AddPassengerWindow Passeger = new AddPassengerWindow(newBooking.FlightId);
                 CloseAllWindows();
                 Passeger.Show();
             }
