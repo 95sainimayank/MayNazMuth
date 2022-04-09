@@ -4,14 +4,16 @@ using MayNazMuth.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MayNazMuth.Migrations
 {
     [DbContext(typeof(CustomDbContext))]
-    partial class CustomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409001417_GetAllData")]
+    partial class GetAllData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,9 +120,6 @@ namespace MayNazMuth.Migrations
                     b.Property<int?>("AirlineId")
                         .HasColumnType("int");
 
-                    b.Property<string>("AirlineName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ArrivalTime")
                         .HasColumnType("datetime2");
 
@@ -130,17 +129,11 @@ namespace MayNazMuth.Migrations
                     b.Property<int?>("DestinationAirportId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DestinationAirportName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FlightNo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("SourceAirportId")
                         .HasColumnType("int");
-
-                    b.Property<string>("SourceAirportName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FlightId");
 

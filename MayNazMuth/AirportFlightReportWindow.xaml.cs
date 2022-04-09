@@ -202,6 +202,7 @@ namespace MayNazMuth
             using (var ctx = new CustomDbContext())
             {
                 FlightList = ctx.Flights.ToList<Flight>();
+
                 var FoundFlights = FlightList.Where(x => x.SourceAirportId == ApId || x.DestinationAirportId == ApId);
                 var ArrivingFlights = FlightList.Where(x => x.DestinationAirportId == ApId);
                 var DepartingFlights = FlightList.Where(x => x.SourceAirportId == ApId);

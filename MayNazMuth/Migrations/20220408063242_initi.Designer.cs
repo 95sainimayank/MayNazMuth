@@ -4,14 +4,16 @@ using MayNazMuth.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MayNazMuth.Migrations
 {
     [DbContext(typeof(CustomDbContext))]
-    partial class CustomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220408063242_initi")]
+    partial class initi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,7 +85,7 @@ namespace MayNazMuth.Migrations
                     b.Property<string>("BookingStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FlightId")
+                    b.Property<int?>("FlightId")
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
@@ -105,7 +107,7 @@ namespace MayNazMuth.Migrations
 
                     b.HasIndex("PassengerId");
 
-                    b.ToTable("BookingPassengers");
+                    b.ToTable("BookingPassenger");
                 });
 
             modelBuilder.Entity("MayNazMuth.Entities.Flight", b =>
@@ -118,9 +120,6 @@ namespace MayNazMuth.Migrations
                     b.Property<int?>("AirlineId")
                         .HasColumnType("int");
 
-                    b.Property<string>("AirlineName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ArrivalTime")
                         .HasColumnType("datetime2");
 
@@ -130,17 +129,11 @@ namespace MayNazMuth.Migrations
                     b.Property<int?>("DestinationAirportId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DestinationAirportName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FlightNo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("SourceAirportId")
                         .HasColumnType("int");
-
-                    b.Property<string>("SourceAirportName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FlightId");
 
@@ -213,7 +206,8 @@ namespace MayNazMuth.Migrations
 
                     b.HasKey("PaymentId");
 
-                    b.HasIndex("BookingId");
+                    b.HasIndex("BookingId")
+                        .IsUnique();
 
                     b.ToTable("Payments");
                 });
@@ -222,9 +216,7 @@ namespace MayNazMuth.Migrations
                 {
                     b.HasOne("MayNazMuth.Entities.Flight", "Flight")
                         .WithMany("Bookings")
-                        .HasForeignKey("FlightId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FlightId");
                 });
 
             modelBuilder.Entity("MayNazMuth.Entities.BookingPassenger", b =>
@@ -260,8 +252,8 @@ namespace MayNazMuth.Migrations
             modelBuilder.Entity("MayNazMuth.Entities.Payment", b =>
                 {
                     b.HasOne("MayNazMuth.Entities.Booking", "Booking")
-                        .WithMany()
-                        .HasForeignKey("BookingId")
+                        .WithOne("Payment")
+                        .HasForeignKey("MayNazMuth.Entities.Payment", "BookingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
