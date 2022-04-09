@@ -196,9 +196,13 @@
     <Compile Include="Migrations\20220408053646_BigMig_ModifiedBookingAndPaymentEntities.designer.cs">
       <DependentUpon>20220408053646_BigMig_ModifiedBookingAndPaymentEntities.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220409001417_GetAllData.cs" />
-    <Compile Include="Migrations\20220409001417_GetAllData.designer.cs">
-      <DependentUpon>20220409001417_GetAllData.cs</DependentUpon>
+    <Compile Include="Migrations\20220408063242_initi.cs" />
+    <Compile Include="Migrations\20220408063242_initi.designer.cs">
+      <DependentUpon>20220408063242_initi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220408195301_UpdateFlight.cs" />
+    <Compile Include="Migrations\20220408195301_UpdateFlight.designer.cs">
+      <DependentUpon>20220408195301_UpdateFlight.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
@@ -211,6 +215,8 @@
       <DependentUpon>UpdatePassengerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
+    <Compile Include="Utilities\FileService.cs" />
+    <Compile Include="Utilities\FlightParser.cs" />
     <Page Include="AddPassengerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,6 +290,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\FlightDetails.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
