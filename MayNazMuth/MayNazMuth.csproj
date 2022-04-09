@@ -212,6 +212,10 @@
     <Compile Include="Migrations\20220409054048_paymentTableUpdate.designer.cs">
       <DependentUpon>20220409054048_paymentTableUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220409055237_PaymentAmount deleted.cs" />
+    <Compile Include="Migrations\20220409055237_PaymentAmount deleted.designer.cs">
+      <DependentUpon>20220409055237_PaymentAmount deleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>

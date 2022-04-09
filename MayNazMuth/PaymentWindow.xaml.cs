@@ -70,7 +70,7 @@ namespace MayNazMuth
             Payment newPayment = new Payment();
             newPayment.BookingId = bkId;
             newPayment.PaymentDatetime = new DateTime();     
-            newPayment.PaymentStatus = bookingStatus;
+            newPayment.PaymentStatus = "Completed";
             newPayment.PaymentMethod = "Online";
             newPayment.CardHolderName = CardHolderNameTextBox.Text;
             newPayment.CardNumber = CardNumberTextBox.Text;
