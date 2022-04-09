@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,14 @@ namespace MayNazMuth
     /// </summary>
     public partial class PaymentWindow : Window
     {
+        float totalAmount =0;
         public PaymentWindow()
         {
             InitializeComponent();
+            
+            taxPriceValueLabel.Content = Convert.ToDecimal(ticketPriceValueLabel.Content) * Convert.ToDecimal(0.12);
+            totalPriceValueLabel.Content = Convert.ToDecimal(ticketPriceValueLabel.Content) + Convert.ToDecimal(taxPriceValueLabel.Content);
+            totalAmount = (float)(Convert.ToDecimal(ticketPriceValueLabel.Content) + Convert.ToDecimal(taxPriceValueLabel.Content));
 
             //turn the event handlers off
             ToggleEventHandlers(false);           
@@ -57,7 +63,7 @@ namespace MayNazMuth
             newPayment.PaymentStatus = "Awaiting Payment";
             newPayment.CardHolderName = CardHolderNameTextBox.Text;
             newPayment.CardNumber = CardNumberTextBox.Text;
-           
+            newPayment.TotalPrice = totalAmount;
 
 
             using (var ctx = new CustomDbContext())
