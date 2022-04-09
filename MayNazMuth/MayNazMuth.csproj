@@ -185,6 +185,9 @@
     <Compile Include="BookFlightWindow.xaml.cs">
       <DependentUpon>BookFlightWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BookingReportWindow.xaml.cs">
+      <DependentUpon>BookingReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entities\BookingPassenger.cs" />
     <Compile Include="FlightDetailWindow.xaml.cs">
       <DependentUpon>FlightDetailWindow.xaml</DependentUpon>
@@ -245,6 +248,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookFlightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookingReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -49,9 +49,9 @@ namespace MayNazMuth
         public void OpenAddPassengerWindow(object sender, EventArgs args)
         {
            
-            AddPassengerWindow Passenger = new AddPassengerWindow();
+            //AddPassengerWindow Passenger = new AddPassengerWindow();
             CloseAllWindows();
-            Passenger.Show();
+            //Passenger.Show();
         }
         public void OpenUpdatePassengerWindow(object sender, EventArgs args)
         {

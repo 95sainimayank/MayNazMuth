@@ -16,10 +16,24 @@ using System.Windows.Shapes;
 
 namespace MayNazMuth {
     public partial class AddPassengerWindow : Window {
+
         List<Booking> bookingLsit = new List<Booking>();
         int bookingId;
-        public AddPassengerWindow() {
+
+        int fid = 0;
+        int selectedFlightID;
+        public AddPassengerWindow(int flightID) {
+
             InitializeComponent();
+            
+            fid = flightID;
+
+            //getting the selected flight ID from the database
+            using (var db = new CustomDbContext())
+            {
+                Flight FL = db.Flights.Where(x => x.FlightId == fid).First();
+                selectedFlightID = FL.FlightId;
+            }
 
             InitializeDataGrid();
 
@@ -78,6 +92,9 @@ namespace MayNazMuth {
                     db.SaveChanges();
                     InitializeDataGrid();
                 }
+
+                
+
             }
             else {
                 MessageBox.Show("One or two fields values are not correct!");
@@ -120,6 +137,14 @@ namespace MayNazMuth {
                 db.SaveChanges();
                 InitializeDataGrid();
             }
+        }
+
+        public void AddBookingPassengerRecord(object sender, EventArgs args)
+        {
+           
+                
+            
+
         }
 
     }
