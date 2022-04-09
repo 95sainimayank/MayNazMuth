@@ -23,7 +23,7 @@
         <TextBox x:Name="txtSourceAirport_Copy" HorizontalAlignment="Left" Height="23" Margin="770,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43"/>
         <Label Content="Selected Flight Details" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="684,373,0,0" FontWeight="Bold" FontSize="15"/>
         <TextBox x:Name="txtFlightDetails" HorizontalAlignment="Left" Height="221" Margin="684,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <Button x:Name="btnBookFlight" Content="Book a Flight" HorizontalAlignment="Left" Margin="308,378,0,0" VerticalAlignment="Top" Width="111" FontWeight="Bold" FontSize="13" Height="35" RenderTransformOrigin="1.601,0.38"/>
+        <Button x:Name="btnAddPassenger" Content="Add a Passenger" HorizontalAlignment="Left" Margin="308,378,0,0" VerticalAlignment="Top" Width="111" FontWeight="Bold" FontSize="13" Height="35" RenderTransformOrigin="1.601,0.38"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="44,378,0,0" VerticalAlignment="Top" Width="80" FontSize="13" FontWeight="Bold" Height="35" RenderTransformOrigin="1.936,0.483"/>
         <Button x:Name="btnBackup" Content="Backup Flight Details" HorizontalAlignment="Left" Margin="136,378,0,0" VerticalAlignment="Top" Width="155" FontWeight="Bold" FontSize="13" Height="35"/>
         <Label x:Name="lblFlightData" Content="" HorizontalAlignment="Left" Margin="44,437,0,0" VerticalAlignment="Top" Width="375" FontSize="14" Background="{x:Null}" Foreground="#FF0D6E1F"/>

@@ -46,13 +46,20 @@ namespace MayNazMuth {
             {
                 btnBackup.Click += addFlightData;
                 txtSourceAirport.TextChanged += searchFlights;
-                
+                flightDataGrid.SelectionChanged += displaySelectedFlightInfo;
+                btnAddPassenger.Click += addBooking;
+
+
+
             }
             else
             {
                 btnBackup.Click -= addFlightData;
                 txtSourceAirport.TextChanged -= searchFlights;
-                
+                flightDataGrid.SelectionChanged -= displaySelectedFlightInfo;
+                btnAddPassenger.Click -= addBooking;
+
+
             }
         }
 
@@ -120,6 +127,14 @@ namespace MayNazMuth {
             }
         }
 
+        private void SetupFlightGrid()
+        {
+            //Turn off multiselect
+            flightDataGrid.SelectionMode = DataGridSelectionMode.Single;
+            //Make it read only
+            flightDataGrid.IsReadOnly = true;
+        }
+
         private void addFlightData(Object s, EventArgs e)
         {
             //Flight newFlight = new Flight();
@@ -135,23 +150,56 @@ namespace MayNazMuth {
                 int? sourceAirportid = f.SourceAirportId;
                 int? destinationAirportid = f.DestinationAirportId;
                 string sourceAirport = f.SourceAirportName;
- 
                 
-                
-                string destinationAirport = f.DestinationAirportName;
 
+
+
+                string destinationAirport = f.DestinationAirportName;
                 using (var ctx = new CustomDbContext())
                 {
                     ctx.Flights.Add(f);
                     ctx.SaveChanges();
-
                 }
+
+                //using (var ctx = new CustomDbContext())
+                //{
+                //    Flight newf = ctx.Flights.Where();
+                //var query = db.Flights
+                //              .Select(m => new
+                //              {
+                //                  flightNo = m.FlightNo,
+
+                //              });
+
+
+                //var flightNumbers = from x in query
+                //                   select x;
+
+                //foreach(var fn in flightNumbers)
+                //{
+                //    if (!flightNumber.Equals(fn))
+                //    {
+                //        db.Flights.Add(f);
+
+                //    }
+                //    else
+                //    {
+                //        continue;
+                //    }
+
+                // }
+                //  db.SaveChanges();
+
 
             }
 
             lblFlightData.Content = "Flight Details are backed up.";
 
         }
+
+        
+
+    
 
         public void populatefileredDataGrid()
         {
@@ -184,6 +232,62 @@ namespace MayNazMuth {
             }
 
             populatefileredDataGrid();
+        }
+
+        private void displaySelectedFlightInfo(object sender, EventArgs args)
+        {
+            //clear out the text box from last time.
+            txtFlightDetails.Text = "";
+
+            //Grab the selected flight
+            Flight selectedFlight = (Flight)flightDataGrid.SelectedItem;
+
+            //Populate the textbox
+            txtFlightDetails.Text += " Flight Number : " + selectedFlight.FlightNo;
+            txtFlightDetails.Text += "\n From : " + selectedFlight.SourceAirportName;
+            txtFlightDetails.Text += "\n To : " + selectedFlight.DestinationAirportName;
+            txtFlightDetails.Text += "\n Departure Date/Time : " + selectedFlight.DepartureTime;
+            txtFlightDetails.Text += "\n Arrival Date/Time : " + selectedFlight.ArrivalTime;
+
+
+
+        }
+
+        private void addBooking(object sender, EventArgs arg)
+        {
+            Booking newBooking = new Booking();
+            //Grab the selected flight
+            Flight selectedFlight = (Flight)flightDataGrid.SelectedItem;
+            string flightNo = selectedFlight.FlightNo;
+            DateTime bookingDateTime = DateTime.Now;
+            string bookingStatus = "In Progress";
+
+
+            using (var ctx = new CustomDbContext())
+            {
+                Flight fl = ctx.Flights.Where(x => x.FlightNo == flightNo).First();
+                int flightId = fl.FlightId;
+
+                newBooking.BookingDatetime = bookingDateTime;
+                newBooking.BookingStatus = bookingStatus;
+                newBooking.FlightId = flightId;
+
+                ctx.Bookings.Add(newBooking);
+                ctx.SaveChanges();
+
+            }
+
+            AddPassengerWindow Passeger = new AddPassengerWindow();
+            CloseAllWindows();
+            Passeger.Show();
+        }
+
+        public void CloseAllWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                window.Hide();
+            }
         }
 
 
