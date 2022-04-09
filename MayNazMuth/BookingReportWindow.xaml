@@ -12,17 +12,18 @@
             <RowDefinition Height="17*"/>
             <RowDefinition Height="18*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="bookingsDataGrid" HorizontalAlignment="Left" Height="233" Margin="51,119,0,0" VerticalAlignment="Top" Width="862" RenderTransformOrigin="0.474,0.236" Grid.RowSpan="2"/>
+        <DataGrid x:Name="bookingsDataGrid" HorizontalAlignment="Left" Height="233" Margin="47,155,0,0" VerticalAlignment="Top" Width="862" RenderTransformOrigin="0.474,0.236" Grid.RowSpan="2"/>
         <local:Menu Margin="-8,-10,-0.4,164" />
 
-        <Label VerticalAlignment="Top" Margin="51,69,0,0" HorizontalAlignment="Left" Content="From:"/>
-        <DatePicker SelectedDate="{x:Static System:DateTime.Now}" x:Name="fromDatePicker" HorizontalAlignment="Left" Margin="96,71,0,0" VerticalAlignment="Top" Width="93" />
-        <Label Content="To:" HorizontalAlignment="Left" Margin="212,69,0,0" VerticalAlignment="Top"/>
-        <DatePicker SelectedDate="{x:Static System:DateTime.Now}" x:Name="toDatePicker" HorizontalAlignment="Left" Margin="242,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.759,0.479" Width="91"/>
+        <Label VerticalAlignment="Top" Margin="62,108,0,0" HorizontalAlignment="Left" Content="From:"/>
+        <DatePicker SelectedDate="{x:Static System:DateTime.Now}" x:Name="fromDatePicker" HorizontalAlignment="Left" Margin="107,110,0,0" VerticalAlignment="Top" Width="93" />
+        <Label Content="To:" HorizontalAlignment="Left" Margin="223,108,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{x:Static System:DateTime.Now}" x:Name="toDatePicker" HorizontalAlignment="Left" Margin="253,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.759,0.479" Width="91"/>
 
-        <Button x:Name="FilterButton" Background="Green" Foreground="White" Content="Filter" HorizontalAlignment="Left" Margin="358,69,0,0" VerticalAlignment="Top" Width="90" Height="27" FontSize="14"/>
-        <Label Content="Total Number of Bookings :" HorizontalAlignment="Left" Margin="560,71,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblNumberOfBookings" Content="" HorizontalAlignment="Left" Margin="719,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.42,-0.153" Width="82"/>
+        <Button x:Name="FilterButton" Background="Green" Foreground="White" Content="Filter" HorizontalAlignment="Left" Margin="369,108,0,0" VerticalAlignment="Top" Width="90" Height="27" FontSize="14"/>
+        <Label Content="Total Number of Bookings :" HorizontalAlignment="Left" Margin="571,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblNumberOfBookings" Content="" HorizontalAlignment="Left" Margin="730,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.42,-0.153" Width="82"/>
+        <Button x:Name="clearButton" Background="Green" Foreground="White" Content="Clear" HorizontalAlignment="Left" Margin="464,107,0,0" VerticalAlignment="Top" Width="90" Height="27" FontSize="14"/>
 
     </Grid>
 </Window>

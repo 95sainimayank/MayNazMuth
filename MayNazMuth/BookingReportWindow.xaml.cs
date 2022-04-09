@@ -37,6 +37,7 @@ namespace MayNazMuth
             {
                 //turn on               
                 FilterButton.Click += searchData;
+                clearButton.Click += clearFilters;
 
             }
             else
@@ -44,6 +45,7 @@ namespace MayNazMuth
                 //Turn off               
 
                 FilterButton.Click -= searchData;
+                clearButton.Click -= clearFilters;
             }
         }
 
