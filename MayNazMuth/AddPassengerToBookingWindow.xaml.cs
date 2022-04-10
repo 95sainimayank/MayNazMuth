@@ -34,7 +34,52 @@ namespace MayNazMuth {
 
         public void InitializeDataGrid() {
             using (var db = new CustomDbContext()) {
-                PassengersDataGrid.ItemsSource = db.Passengers.ToList();
+                //PassengersDataGrid.ItemsSource = db.Passengers.ToList();
+
+                DataGridTextColumn passengerName = new DataGridTextColumn {
+                    Header = "Passenger Name",
+                    Binding = new Binding("FullName")
+                };
+
+                DataGridTextColumn passengerPassport = new DataGridTextColumn {
+                    Header = "Passport Number",
+                    Binding = new Binding("PassportNo")
+                };
+
+                DataGridTextColumn passengerEmail = new DataGridTextColumn {
+                    Header = "Email",
+                    Binding = new Binding("Email")
+                };
+
+                DataGridTextColumn passengerPhone = new DataGridTextColumn {
+                    Header = "Phone Number",
+                    Binding = new Binding("PhoneNo")
+                };
+
+                DataGridTextColumn dateofBirth = new DataGridTextColumn {
+                    Header = "Date of Birth",
+                    Binding = new Binding("DateOfBirth")
+                };
+
+                DataGridTextColumn gender = new DataGridTextColumn {
+                    Header = "Gender",
+                    Binding = new Binding("Gender")
+                };
+
+                PassengersDataGrid.Columns.Add(passengerName);
+                PassengersDataGrid.Columns.Add(passengerEmail);
+                PassengersDataGrid.Columns.Add(passengerPassport);
+                PassengersDataGrid.Columns.Add(dateofBirth);
+                PassengersDataGrid.Columns.Add(passengerPhone);
+                PassengersDataGrid.Columns.Add(gender);
+
+                PassengersDataGrid.Items.Clear();
+
+                foreach(Passenger p in db.Passengers.ToList()) {
+                    PassengersDataGrid.Items.Add(p);
+                }
+
+
                 PassengersDataGrid.SelectionMode = (DataGridSelectionMode)SelectionMode.Single;
 
                 List<Booking> bookings = db.Bookings.ToList();
@@ -49,6 +94,7 @@ namespace MayNazMuth {
         public void setFlightLabelValue() {
 
         }
+
         public void SeeAll(object sender, EventArgs args) {
             InitializeDataGrid();
 
@@ -239,22 +285,22 @@ namespace MayNazMuth {
             else {
                 int bookingId = Convert.ToInt32(lblBookingId.Content);
 
-                /*using(var db = new CustomDbContext()) {
+                using (var db = new CustomDbContext()) {
                     foreach (Passenger p in addedPassengers) {
                         BookingPassenger bp = new BookingPassenger();
                         bp.BookingId = bookingId;
                         bp.PassengerId = p.PassengerId;
                         var book = from booking in db.Bookings
-                                     where booking.BookingId == bookingId
-                                     select booking;
-                        *//*bp.Booking = book.ToList().First();
-                        bp.Passenger = p;*//*
-
+                                   where booking.BookingId == bookingId
+                                   select booking;
+                        /*bp.Booking = book.ToList().First();
+                        bp.Passenger = p;
+*/
                         db.BookingPassengers.Add(bp);
                     }
 
                     db.SaveChanges();
-                }*/
+                }
                 CloseAllWindows();
                 PaymentWindow paymentWindow = new PaymentWindow(bookingId, passPrice);
                 //paymentWindow.ticketPriceValueLabel.Content = lblTotalPrice;
