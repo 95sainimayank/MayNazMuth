@@ -6,26 +6,23 @@
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MayNazMuth"
-        Title="MainWindow" Height="681.87" Width="1073.092">
+        Title="MainWindow" Height="666.27" Width="1073.092">
 
-    <Grid x:Name="MainWindow1" Margin="0,0,3.4,-20">
+    <Grid x:Name="MainWindow1" Margin="0,0,3.4,-6.2">
         <uc:Menu Margin="0,0,113,595" />
         <DataGrid x:Name="flightDataGrid" HorizontalAlignment="Left" Height="230" Margin="44,111,0,0" VerticalAlignment="Top" Width="940"/>
-        <Label Content="From" HorizontalAlignment="Left" Margin="58,77,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSourceAirport" HorizontalAlignment="Left" Height="23" Margin="101,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="To" HorizontalAlignment="Left" Margin="225,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.179,0.555"/>
-        <TextBox x:Name="txtDestinationAirport" HorizontalAlignment="Left" Height="23" Margin="247,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DatePicker x:Name="dtDepartureDate" HorizontalAlignment="Left" Margin="436,77,0,0" VerticalAlignment="Top"/>
-        <Label Content="Departure" HorizontalAlignment="Left" Margin="372,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.487,0.492"/>
-        <DatePicker x:Name="dtArrivalDate" HorizontalAlignment="Left" Margin="588,77,0,0" VerticalAlignment="Top"/>
-        <Label Content="Return" HorizontalAlignment="Left" Margin="543,77,0,0" VerticalAlignment="Top"/>
-        <Label Content="Passengers" HorizontalAlignment="Left" Margin="702,77,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSourceAirport_Copy" HorizontalAlignment="Left" Height="23" Margin="770,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43"/>
+        <Label Content="From" HorizontalAlignment="Left" Margin="53,76,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSourceAirport" HorizontalAlignment="Left" Height="23" Margin="96,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="To" HorizontalAlignment="Left" Margin="220,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.179,0.555"/>
+        <TextBox x:Name="txtDestinationAirport" HorizontalAlignment="Left" Height="23" Margin="243,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="DepartureDatePicker" HorizontalAlignment="Left" Margin="452,76,0,0" VerticalAlignment="Top"/>
+        <Label Content="Departure" HorizontalAlignment="Left" Margin="367,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.487,0.492"/>
+        <Label Content="Passengers" HorizontalAlignment="Left" Margin="469,419,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSourceAirport_Copy" HorizontalAlignment="Left" Height="23" Margin="558,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" RenderTransformOrigin="-0.57,0.67"/>
         <Label Content="Selected Flight Details" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="684,373,0,0" FontWeight="Bold" FontSize="15"/>
-        <TextBox x:Name="txtFlightDetails" HorizontalAlignment="Left" Height="221" Margin="684,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <Button x:Name="btnBookFlight" Content="Book a Flight" HorizontalAlignment="Left" Margin="308,378,0,0" VerticalAlignment="Top" Width="111" FontWeight="Bold" FontSize="13" Height="35" RenderTransformOrigin="1.601,0.38"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="44,378,0,0" VerticalAlignment="Top" Width="80" FontSize="13" FontWeight="Bold" Height="35" RenderTransformOrigin="1.936,0.483"/>
-        <Button x:Name="btnBackup" Content="Backup Flight Details" HorizontalAlignment="Left" Margin="136,378,0,0" VerticalAlignment="Top" Width="155" FontWeight="Bold" FontSize="13" Height="35"/>
-        <Label x:Name="lblFlightData" Content="" HorizontalAlignment="Left" Margin="44,437,0,0" VerticalAlignment="Top" Width="375" FontSize="14" Background="{x:Null}" Foreground="#FF0D6E1F"/>
+        <TextBox x:Name="txtFlightDetails" HorizontalAlignment="Left" Height="172" Margin="684,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="#FFD0D4E0" FontSize="14"/>
+        <Button x:Name="btnAddPassenger" Content="Add a Passenger" HorizontalAlignment="Left" Margin="452,477,0,0" VerticalAlignment="Top" Width="191" FontWeight="Bold" FontSize="14" Height="35" RenderTransformOrigin="1.601,0.38" Background="BlueViolet" Foreground="White"/>
+        <Button x:Name="btnSearch" Content="Search Flights" HorizontalAlignment="Left" Margin="712,67,0,0" VerticalAlignment="Top" Width="113" FontSize="14" Height="35" Background="Green" Foreground="White"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="837,67,0,0" VerticalAlignment="Top" Width="113" FontSize="13" Height="35" Background="Green" Foreground="White"/>
     </Grid>
 </Window>

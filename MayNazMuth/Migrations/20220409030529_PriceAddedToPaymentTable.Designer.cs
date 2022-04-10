@@ -4,14 +4,16 @@ using MayNazMuth.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MayNazMuth.Migrations
 {
     [DbContext(typeof(CustomDbContext))]
-    partial class CustomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409030529_PriceAddedToPaymentTable")]
+    partial class PriceAddedToPaymentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,6 +200,9 @@ namespace MayNazMuth.Migrations
 
                     b.Property<string>("CardNumber")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PaymentAmount")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("PaymentDatetime")
                         .HasColumnType("datetime2");

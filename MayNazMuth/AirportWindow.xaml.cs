@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -146,11 +147,15 @@ namespace MayNazMuth
                 {
                     //Update the object
                     ctx.Airports.Update(AP);
+
+                    ProgressBarHandler();
+
                     //Save my changes
                     ctx.SaveChanges();
                     //update the data grid
                     Updategrid();
                     AirportFlightReportButton.IsEnabled = false;
+
                 }
                 else
                 {
@@ -236,7 +241,9 @@ namespace MayNazMuth
             MyProgressbar.Orientation = Orientation.Horizontal;            
             Duration duration = new Duration(TimeSpan.FromSeconds(1));
             DoubleAnimation doubleanimation = new DoubleAnimation(200.0, duration);
-            MyProgressbar.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);            
+            MyProgressbar.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
+            
+            resetForm();
         }
 
         private void resetForm()
@@ -250,14 +257,10 @@ namespace MayNazMuth
             EmailTextBox.Text = "";
             WebsiteTextBox.Text = "";
             DoneSlider.Value = 0;
-           
+            //MyProgressbar.Visibility = Visibility.Hidden;
 
         }
-
-        private void AirportDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+       
     }
 }
 
