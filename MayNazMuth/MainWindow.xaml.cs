@@ -81,39 +81,32 @@ namespace MayNazMuth {
             ArrivalTimeColumn.Header = "Arrival Date/Time";
             ArrivalTimeColumn.Binding = new Binding("ArrivalTime");
 
-            DataGridTextColumn AirlineIDColumn = new DataGridTextColumn();
-            AirlineIDColumn.Header = "Airline ID";
-            AirlineIDColumn.Binding = new Binding("AirlineId");
 
             DataGridTextColumn AirlineColumn = new DataGridTextColumn();
             AirlineColumn.Header = "Airline";
             AirlineColumn.Binding = new Binding("AirlineName");
 
-            DataGridTextColumn SourceAirportIDColumn = new DataGridTextColumn();
-            SourceAirportIDColumn.Header = "Departure Airport ID";
-            SourceAirportIDColumn.Binding = new Binding("SourceAirportId");
 
             DataGridTextColumn SourceAirportColumn = new DataGridTextColumn();
             SourceAirportColumn.Header = "Departure Airport";
             SourceAirportColumn.Binding = new Binding("SourceAirportName");
 
-            DataGridTextColumn DestinationAirportIDColumn = new DataGridTextColumn();
-            DestinationAirportIDColumn.Header = "Destination Airport ID";
-            DestinationAirportIDColumn.Binding = new Binding("DestinationAirportId");
-
             DataGridTextColumn DestinationAirportColumn = new DataGridTextColumn();
             DestinationAirportColumn.Header = "Destination Airport";
             DestinationAirportColumn.Binding = new Binding("DestinationAirportName");
 
+            DataGridTextColumn PriceColumn = new DataGridTextColumn();
+            PriceColumn.Header = "Price";
+            PriceColumn.Binding = new Binding("Price");
+            PriceColumn.Binding.StringFormat = "C";
+
             flightDataGrid.Columns.Add(FlightNumberColumn);
             flightDataGrid.Columns.Add(DepartureTimeColumn);
             flightDataGrid.Columns.Add(ArrivalTimeColumn);
-            flightDataGrid.Columns.Add(AirlineIDColumn);
             flightDataGrid.Columns.Add(AirlineColumn);
-            flightDataGrid.Columns.Add(SourceAirportIDColumn);
             flightDataGrid.Columns.Add(SourceAirportColumn);
-            flightDataGrid.Columns.Add(DestinationAirportIDColumn);
             flightDataGrid.Columns.Add(DestinationAirportColumn);
+            flightDataGrid.Columns.Add(PriceColumn);
 
 
         }
@@ -243,6 +236,7 @@ namespace MayNazMuth {
 
             //Grab the selected flight
             Flight selectedFlight = (Flight)flightDataGrid.SelectedItem;
+            TimeSpan numberOfHours = selectedFlight.ArrivalTime - selectedFlight.DepartureTime;
 
             //Populate the textbox
             txtFlightDetails.Text += " Flight Number : " + selectedFlight.FlightNo;
@@ -250,6 +244,8 @@ namespace MayNazMuth {
             txtFlightDetails.Text += "\n To : " + selectedFlight.DestinationAirportName;
             txtFlightDetails.Text += "\n Departure Date/Time : " + selectedFlight.DepartureTime;
             txtFlightDetails.Text += "\n Arrival Date/Time : " + selectedFlight.ArrivalTime;
+            txtFlightDetails.Text += "\n Price Per Person : " + selectedFlight.Price;
+            txtFlightDetails.Text += "\n Number of hours : " + numberOfHours;
 
 
 
