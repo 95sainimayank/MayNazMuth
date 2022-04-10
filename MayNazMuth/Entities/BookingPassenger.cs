@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MayNazMuth.Entities {
     class BookingPassenger {
+        public int BookingPassengerId { get; set; }
         public int BookingId { get; set; }
         public int PassengerId { get; set; }
 

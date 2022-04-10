@@ -21,7 +21,16 @@
         <Button x:Name="btnSeeAll" Content="See All Passengers" HorizontalAlignment="Left" Height="40" Margin="846,314,0,0" VerticalAlignment="Top" Width="178"/>
         <Button x:Name="btnAdd" Content="Add Passenger To Booking" HorizontalAlignment="Left" Height="44" Margin="846,376,0,0" VerticalAlignment="Top" Width="178"/>
         <Label Content="Booking Id" HorizontalAlignment="Left" Height="31" Margin="369,10,0,0" VerticalAlignment="Top" Width="76"/>
-        <Label x:Name="lblBookingId" Content="" HorizontalAlignment="Left" Height="29" Margin="472,10,0,0" VerticalAlignment="Top" Width="129"/>
+        <Label x:Name="lblBookingId" Content="" HorizontalAlignment="Left" Height="29" Margin="472,10,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.611"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
         <TextBox x:Name="txtAddedPassengers" HorizontalAlignment="Left" Height="156" Margin="316,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"/>
         <Label Content="Added Passengers" HorizontalAlignment="Left" Height="34" Margin="496,364,0,0" VerticalAlignment="Top" Width="222"/>
         <Label Content="Full Name" HorizontalAlignment="Left" Height="33" Margin="13,72,0,0" VerticalAlignment="Top" Width="91"/>
@@ -42,6 +51,10 @@
         </ComboBox>
         <Button x:Name="btnPassengerToGrid" Content="Add Passenger to List" HorizontalAlignment="Left" Height="44" Margin="62,327,0,0" VerticalAlignment="Top" Width="158"/>
         <Button x:Name="btnToPayment" Content="Proceed for Payment" HorizontalAlignment="Left" Height="64" Margin="38,465,0,0" VerticalAlignment="Top" Width="203"/>
+        <Label Content="Flight Price" HorizontalAlignment="Left" Height="31" Margin="547,10,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="lblFlightPrice" Content="" HorizontalAlignment="Left" Height="31" Margin="637,10,0,0" VerticalAlignment="Top" Width="81"/>
+        <Label Content="Total Price:" HorizontalAlignment="Left" Height="32" Margin="846,465,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label x:Name="lblTotalPrice" Content="" HorizontalAlignment="Left" Height="32" Margin="947,465,0,0" VerticalAlignment="Top" Width="77"/>
 
     </Grid>
 </Window>
