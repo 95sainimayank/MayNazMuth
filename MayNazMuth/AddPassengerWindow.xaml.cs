@@ -23,8 +23,6 @@ namespace MayNazMuth {
         public AddPassengerWindow() {
 
             InitializeComponent();
-                       
-
             InitializeDataGrid();
 
             btnAddPassenger.Click += AddPassenger;
@@ -57,13 +55,12 @@ namespace MayNazMuth {
                 AllPassengersDataGrid.ItemsSource =  db.Passengers.ToList();
 
                 db.SaveChanges();
-
             }
         }
 
         public void AddPassenger(object sender, EventArgs args) {
             string FullName = txtFullName.Text;
-            string Email = txtFullName.Text;
+            string Email = txtEmail.Text;
             string PhoneNumber = txtPhoneNumber.Text;
             string DateOfBirth = dateOfBirth.Text;
             string Gender = gender.Text;
@@ -102,7 +99,7 @@ namespace MayNazMuth {
             else if (email.Equals("")) {
                 return false;
             }
-            else if (!phone.All(char.IsDigit)) {
+            else if (!phone.All(char.IsDigit) || phone.Equals("")) {
                 return false;
             }
             else if (dob.Equals("")) {
