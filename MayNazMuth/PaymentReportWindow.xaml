@@ -22,6 +22,7 @@
         <Label x:Name="TotalSaleValueLabel" HorizontalAlignment="Left" Margin="100,475,0,0" VerticalAlignment="Top" FontSize="14px" />
         <Label Content="Number of Transacions:" HorizontalAlignment="Left" Margin="13,517,0,0" VerticalAlignment="Top" FontSize="14px" />
         <Label x:Name="transactionCountValueLabel" HorizontalAlignment="Left" Margin="174,519,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="resetButton" Content="Clear" HorizontalAlignment="Left" Margin="450,100,0,0" VerticalAlignment="Top" Width="85" Height="25"/>
 
 
 
