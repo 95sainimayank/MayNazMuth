@@ -17,8 +17,6 @@
         <Label Content="To" HorizontalAlignment="Left" Margin="220,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.179,0.555"/>
         <TextBox x:Name="txtDestinationAirport" HorizontalAlignment="Left" Height="23" Margin="243,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Departure" HorizontalAlignment="Left" Margin="367,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.487,0.492"/>
-        <Label Content="Passengers" HorizontalAlignment="Left" Margin="348,413,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSourceAirport_Copy" HorizontalAlignment="Left" Height="23" Margin="437,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" RenderTransformOrigin="-0.57,0.67"/>
         <Label Content="Selected Flight Details" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="563,367,0,0" FontWeight="Bold" FontSize="15"/>
         <TextBox x:Name="txtFlightDetails" HorizontalAlignment="Left" Height="172" Margin="563,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="#FFD0D4E0" FontSize="14"/>
         <Button x:Name="btnAddPassenger" Content="Add a Passenger" HorizontalAlignment="Left" Margin="331,471,0,0" VerticalAlignment="Top" Width="191" FontWeight="Bold" FontSize="14" Height="35" RenderTransformOrigin="1.601,0.38" Background="BlueViolet" Foreground="White"/>
