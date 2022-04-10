@@ -34,11 +34,55 @@ namespace MayNazMuth {
 
         public void InitializeDataGrid() {
             using (var db = new CustomDbContext()) {
-                PassengersDataGrid.ItemsSource = db.Passengers.ToList();
+                //PassengersDataGrid.ItemsSource = db.Passengers.ToList();
+
+                DataGridTextColumn passengerId = new DataGridTextColumn {
+                    Header = "Passenger Id",
+                    Binding = new Binding("PassengerId")
+
+                };
+                DataGridTextColumn passengerName = new DataGridTextColumn {
+                    Header = "Passenger Name",
+                    Binding = new Binding("FullName")
+                };
+                DataGridTextColumn passportNo = new DataGridTextColumn {
+                    Header = "Passport Number",
+                    Binding = new Binding("PassportNo")
+                };
+                DataGridTextColumn email = new DataGridTextColumn {
+                    Header = "Email",
+                    Binding = new Binding("Email")
+                };
+                DataGridTextColumn phone = new DataGridTextColumn {
+                    Header = "Phone Number",
+                    Binding = new Binding("PhoneNo")
+                };
+                DataGridTextColumn dateofbirth = new DataGridTextColumn {
+                    Header = "Date Of Birth",
+                    Binding = new Binding("DateOfBirth")
+                };
+                DataGridTextColumn gender = new DataGridTextColumn {
+                    Header = "Gender",
+                    Binding = new Binding("Gender")
+                };
+
+                PassengersDataGrid.Columns.Add(passengerId);
+                PassengersDataGrid.Columns.Add(passengerName);
+                PassengersDataGrid.Columns.Add(passportNo);
+                PassengersDataGrid.Columns.Add(email);
+                PassengersDataGrid.Columns.Add(phone);
+                PassengersDataGrid.Columns.Add(dateofbirth);
+                PassengersDataGrid.Columns.Add(gender);
+
+                foreach (Passenger p in db.Passengers.ToList()) {
+                    PassengersDataGrid.Items.Add(p);
+                }
+
                 PassengersDataGrid.SelectionMode = (DataGridSelectionMode)SelectionMode.Single;
 
                 List<Booking> bookings = db.Bookings.ToList();
-                int bookingId = bookings[bookings.Count - 1].BookingId;
+                Console.WriteLine(bookings.Count);
+                 int bookingId = bookings[bookings.Count - 1].BookingId;
 
                 lblBookingId.Content = bookingId;
 
@@ -90,19 +134,58 @@ namespace MayNazMuth {
                                             passenger.PassportNo.Contains(PassportNumber)
                                          select passenger;
                         Console.WriteLine(passengers.Count());
-                        PassengersDataGrid.ItemsSource = passengers.ToList();
+                        //PassengersDataGrid.ItemsSource = passengers.ToList();
+
+                        DataGridTextColumn passengerId = new DataGridTextColumn {
+                            Header = "Passenger Id",
+                            Binding = new Binding("PassengerId")
+
+                        };
+                        DataGridTextColumn passengerName = new DataGridTextColumn {
+                            Header = "Passenger Name",
+                            Binding = new Binding("FullName")
+                        };
+                        DataGridTextColumn passportNo = new DataGridTextColumn {
+                            Header = "Passport Number",
+                            Binding = new Binding("PassportNo")
+                        };
+                        DataGridTextColumn email = new DataGridTextColumn {
+                            Header = "Email",
+                            Binding = new Binding("Email")
+                        };
+                        DataGridTextColumn phone = new DataGridTextColumn {
+                            Header = "Phone Number",
+                            Binding = new Binding("PhoneNo")
+                        };
+                        DataGridTextColumn dateofbirth = new DataGridTextColumn {
+                            Header = "Date Of Birth",
+                            Binding = new Binding("DateOfBirth")
+                        };
+                        DataGridTextColumn gender = new DataGridTextColumn {
+                            Header = "Gender",
+                            Binding = new Binding("Gender")
+                        };
+
+                        PassengersDataGrid.Columns.Add(passengerId);
+                        PassengersDataGrid.Columns.Add(passengerName);
+                        PassengersDataGrid.Columns.Add(passportNo);
+                        PassengersDataGrid.Columns.Add(email);
+                        PassengersDataGrid.Columns.Add(phone);
+                        PassengersDataGrid.Columns.Add(dateofbirth);
+                        PassengersDataGrid.Columns.Add(gender);
+
+                        foreach (Passenger p in passengers) {
+                            PassengersDataGrid.Items.Add(p);
+                        }
                     }
                 }
                 else {
                     MessageBox.Show("Phone Number should contain numbers only!");
                 }
-
-
             }
             else {
                 MessageBox.Show("Please enter atleast one value!");
             }
-
         }
 
         public bool isValid(string fullName, string email, string phone, string passport) {
@@ -247,8 +330,8 @@ namespace MayNazMuth {
                         var book = from booking in db.Bookings
                                    where booking.BookingId == bookingId
                                    select booking;
-                        bp.Booking = book.ToList().First();
-                        bp.Passenger = p;
+                        /*bp.Booking = book.ToList().First();
+                        bp.Passenger = p;*/
 
                         db.BookingPassengers.Add(bp);
                     }
