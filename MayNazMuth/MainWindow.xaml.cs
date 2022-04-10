@@ -277,7 +277,7 @@ namespace MayNazMuth {
                     newBooking.BookingStatus = bookingStatus;
                     newBooking.FlightId = flightId;
 
-                    AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
+                        //AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
                     //Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
 
                     ctx.Bookings.Add(newBooking);
