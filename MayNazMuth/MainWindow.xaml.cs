@@ -83,8 +83,11 @@ namespace MayNazMuth {
                     }
                     else
                     {
-                        int id = al.AirlineId;
-                        string name = al.AirlineName;                       
+                        //int id = al.AirlineId;
+                        //string name = al.AirlineName;
+
+                        ctx.Airlines.Add(al);
+                        ctx.SaveChanges();
                     }
                 }
 
