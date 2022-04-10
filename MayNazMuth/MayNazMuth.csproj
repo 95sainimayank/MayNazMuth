@@ -270,6 +270,7 @@
     <Compile Include="UpdatePassengerWindow.xaml.cs">
       <DependentUpon>UpdatePassengerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\AirlineParser.cs" />
     <Compile Include="Utilities\CustomDbContext.cs" />
     <Compile Include="Utilities\FileService.cs" />
     <Compile Include="Utilities\AirportParser.cs" />

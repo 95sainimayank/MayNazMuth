@@ -23,10 +23,13 @@ namespace MayNazMuth {
 
         List<Airport> allAirportList = new List<Airport>();
 
+        List<Airline> allAirlineList = new List<Airline>(); 
+
         //Utility Classes
         FileService fs = new FileService();
         FlightParser fp = new FlightParser();
         AirportParser airps = new AirportParser();
+        AirlineParser alps = new AirlineParser();
 
         public MainWindow() {
             InitializeComponent();
@@ -36,8 +39,16 @@ namespace MayNazMuth {
 
             string airportFileContents = FileService.readFile(@"..\..\Data\initialAirports.csv");
             allAirportList = AirportParser.parseAirportFile(airportFileContents);
+
+            string airlineFileContents = FileService.readFile(@"..\..\Data\initialAirline.csv");
+            allAirlineList = AirlineParser.parseAirlineFile(airlineFileContents);
+
+
             //add initial airports to database
             AddinitialAirportsToDB();
+
+            //add oneAirline manually
+            AddinitialAirlineToDB();
 
             //call the function to initialize the datagrid
             toggleEventHandlers(false);
@@ -46,6 +57,40 @@ namespace MayNazMuth {
             populateDataGrid();
             toggleEventHandlers(true);
         }
+
+        private void AddinitialAirlineToDB()
+        {
+            List<string> AirlineNamesInDB = new List<string>();
+            List<Airline> airlineList = new List<Airline>();
+            using (var ctx = new CustomDbContext())
+
+            {
+                airlineList = ctx.Airlines.ToList<Airline>();
+                var airlineNames = airlineList.Select(x => x.AirlineName);
+
+                foreach (string pName in airlineNames)
+                {
+                    AirlineNamesInDB.Add(pName);
+                }
+
+                foreach (Airline al in allAirlineList)
+                {
+                    //check if allAirportList contains the aiport id that are already in the DB
+                    //Add records only if the relevent airport id is not in the DB
+                    if (AirlineNamesInDB.Contains(al.AirlineName))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        int id = al.AirlineId;
+                        string name = al.AirlineName;                       
+                    }
+                }
+
+            }
+
+         }
 
         private void AddinitialAirportsToDB()
         {

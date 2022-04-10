@@ -192,35 +192,80 @@ namespace MayNazMuth
                 //Pull the airport for the id we have
                 Airport AP = ctx.Airports.Where(x => x.AirportId == Convert.ToInt32(AirportIdTextBox.Text)).First();
 
-                //Reconstruct the object based on the form data
-                AP.AirportName = AirportNameTextBox.Text;
-                AP.AirportAddress = AirportAddressTextBox.Text;
-                AP.AirportCity = CityTextBox.Text;
-                AP.AirportCountry = CountryTextBox.Text;
-                AP.AirportAbbreviation = AbbvTextBox.Text;
-                AP.AirportPhoneno = PhoneTextBox.Text;
-                AP.AirportEmail = EmailTextBox.Text;
-                AP.AirportWebsite = WebsiteTextBox.Text;
-
-                if (!AP.AirportName.Equals("") && !AP.AirportAddress.Equals("") && !AP.AirportCity.Equals("") && !AP.AirportCountry.Equals("")
-                   && !AP.AirportAbbreviation.Equals("") && !AP.AirportPhoneno.Equals("") && !AP.AirportEmail.Equals("") && !AP.AirportWebsite.Equals(""))
+                //To prevent editing 4first rows name
+                if(AP.AirportId ==1 || AP.AirportId == 2 || AP.AirportId == 3 || AP.AirportId == 4)
                 {
-                    //Update the object
-                    ctx.Airports.Update(AP);
+                    if(AP.AirportName != AirportNameTextBox.Text)
+                    {
+                        MessageBox.Show("Please Do not edit Airport name of first 4 rows!");
+                    }
+                    else
+                    {
+                        AP.AirportAddress = AirportAddressTextBox.Text;
+                        AP.AirportCity = CityTextBox.Text;
+                        AP.AirportCountry = CountryTextBox.Text;
+                        AP.AirportAbbreviation = AbbvTextBox.Text;
+                        AP.AirportPhoneno = PhoneTextBox.Text;
+                        AP.AirportEmail = EmailTextBox.Text;
+                        AP.AirportWebsite = WebsiteTextBox.Text;
 
-                    ProgressBarHandler();
 
-                    //Save my changes
-                    ctx.SaveChanges();
-                    //update the data grid
-                    Updategrid();
-                    AirportFlightReportButton.IsEnabled = false;
+                        if (!AP.AirportAddress.Equals("") && !AP.AirportCity.Equals("") && !AP.AirportCountry.Equals("")
+                   && !AP.AirportAbbreviation.Equals("") && !AP.AirportPhoneno.Equals("") && !AP.AirportEmail.Equals("") && !AP.AirportWebsite.Equals(""))
+                        {
+                            //Update the object
+                            ctx.Airports.Update(AP);
 
+                            ProgressBarHandler();
+
+                            //Save my changes
+                            ctx.SaveChanges();
+                            //update the data grid
+                            Updategrid();
+                            AirportFlightReportButton.IsEnabled = false;
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please fill all fields.");
+                        }
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please fill all fields.");
+                    //Reconstruct the object based on the form data
+                    AP.AirportName = AirportNameTextBox.Text;
+                    AP.AirportAddress = AirportAddressTextBox.Text;
+                    AP.AirportCity = CityTextBox.Text;
+                    AP.AirportCountry = CountryTextBox.Text;
+                    AP.AirportAbbreviation = AbbvTextBox.Text;
+                    AP.AirportPhoneno = PhoneTextBox.Text;
+                    AP.AirportEmail = EmailTextBox.Text;
+                    AP.AirportWebsite = WebsiteTextBox.Text;
+
+                    if (!AP.AirportName.Equals("") && !AP.AirportAddress.Equals("") && !AP.AirportCity.Equals("") && !AP.AirportCountry.Equals("")
+                       && !AP.AirportAbbreviation.Equals("") && !AP.AirportPhoneno.Equals("") && !AP.AirportEmail.Equals("") && !AP.AirportWebsite.Equals(""))
+                    {
+                        //Update the object
+                        ctx.Airports.Update(AP);
+
+                        ProgressBarHandler();
+
+                        //Save my changes
+                        ctx.SaveChanges();
+                        //update the data grid
+                        Updategrid();
+                        AirportFlightReportButton.IsEnabled = false;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please fill all fields.");
+                    }
                 }
+
+
+                
 
                
 
