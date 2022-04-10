@@ -25,8 +25,7 @@ namespace MayNazMuth
         List<Flight> FlightList = new List<Flight>();
         List<Airport> AirportList = new List<Airport>();
         int ApId;
-        int selectedFlightItem;
-        string ApName;
+        int selectedFlightItem;        
 
         public AirportFlightReportWindow(string airportId)
         {
@@ -34,7 +33,7 @@ namespace MayNazMuth
             ApId = Convert.ToInt32(airportId);
 
             InitializeComponent();
-
+            
             //turn the event handlers off
             ToggleEventHandlers(false);
 
@@ -64,7 +63,7 @@ namespace MayNazMuth
             if (toggle)
             {
                 //turn on                               
-                backToAirportButon.Click += backToAirportList;
+                backToAirportButon.Click += backToAirportList;               
                 filterComboBox.SelectionChanged += filterFlights;
                 FilterButton.Click += searchDate;
             }
@@ -239,7 +238,7 @@ namespace MayNazMuth
             //backToAirportButon.Content = ApId.ToString();
             using (var ctx = new CustomDbContext())
             {
-                FlightList = ctx.Flights.ToList<Flight>();
+                FlightList = ctx.Flights.ToList<Flight>();           
 
                 var FoundFlights = FlightList.Where(x => x.SourceAirportId == ApId || x.DestinationAirportId == ApId);
                 var ArrivingFlights = FlightList.Where(x => x.DestinationAirportId == ApId);
@@ -253,6 +252,7 @@ namespace MayNazMuth
                 TotalArrivingValueLable.Content = ArrivingFlights.Count();
                 TotalDepartingValueLable.Content = DepartingFlights.Count();
             }
+
         }
 
         //Setup Grid
