@@ -229,6 +229,10 @@
     <Compile Include="Migrations\20220410054825_PriceAddedToFlightTable.designer.cs">
       <DependentUpon>20220410054825_PriceAddedToFlightTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220410064704_ModifiedBookingPassengerEntity.cs" />
+    <Compile Include="Migrations\20220410064704_ModifiedBookingPassengerEntity.designer.cs">
+      <DependentUpon>20220410064704_ModifiedBookingPassengerEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>

@@ -45,6 +45,9 @@ namespace MayNazMuth {
             }
         }
 
+        public void setFlightLabelValue() {
+
+        }
         public void SeeAll(object sender, EventArgs args) {
             InitializeDataGrid();
 
@@ -134,6 +137,9 @@ namespace MayNazMuth {
                     }
 
                     txtAddedPassengers.Text = addedPassengerString;
+
+                    lblTotalPrice.Content = "$ " + (Convert.ToDecimal(lblFlightPrice.Content.ToString().Substring(1)) *
+                                                    addedPassengers.Count);
                 }
                 
             }
@@ -225,14 +231,13 @@ namespace MayNazMuth {
         }
 
         public void GoToPayment(object sender, EventArgs args) {
-            Console.WriteLine(addedPassengers.Count());
             if (addedPassengers.Count() == 0) {
                 MessageBox.Show("Please add atleast one passenger to the booking!");
             }
             else {
                 int bookingId = Convert.ToInt32(lblBookingId.Content);
-                
-                using(var db = new CustomDbContext()) {
+
+                /*using(var db = new CustomDbContext()) {
                     foreach (Passenger p in addedPassengers) {
                         BookingPassenger bp = new BookingPassenger();
                         bp.BookingId = bookingId;
@@ -240,13 +245,27 @@ namespace MayNazMuth {
                         var book = from booking in db.Bookings
                                      where booking.BookingId == bookingId
                                      select booking;
-                        bp.Booking = book.ToList().First();
-                        bp.Passenger = p;
+                        *//*bp.Booking = book.ToList().First();
+                        bp.Passenger = p;*//*
 
                         db.BookingPassengers.Add(bp);
-                        db.SaveChanges();
                     }
-                }
+
+                    db.SaveChanges();
+                }*/
+
+                PaymentWindow paymentWindow = new PaymentWindow(bookingId);
+                paymentWindow.ticketPriceValueLabel.Content = lblTotalPrice;
+                this.Hide();
+                paymentWindow.Show();
+
+                
+            }
+        }
+
+        public void CloseAllWindows() {
+            foreach (Window window in Application.Current.Windows) {
+                window.Hide();
             }
         }
     }
