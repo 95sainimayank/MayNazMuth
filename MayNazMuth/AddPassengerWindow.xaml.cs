@@ -39,9 +39,9 @@ namespace MayNazMuth {
 
             }
             
-            PaymentWindow Payment = new PaymentWindow(bookingId);
+           // PaymentWindow Payment = new PaymentWindow(bookingId,TPrice);
             CloseAllWindows();
-            Payment.Show();
+           // Payment.Show();
         }
         public void CloseAllWindows()
         {
