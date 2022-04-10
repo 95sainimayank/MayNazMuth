@@ -30,7 +30,51 @@ namespace MayNazMuth {
 
         public void InitializeDataGrid() {
             using (var db = new CustomDbContext()) {
-                AllPassengerDataGrid.ItemsSource = db.Passengers.ToList();
+                //AllPassengerDataGrid.ItemsSource = db.Passengers.ToList();
+
+                DataGridTextColumn passengerName = new DataGridTextColumn {
+                    Header = "Passenger Name",
+                    Binding = new Binding("FullName")
+                };
+
+                DataGridTextColumn passengerPassport = new DataGridTextColumn {
+                    Header = "Passport Number",
+                    Binding = new Binding("PassportNo")
+                };
+
+                DataGridTextColumn passengerEmail = new DataGridTextColumn {
+                    Header = "Email",
+                    Binding = new Binding("Email")
+                };
+
+                DataGridTextColumn passengerPhone = new DataGridTextColumn {
+                    Header = "Phone Number",
+                    Binding = new Binding("PhoneNo")
+                };
+
+                DataGridTextColumn dateofBirth = new DataGridTextColumn {
+                    Header = "Date of Birth",
+                    Binding = new Binding("DateOfBirth")
+                };
+
+                DataGridTextColumn gender = new DataGridTextColumn {
+                    Header = "Gender",
+                    Binding = new Binding("Gender")
+                };
+
+                AllPassengerDataGrid.Columns.Add(passengerName);
+                AllPassengerDataGrid.Columns.Add(passengerEmail);
+                AllPassengerDataGrid.Columns.Add(passengerPassport);
+                AllPassengerDataGrid.Columns.Add(dateofBirth);
+                AllPassengerDataGrid.Columns.Add(passengerPhone);
+                AllPassengerDataGrid.Columns.Add(gender);
+
+                AllPassengerDataGrid.Items.Clear();
+
+                foreach (Passenger p in db.Passengers.ToList()) {
+                    AllPassengerDataGrid.Items.Add(p);
+                }
+
 
                 txtFullName.IsEnabled = false;
                 txtEmail.IsEnabled = false;
