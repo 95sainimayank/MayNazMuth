@@ -17,7 +17,6 @@ using System.Windows.Shapes;
 namespace MayNazMuth {
     public partial class AddPassengerToBookingWindow : Window {
         List<Passenger> addedPassengers = new List<Passenger>();
-
         public AddPassengerToBookingWindow() {
             InitializeComponent();
 
@@ -29,6 +28,7 @@ namespace MayNazMuth {
             btnSearch.Click += SearchPassenger;
             btnAdd.Click += AddPassenger;
             btnPassengerToGrid.Click += AddPassengerToGrid;
+            btnToPayment.Click += GoToPayment;
         }
 
         public void InitializeDataGrid() {
@@ -222,6 +222,32 @@ namespace MayNazMuth {
             }
 
             return true;
+        }
+
+        public void GoToPayment(object sender, EventArgs args) {
+            Console.WriteLine(addedPassengers.Count());
+            if (addedPassengers.Count() == 0) {
+                MessageBox.Show("Please add atleast one passenger to the booking!");
+            }
+            else {
+                int bookingId = Convert.ToInt32(lblBookingId.Content);
+                
+                using(var db = new CustomDbContext()) {
+                    foreach (Passenger p in addedPassengers) {
+                        BookingPassenger bp = new BookingPassenger();
+                        bp.BookingId = bookingId;
+                        bp.PassengerId = p.PassengerId;
+                        var book = from booking in db.Bookings
+                                     where booking.BookingId == bookingId
+                                     select booking;
+                        bp.Booking = book.ToList().First();
+                        bp.Passenger = p;
+
+                        db.BookingPassengers.Add(bp);
+                        db.SaveChanges();
+                    }
+                }
+            }
         }
     }
 }
