@@ -31,7 +31,7 @@ namespace MayNazMuth
         public void ToBookFlightWindow(object sender, EventArgs args)
         {            
             
-            BookFlightWindow ToBookFlight = new BookFlightWindow();
+            MainWindow ToBookFlight = new MainWindow();
             CloseAllWindows();
             ToBookFlight.Show();
 
@@ -82,7 +82,8 @@ namespace MayNazMuth
         public void OpenPaymentWindow(object sender, EventArgs args)
         {
             var bookingId = 10;
-            PaymentWindow Payment = new PaymentWindow(bookingId);
+            var price = 100;
+            PaymentWindow Payment = new PaymentWindow(bookingId, price);
             CloseAllWindows();
             Payment.Show();
         }

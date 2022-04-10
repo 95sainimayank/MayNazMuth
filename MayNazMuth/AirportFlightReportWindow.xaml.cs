@@ -22,20 +22,22 @@ namespace MayNazMuth
     public partial class AirportFlightReportWindow : Window
     {
 
-        List<Flight> FlightList = new List<Flight>();        
+        List<Flight> FlightList = new List<Flight>();
+        List<Airport> AirportList = new List<Airport>();
         int ApId;
-        int selectedFlightItem;
+        int selectedFlightItem;        
 
         public AirportFlightReportWindow(string airportId)
         {
             //incoming AirportId of selected row from Airport window
             ApId = Convert.ToInt32(airportId);
 
-
             InitializeComponent();
-
+            
             //turn the event handlers off
             ToggleEventHandlers(false);
+
+            ShowAirportName();
 
             //Initialize the data grid
             SetupGrid();
@@ -47,12 +49,21 @@ namespace MayNazMuth
             ToggleEventHandlers(true);
         }
 
+        private void ShowAirportName()
+        {
+            using (var ctx = new CustomDbContext())
+            {
+                AirportList = ctx.Airports.ToList<Airport>();                
+                AFReportWindow .Title = "Airpot Name: " + AirportList.Where(x => x.AirportId == ApId).First().AirportName;
+            }
+        }
+
         private void ToggleEventHandlers(bool toggle)
         {
             if (toggle)
             {
                 //turn on                               
-                backToAirportButon.Click += backToAirportList;
+                backToAirportButon.Click += backToAirportList;               
                 filterComboBox.SelectionChanged += filterFlights;
                 FilterButton.Click += searchDate;
             }
@@ -227,7 +238,7 @@ namespace MayNazMuth
             //backToAirportButon.Content = ApId.ToString();
             using (var ctx = new CustomDbContext())
             {
-                FlightList = ctx.Flights.ToList<Flight>();
+                FlightList = ctx.Flights.ToList<Flight>();           
 
                 var FoundFlights = FlightList.Where(x => x.SourceAirportId == ApId || x.DestinationAirportId == ApId);
                 var ArrivingFlights = FlightList.Where(x => x.DestinationAirportId == ApId);
@@ -241,6 +252,7 @@ namespace MayNazMuth
                 TotalArrivingValueLable.Content = ArrivingFlights.Count();
                 TotalDepartingValueLable.Content = DepartingFlights.Count();
             }
+
         }
 
         //Setup Grid

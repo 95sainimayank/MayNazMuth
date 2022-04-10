@@ -25,14 +25,16 @@ namespace MayNazMuth
     {
         float totalAmount =0;
         int bkId = 0;
+        float tPrice;
         string bookingStatus;
-        public PaymentWindow(int bookingId)
+        public PaymentWindow(int bookingId, float TPrice)
         {
 
             InitializeComponent();
             bkId = bookingId;
+            tPrice = TPrice;
 
-            
+
             using (var ctx = new CustomDbContext())
             {
                 Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();
@@ -40,6 +42,7 @@ namespace MayNazMuth
             }
             bookingStatusLabel.Content = bookingStatus;
             BookingRefrenceNoValueLabel.Content = bkId;
+            ticketPriceValueLabel.Content = tPrice;
             taxPriceValueLabel.Content = Convert.ToDecimal(ticketPriceValueLabel.Content) * Convert.ToDecimal(0.12);
             totalPriceValueLabel.Content = Convert.ToDecimal(ticketPriceValueLabel.Content) + Convert.ToDecimal(taxPriceValueLabel.Content);
             totalAmount = (float)(Convert.ToDecimal(ticketPriceValueLabel.Content) + Convert.ToDecimal(taxPriceValueLabel.Content));
@@ -117,7 +120,8 @@ namespace MayNazMuth
                 else
                 {
                     ctx.Payments.Add(newPayment);
-                    ctx.SaveChanges();
+                    
+
                     Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();
                     AP.BookingStatus = "Completed";
                     //Update the object
@@ -126,10 +130,7 @@ namespace MayNazMuth
                     ctx.SaveChanges();
                     MessageBox.Show("Payment is done successfully !");
                     OpenMainWindow();
-                }
-
-                
-
+                }                
             }
         }
 

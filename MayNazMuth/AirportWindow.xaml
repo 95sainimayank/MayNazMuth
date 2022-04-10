@@ -35,7 +35,7 @@
         <Label Content="Slide right to Add" HorizontalAlignment="Left" Margin="10,424,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.447,0.308"/>
         <Button Background="#FFFBA60A" Foreground="White" x:Name="EditBtn" Content="Edit" HorizontalAlignment="Left" Margin="229,426,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
         <Button Background="#FFBF0000" Foreground="White" x:Name="DeleteBtn" Content="Delete" HorizontalAlignment="Left" Margin="331,427,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
-        <Button Background="#FF5D5C5C" Foreground="White" x:Name="AirportFlightReportButton" Content="Check Flight From/To This Airport" HorizontalAlignment="Left" Margin="546,424,0,0" VerticalAlignment="Top" Width="236" Height="26" FontSize="14"/>
+        <Button Background="#FF5D5C5C" Foreground="White" x:Name="AirportFlightReportButton" Content="Check flights of this airport" HorizontalAlignment="Left" Margin="546,424,0,0" VerticalAlignment="Top" Width="236" Height="26" FontSize="14"/>
         <Label Content="Total Airport:" HorizontalAlignment="Left" Margin="637,81,0,0" VerticalAlignment="Top"/>
         <Label x:Name="totalAriportCountLable" Content="" HorizontalAlignment="Left" Margin="720,81,0,0" VerticalAlignment="Top"/>
     </Grid>

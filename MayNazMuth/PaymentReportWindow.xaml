@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MayNazMuth"
         ResizeMode="NoResize"
-        Title="PaymentReportWindow" Height="600" Width="805">
+        Title="PaymentReportWindow" Height="600" Width="600">
     <Grid>
         <uc:Menu Margin="0,0,0,507" />
         <Label Content="From:" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
@@ -18,11 +18,11 @@
 
         <Button x:Name="FilterButton" Background="Green" Foreground="White" Content="Filter" HorizontalAlignment="Left" Margin="317,98,0,0" VerticalAlignment="Top" Width="90" Height="27" FontSize="14"/>
         <DataGrid x:Name="paymentsDataGrid" HorizontalAlignment="Left" Height="295" Margin="10,151,0,0" VerticalAlignment="Top" Width="525"/>
-        <Label Content="Total Sale:" HorizontalAlignment="Left" Margin="559,151,0,0" VerticalAlignment="Top" FontSize="14px" />
-        <Label x:Name="TotalSaleValueLabel" HorizontalAlignment="Left" Margin="650,149,0,0" VerticalAlignment="Top" FontSize="14px" />
-        <Label Content="$" HorizontalAlignment="Left" Margin="630,151,0,0" VerticalAlignment="Top" FontSize="14px" Width="17" />
-        <Label Content="Number of Transacions:" HorizontalAlignment="Left" Margin="559,195,0,0" VerticalAlignment="Top" FontSize="14px" RenderTransformOrigin="0.484,2.045" />
-        <Label x:Name="transactionCountValueLabel" HorizontalAlignment="Left" Margin="727,197,0,0" VerticalAlignment="Top"/>
+        <Label Content="Total Sale($):" HorizontalAlignment="Left" Margin="13,473,0,0" VerticalAlignment="Top" FontSize="14px" />
+        <Label x:Name="TotalSaleValueLabel" HorizontalAlignment="Left" Margin="100,475,0,0" VerticalAlignment="Top" FontSize="14px" />
+        <Label Content="Number of Transacions:" HorizontalAlignment="Left" Margin="13,517,0,0" VerticalAlignment="Top" FontSize="14px" />
+        <Label x:Name="transactionCountValueLabel" HorizontalAlignment="Left" Margin="174,519,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="resetButton" Content="Clear" HorizontalAlignment="Left" Margin="450,100,0,0" VerticalAlignment="Top" Width="85" Height="25"/>
 
 
 

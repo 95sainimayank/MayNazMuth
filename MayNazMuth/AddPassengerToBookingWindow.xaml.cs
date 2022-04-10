@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 namespace MayNazMuth {
     public partial class AddPassengerToBookingWindow : Window {
         List<Passenger> addedPassengers = new List<Passenger>();
+        float passPrice;
         public AddPassengerToBookingWindow() {
             InitializeComponent();
 
@@ -140,6 +141,7 @@ namespace MayNazMuth {
 
                     lblTotalPrice.Content = "$ " + (Convert.ToDecimal(lblFlightPrice.Content.ToString().Substring(1)) *
                                                     addedPassengers.Count);
+                    passPrice = (float)(Convert.ToDecimal(lblFlightPrice.Content.ToString().Substring(1)) * addedPassengers.Count);
                 }
                 
             }
@@ -253,10 +255,10 @@ namespace MayNazMuth {
 
                     db.SaveChanges();
                 }
-
-                PaymentWindow paymentWindow = new PaymentWindow(bookingId);
-                paymentWindow.ticketPriceValueLabel.Content = lblTotalPrice;
                 CloseAllWindows();
+                PaymentWindow paymentWindow = new PaymentWindow(bookingId, passPrice);
+                //paymentWindow.ticketPriceValueLabel.Content = lblTotalPrice;
+                //this.Hide();
                 paymentWindow.Show();
 
                 
