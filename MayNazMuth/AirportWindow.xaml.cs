@@ -57,7 +57,12 @@ namespace MayNazMuth
             using (var ctx = new CustomDbContext())
             {
                 airportsList = ctx.Airports.ToList<Airport>();
-                AirportDataGrid.ItemsSource = airportsList;
+                AirportDataGrid.Items.Clear();
+                foreach (Airport AP in airportsList)
+                {
+                    AirportDataGrid.Items.Add(AP);
+                }
+                //AirportDataGrid.ItemsSource = airportsList;
             }
             totalAriportCountLable.Content = airportsList.Count();
         }
@@ -68,6 +73,54 @@ namespace MayNazMuth
             AirportDataGrid.SelectionMode = DataGridSelectionMode.Single;
             //Make it read only
             AirportDataGrid.IsReadOnly = true;
+
+
+            DataGridTextColumn AirportIdColumn = new DataGridTextColumn();
+            AirportIdColumn.Header = "#";
+            AirportIdColumn.Binding = new Binding("AirportId");
+
+            DataGridTextColumn AirportNameColumn = new DataGridTextColumn();
+            AirportNameColumn.Header = "Airport Name";
+            AirportNameColumn.Binding = new Binding("AirportName");
+
+            DataGridTextColumn AirportAddressColumn = new DataGridTextColumn();
+            AirportAddressColumn.Header = "Address";
+            AirportAddressColumn.Binding = new Binding("AirportAddress");
+
+            DataGridTextColumn AirportCityColumn = new DataGridTextColumn();
+            AirportCityColumn.Header = "City";
+            AirportCityColumn.Binding = new Binding("AirportCity");
+
+            DataGridTextColumn AirportCountryColumn = new DataGridTextColumn();
+            AirportCountryColumn.Header = "Country";
+            AirportCountryColumn.Binding = new Binding("AirportCountry");
+
+            DataGridTextColumn AirportABBVColumn = new DataGridTextColumn();
+            AirportABBVColumn.Header = "Abbreviation";
+            AirportABBVColumn.Binding = new Binding("AirportAbbreviation");
+
+            DataGridTextColumn AirportPhoneColumn = new DataGridTextColumn();
+            AirportPhoneColumn.Header = "Phone";
+            AirportPhoneColumn.Binding = new Binding("AirportPhoneno");
+
+            DataGridTextColumn AirportWebsiteColumn = new DataGridTextColumn();
+            AirportWebsiteColumn.Header = "Website";
+            AirportWebsiteColumn.Binding = new Binding("AirportWebsite");
+
+            DataGridTextColumn AirportEmailColumn = new DataGridTextColumn();
+            AirportEmailColumn.Header = "Email";
+            AirportEmailColumn.Binding = new Binding("AirportEmail");
+
+            AirportDataGrid.Columns.Add(AirportIdColumn);
+            AirportDataGrid.Columns.Add(AirportNameColumn);
+            AirportDataGrid.Columns.Add(AirportAddressColumn);
+            AirportDataGrid.Columns.Add(AirportCityColumn);
+            AirportDataGrid.Columns.Add(AirportCountryColumn);
+            AirportDataGrid.Columns.Add(AirportABBVColumn);
+            AirportDataGrid.Columns.Add(AirportPhoneColumn);
+            AirportDataGrid.Columns.Add(AirportWebsiteColumn);
+            AirportDataGrid.Columns.Add(AirportEmailColumn);
+            
         }
 
         private void ToggleEventHandlers(bool toggle)
@@ -108,19 +161,26 @@ namespace MayNazMuth
         {
             using (var ctx = new CustomDbContext())
             {
-                //Pull the airport 
-                Airport AP = ctx.Airports.Where(x => x.AirportId == Convert.ToInt32(AirportIdTextBox.Text)).First();
+                try
+                {
+                    //Pull the airport 
+                    Airport AP = ctx.Airports.Where(x => x.AirportId == Convert.ToInt32(AirportIdTextBox.Text)).First();
+                    ProgressBarHandler();
 
-                ProgressBarHandler();
-
-                //Update the object
-                ctx.Airports.Remove(AP);
-                //Save my changes
-                ctx.SaveChanges();
-                //update the data grid
-                Updategrid();
-                AirportFlightReportButton.IsEnabled = false;
-                resetForm();
+                    //Update the object
+                    ctx.Airports.Remove(AP);
+                    //Save my changes
+                    ctx.SaveChanges();
+                    //update the data grid
+                    Updategrid();
+                    AirportFlightReportButton.IsEnabled = false;
+                    resetForm();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("You can not delete this airport ! \nThere are some related data in other tables for this AirportId ");
+                }
+               
 
             }
         }
@@ -203,6 +263,7 @@ namespace MayNazMuth
 
         private void AddEventHandler(object s, EventArgs e)
         {
+            MyProgressbar.Visibility = Visibility.Visible;
             Airport newAirport = new Airport();
             newAirport.AirportName = AirportNameTextBox.Text;
             newAirport.AirportAddress = AirportAddressTextBox.Text;
@@ -230,9 +291,10 @@ namespace MayNazMuth
                     MessageBox.Show("Please fill all fields.");
                 }
                resetForm();
+                
             }
 
-                    
+           
         }
 
         private void ProgressBarHandler()
@@ -257,7 +319,7 @@ namespace MayNazMuth
             EmailTextBox.Text = "";
             WebsiteTextBox.Text = "";
             DoneSlider.Value = 0;
-            //MyProgressbar.Visibility = Visibility.Hidden;
+            MyProgressbar.Visibility = Visibility.Hidden;
 
         }
        
