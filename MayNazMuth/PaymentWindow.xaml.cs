@@ -82,19 +82,30 @@ namespace MayNazMuth
 
             using (var ctx = new CustomDbContext())
             {
-                if (newPayment.CardNumber.Equals(""))
+                 if (string.IsNullOrEmpty(newPayment.CardHolderName))
                 {
-                    MessageBox.Show("Card Number is empty.");
-                }                
+                    MessageBox.Show("Card holder name is empty.");
+                }
+                              
                 else if (!IsCreditNumberValid(newPayment.CardNumber))
                 {
                     MessageBox.Show("Card Number is not valid.");
                 }
+
+                else if (ExpiryDateTextBox.Text.Equals(""))
+                {
+                    MessageBox.Show("Expity date is empty.");
+                }
+                else if (!IsCreditExpiryValid(ExpiryDateTextBox.Text))
+                {
+                    MessageBox.Show("Expity date is not valid.");
+                }
                 else if (!CVVTextBox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("CVV must be numeric.");
-                    
+
                 }
+                
                 else if (CVVTextBox.Text.Equals(""))
                 {
                     MessageBox.Show("CVV is empty.");
@@ -103,31 +114,42 @@ namespace MayNazMuth
                 {
                     MessageBox.Show("CVV is not valid.");
                 }
-                
-                else if(string.IsNullOrEmpty(newPayment.CardHolderName))
-                {
-                    MessageBox.Show("Card holder name is empty.");
-                }
-                else if (!IsCreditExpiryValid(ExpiryDateTextBox.Text))
-                {
-                    MessageBox.Show("Expity date is not valid.");
-                }
                 else
                 {
                     ctx.Payments.Add(newPayment);
                     ctx.SaveChanges();
+                    Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();
+                    AP.BookingStatus = "Completed";
+                    //Update the object
+                    ctx.Bookings.Update(AP);
+                    //Save my changes
+                    ctx.SaveChanges();
+                    MessageBox.Show("Payment is done successfully !");
+                    OpenMainWindow();
                 }
 
-                Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();
-                AP.BookingStatus = "Completed";
-                //Update the object
-                ctx.Bookings.Update(AP);
-                //Save my changes
-                ctx.SaveChanges();
-                MessageBox.Show("Payment is done successfully !");
+                
 
             }
         }
+
+
+        private void OpenMainWindow()
+        {
+
+            MainWindow flights = new MainWindow();
+            CloseAllWindows();
+            flights.Show();
+        }
+
+        public void CloseAllWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                window.Hide();
+            }
+        }
+
 
         //this function checks credit card format by using Regex
         public static bool IsCreditNumberValid(string cardNo)

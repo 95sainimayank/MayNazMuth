@@ -18,7 +18,7 @@
         <TextBox x:Name="AirportNameTextBox" HorizontalAlignment="Left" Height="23" Margin="265,289,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="213" RenderTransformOrigin="0.73,0.609"/>
         <Label Content="Address" HorizontalAlignment="Left" Margin="488,285,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="AirportAddressTextBox" HorizontalAlignment="Left" Height="23" Margin="546,289,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236" RenderTransformOrigin="0.73,0.609"/>
-        <ProgressBar x:Name="MyProgressbar"  HorizontalAlignment="Left" Height="7" Margin="10,479,0,0" VerticalAlignment="Top" Width="772" FlowDirection="LeftToRight" />
+        <ProgressBar Visibility="Hidden" x:Name="MyProgressbar"  HorizontalAlignment="Left" Height="7" Margin="10,479,0,0" VerticalAlignment="Top" Width="772" FlowDirection="LeftToRight" />
         <Slider Thumb.DragCompleted="AddEventHandler" x:Name="DoneSlider" HorizontalAlignment="Left" Margin="115,428,0,0" VerticalAlignment="Top" Width="95" Background="{x:Null}"/>
         <Label Content="City" HorizontalAlignment="Left" Margin="10,328,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="CityTextBox" HorizontalAlignment="Left" Height="23" Margin="56,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129"/>

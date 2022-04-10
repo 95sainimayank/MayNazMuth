@@ -178,7 +178,7 @@ namespace MayNazMuth
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("There are some related data for this AirportId in other tables");
+                    MessageBox.Show("You can not delete this airport ! \nThere are some related data in other tables for this AirportId ");
                 }
                
 
@@ -263,6 +263,7 @@ namespace MayNazMuth
 
         private void AddEventHandler(object s, EventArgs e)
         {
+            MyProgressbar.Visibility = Visibility.Visible;
             Airport newAirport = new Airport();
             newAirport.AirportName = AirportNameTextBox.Text;
             newAirport.AirportAddress = AirportAddressTextBox.Text;
@@ -290,9 +291,10 @@ namespace MayNazMuth
                     MessageBox.Show("Please fill all fields.");
                 }
                resetForm();
+                
             }
 
-                    
+           
         }
 
         private void ProgressBarHandler()
@@ -317,7 +319,7 @@ namespace MayNazMuth
             EmailTextBox.Text = "";
             WebsiteTextBox.Text = "";
             DoneSlider.Value = 0;
-            //MyProgressbar.Visibility = Visibility.Hidden;
+            MyProgressbar.Visibility = Visibility.Hidden;
 
         }
        
