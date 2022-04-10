@@ -97,6 +97,7 @@ namespace MayNazMuth
             {
                 //turn on               
                 FilterButton.Click += searchDate;
+                resetButton.Click += resetfilter;
 
             }
             else
@@ -104,7 +105,15 @@ namespace MayNazMuth
                 //Turn off               
 
                 FilterButton.Click -= searchDate;
+                resetButton.Click -= resetfilter;
             }
+        }
+
+        private void resetfilter(object sender, RoutedEventArgs e)
+        {
+            fromDatePicker.SelectedDate = DateTime.Now;
+            toDatePicker.SelectedDate = DateTime.Now;
+            Updategrid();
         }
 
         private void searchDate(object sender, RoutedEventArgs e)
@@ -120,7 +129,7 @@ namespace MayNazMuth
                 using (var ctx = new CustomDbContext())
                 {
                     PaymentList = ctx.Payments.ToList<Payment>();
-                    var filteredList = PaymentList.Where(x => ( x.PaymentDatetime >= startFrom && x.PaymentDatetime <= endTo));
+                    var filteredList = PaymentList.Where(x =>  x.PaymentDatetime >= startFrom && x.PaymentDatetime <= endTo);
                     paymentsDataGrid.Items.Clear();
                     totalAmount = 0;
                     foreach (Payment p in filteredList)
