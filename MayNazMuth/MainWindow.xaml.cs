@@ -281,9 +281,13 @@ namespace MayNazMuth {
                     //Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
 
                     ctx.Bookings.Add(newBooking);
+
                     ctx.SaveChanges();
 
                     CloseAllWindows();
+
+                    AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
+                    Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
                     Passeger.Show();
                 }
 
