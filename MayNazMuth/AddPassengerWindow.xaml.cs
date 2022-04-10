@@ -122,8 +122,14 @@ namespace MayNazMuth {
             using (var db = new CustomDbContext()) {
                 var selectedPassengers = AllPassengersDataGrid.SelectedItems;
 
-                foreach(Passenger p in selectedPassengers) {
-                    db.Passengers.Remove(p);
+                if(selectedPassengers.Count == 0) {
+                    MessageBox.Show("No Passenger selected!!");
+                }
+                else {
+                    foreach (Passenger p in selectedPassengers) {
+                        db.Passengers.Remove(p);
+                        MessageBox.Show("Passenger deleted successfully");
+                    }
                 }
 
                 db.SaveChanges();

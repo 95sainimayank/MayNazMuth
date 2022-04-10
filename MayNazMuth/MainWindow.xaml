@@ -23,8 +23,6 @@
         <TextBox x:Name="txtFlightDetails" HorizontalAlignment="Left" Height="172" Margin="684,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="#FFD0D4E0" FontSize="14"/>
         <Button x:Name="btnAddPassenger" Content="Add a Passenger" HorizontalAlignment="Left" Margin="452,477,0,0" VerticalAlignment="Top" Width="191" FontWeight="Bold" FontSize="14" Height="35" RenderTransformOrigin="1.601,0.38" Background="BlueViolet" Foreground="White"/>
         <Button x:Name="btnSearch" Content="Search Flights" HorizontalAlignment="Left" Margin="712,67,0,0" VerticalAlignment="Top" Width="113" FontSize="14" Height="35" Background="Green" Foreground="White"/>
-        <Label x:Name="lblFlightData" Content="" HorizontalAlignment="Left" Margin="268,581,0,0" VerticalAlignment="Top" Width="375" FontSize="14" Background="{x:Null}" Foreground="#FF0D6E1F"/>
         <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="837,67,0,0" VerticalAlignment="Top" Width="113" FontSize="13" Height="35" Background="Green" Foreground="White"/>
-        <Button x:Name="btnBackUp" Content="Backup Flight Details" HorizontalAlignment="Left" Margin="452,528,0,0" VerticalAlignment="Top" Width="191" FontWeight="Bold" FontSize="14" Height="35" RenderTransformOrigin="1.601,0.38" Background="BlueViolet" Foreground="White"/>
     </Grid>
 </Window>

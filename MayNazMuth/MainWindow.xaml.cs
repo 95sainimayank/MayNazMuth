@@ -33,9 +33,12 @@ namespace MayNazMuth {
 
             //call the function to initialize the datagrid
             toggleEventHandlers(false);
+            addFlightData();
             initializeDataGrid();
             populateDataGrid();
             toggleEventHandlers(true);
+
+            
 
 
         }
@@ -44,7 +47,7 @@ namespace MayNazMuth {
         {
             if (toggle)
             {
-                btnBackUp.Click += addFlightData;
+                //btnBackUp.Click += addFlightData;
                 btnAddPassenger.Click += addBooking;
                 flightDataGrid.SelectionChanged += displaySelectedFlightInfo;
                 btnAddPassenger.Click += addBooking;
@@ -57,7 +60,7 @@ namespace MayNazMuth {
             }
             else
             {
-                btnBackUp.Click -= addFlightData;
+               //btnBackUp.Click -= addFlightData;
                 btnAddPassenger.Click -= addBooking;
                 flightDataGrid.SelectionChanged -= displaySelectedFlightInfo;
                 btnAddPassenger.Click -= addBooking;
@@ -131,6 +134,7 @@ namespace MayNazMuth {
             {
                 flightDataGrid.Items.Add(f);
             }
+          
         }
 
         private void SetupFlightGrid()
@@ -141,72 +145,60 @@ namespace MayNazMuth {
             flightDataGrid.IsReadOnly = true;
         }
 
-        private void addFlightData(Object s, EventArgs e)
+        private void addFlightData()
         {
-            //Flight newFlight = new Flight();
+  
+            List<String> flightNoInDB = new List<string>();
+            List<Flight> flightList = new List<Flight>();
 
-            foreach (Flight f in allFlightList)
+            //Add all flight numbers in the DB to flightNoInDB list
+            using (var ctx = new CustomDbContext())
             {
+                flightList = ctx.Flights.ToList<Flight>();
+                var flightNumbers = flightList.Select(x => x.FlightNo);
 
-                string flightNumber = f.FlightNo;
-                DateTime departureTime = f.DepartureTime;
-                DateTime arrivalTime = f.ArrivalTime;
-                int? airlineid = f.AirlineId;
-                string airlineName = f.AirlineName;
-                int? sourceAirportid = f.SourceAirportId;
-                int? destinationAirportid = f.DestinationAirportId;
-                string sourceAirport = f.SourceAirportName;
-
-
-
-
-                string destinationAirport = f.DestinationAirportName;
-                using (var ctx = new CustomDbContext())
+                foreach(String fno in flightNumbers)
                 {
-                    ctx.Flights.Add(f);
-                    ctx.SaveChanges();
+                    flightNoInDB.Add(fno);
                 }
-
-                //using (var ctx = new CustomDbContext())
-                //{
-                //    Flight newf = ctx.Flights.Where();
-                //var query = db.Flights
-                //              .Select(m => new
-                //              {
-                //                  flightNo = m.FlightNo,
-
-                //              });
-
-
-                //var flightNumbers = from x in query
-                //                   select x;
-
-                //foreach(var fn in flightNumbers)
-                //{
-                //    if (!flightNumber.Equals(fn))
-                //    {
-                //        db.Flights.Add(f);
-
-                //    }
-                //    else
-                //    {
-                //        continue;
-                //    }
-
-                // }
-                //  db.SaveChanges();
-
-
             }
 
-            lblFlightData.Content = "Flight Details are backed up.";
+           
+            //allFlightList.Count();
+            foreach(Flight f in allFlightList)
+            {
+                //check if allFlightList contains the flight numbers that are already in the DB
+                //Add records only if the relevent flight number is not in the DB
+                if(flightNoInDB.Contains(f.FlightNo))
+                {
+                    continue;
+                }
+                else
+                {
+                    string flightNumber = f.FlightNo;
+                    DateTime departureTime = f.DepartureTime;
+                    DateTime arrivalTime = f.ArrivalTime;
+                    int? airlineid = f.AirlineId;
+                    string airlineName = f.AirlineName;
+                    int? sourceAirportid = f.SourceAirportId;
+                    int? destinationAirportid = f.DestinationAirportId;
+                    string sourceAirport = f.SourceAirportName;
+                    string destinationAirport = f.DestinationAirportName;
 
+                    using (var ctx = new CustomDbContext())
+                    {
+
+                        ctx.Flights.Add(f);
+                        ctx.SaveChanges();
+                    }
+                    //lblFlightData.Content = "Flight Details are backed up.";
+                }
+            }
+             
         }
+               
 
-
-
-
-
+        //Populate the flight data grid
         public void populatefileredDataGrid()
         {
             flightDataGrid.Items.Clear();
@@ -216,7 +208,7 @@ namespace MayNazMuth {
             }
         }
 
-        //filter flights when all 3 filters are given 
+        //filter the flights when all 3 filters are given 
         private void searchFlightsAllFilters(object sender, EventArgs args)
         {
             string searchSourceAirport = txtSourceAirport.Text.Trim();
@@ -237,7 +229,7 @@ namespace MayNazMuth {
 
         }
 
-        //filter flights when departure and arrival airport given
+        //filter the flights when only departure and arrival airport is given
         private void searchFlightsDepartureAndArrival(object sender, EventArgs args)
         {
             string searchSourceAirport = txtSourceAirport.Text.Trim();
@@ -263,6 +255,7 @@ namespace MayNazMuth {
 
         }
 
+        //Clear all the filters
         private void clearFilters(object sender, EventArgs args)
         {
             txtSourceAirport.Text = "";
@@ -301,7 +294,8 @@ namespace MayNazMuth {
             else
             {
                 Booking newBooking = new Booking();
-                //Grab the selected flight
+
+                //Grab the selected
                 Flight selectedFlight = (Flight)flightDataGrid.SelectedItem;
                 string flightNo = selectedFlight.FlightNo;
                 DateTime bookingDateTime = DateTime.Now;
@@ -321,6 +315,7 @@ namespace MayNazMuth {
 
                 }
 
+                //Open Passenger window when add passenger is clicked
                 AddPassengerWindow Passeger = new AddPassengerWindow();
                 CloseAllWindows();
                 Passeger.Show();
@@ -328,6 +323,7 @@ namespace MayNazMuth {
             
         }
 
+        //Close all open windows
         public void CloseAllWindows()
         {
             foreach (Window window in Application.Current.Windows)
