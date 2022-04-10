@@ -126,10 +126,7 @@ namespace MayNazMuth
                     ctx.SaveChanges();
                     MessageBox.Show("Payment is done successfully !");
                     OpenMainWindow();
-                }
-
-                
-
+                }                
             }
         }
 
