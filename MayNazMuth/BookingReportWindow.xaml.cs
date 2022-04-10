@@ -164,8 +164,8 @@ namespace MayNazMuth
         private void clearFilters(object sender, EventArgs args)
         {
 
-            fromDatePicker.SelectedDate = null;
-            toDatePicker.SelectedDate = null;
+            fromDatePicker.SelectedDate = DateTime.Now;
+            toDatePicker.SelectedDate = DateTime.Now;
             populateDataGrid();
         }
 

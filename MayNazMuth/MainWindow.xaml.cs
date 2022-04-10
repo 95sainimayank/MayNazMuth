@@ -99,7 +99,6 @@ namespace MayNazMuth {
                 //btnBackUp.Click += addFlightData;
                 btnAddPassenger.Click += addBooking;
                 flightDataGrid.SelectionChanged += displaySelectedFlightInfo;
-                btnAddPassenger.Click += addBooking;
                 btnSearch.Click += searchFlightsAllFilters;
                 btnSearch.Click += searchFlightsDepartureAndArrival;
                 btnClear.Click += clearFilters;
@@ -109,7 +108,6 @@ namespace MayNazMuth {
                 //btnBackUp.Click -= addFlightData;
                 btnAddPassenger.Click -= addBooking;
                 flightDataGrid.SelectionChanged -= displaySelectedFlightInfo;
-                btnAddPassenger.Click -= addBooking;
                 btnSearch.Click -= searchFlightsAllFilters;
                 btnSearch.Click -= searchFlightsDepartureAndArrival;
                 btnClear.Click -= clearFilters;
@@ -178,6 +176,7 @@ namespace MayNazMuth {
             flightDataGrid.SelectionMode = DataGridSelectionMode.Single;
             //Make it read only
             flightDataGrid.IsReadOnly = true;
+            departureDatePicker.SelectedDate = DateTime.Now;
         }
 
         private void addFlightData() {
@@ -238,9 +237,7 @@ namespace MayNazMuth {
         private void searchFlightsAllFilters(object sender, EventArgs args) {
             string searchSourceAirport = txtSourceAirport.Text.Trim();
             string searchDestinationAirport = txtDestinationAirport.Text.Trim();
-            var searchDepartureDate = DepartureDatePicker.SelectedDate;
-
-
+            var searchDepartureDate = departureDatePicker.SelectedDate;
 
 
             var searchResult = from s in allFlightList
@@ -258,9 +255,11 @@ namespace MayNazMuth {
         private void searchFlightsDepartureAndArrival(object sender, EventArgs args) {
             string searchSourceAirport = txtSourceAirport.Text.Trim();
             string searchDestinationAirport = txtDestinationAirport.Text.Trim();
+            var searchDepartureDate = departureDatePicker.SelectedDate;
 
-
-            if (searchSourceAirport.Equals("") || searchDestinationAirport.Equals("")) {
+            
+            if (searchSourceAirport.Equals("") || searchDestinationAirport.Equals(""))
+            {
                 MessageBox.Show("Please enter your departure and arrival aiports");
                 populateDataGrid();
             }
@@ -281,7 +280,7 @@ namespace MayNazMuth {
         private void clearFilters(object sender, EventArgs args) {
             txtSourceAirport.Text = "";
             txtDestinationAirport.Text = "";
-            DepartureDatePicker.SelectedDate = null;
+            departureDatePicker.SelectedDate = DateTime.Now;
             populateDataGrid();
         }
 
@@ -290,19 +289,25 @@ namespace MayNazMuth {
             txtFlightDetails.Text = "";
 
             //Grab the selected flight
-            Flight selectedFlight = (Flight)flightDataGrid.SelectedItem;
-            TimeSpan numberOfHours = selectedFlight.ArrivalTime - selectedFlight.DepartureTime;
+            Flight selectedFlight  = (Flight)flightDataGrid.SelectedItem; ;
 
-            //Populate the textbox
-            txtFlightDetails.Text += " Flight Number : " + selectedFlight.FlightNo;
-            txtFlightDetails.Text += "\n From : " + selectedFlight.SourceAirportName;
-            txtFlightDetails.Text += "\n To : " + selectedFlight.DestinationAirportName;
-            txtFlightDetails.Text += "\n Departure Date/Time : " + selectedFlight.DepartureTime;
-            txtFlightDetails.Text += "\n Arrival Date/Time : " + selectedFlight.ArrivalTime;
-            txtFlightDetails.Text += "\n Price Per Person : " + selectedFlight.Price;
-            txtFlightDetails.Text += "\n Number of hours : " + numberOfHours;
+            if (flightDataGrid.SelectedItems.Count == 1)
+            {
+
+                TimeSpan numberOfHours = selectedFlight.ArrivalTime - selectedFlight.DepartureTime;
 
 
+
+                //Populate the textbox
+                txtFlightDetails.Text += " Flight Number : " + selectedFlight.FlightNo;
+                txtFlightDetails.Text += "\n From : " + selectedFlight.SourceAirportName;
+                txtFlightDetails.Text += "\n To : " + selectedFlight.DestinationAirportName;
+                txtFlightDetails.Text += "\n Departure Date/Time : " + selectedFlight.DepartureTime;
+                txtFlightDetails.Text += "\n Arrival Date/Time : " + selectedFlight.ArrivalTime;
+                txtFlightDetails.Text += "\n Price Per Person : $" + selectedFlight.Price;
+                txtFlightDetails.Text += "\n Number of hours : " + numberOfHours;
+
+            }
 
         }
 
@@ -328,12 +333,16 @@ namespace MayNazMuth {
                     newBooking.FlightId = flightId;
 
                     AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
-                    Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
+                    //Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
 
                     ctx.Bookings.Add(newBooking);
+
                     ctx.SaveChanges();
 
                     CloseAllWindows();
+
+                    AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
+                    Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
                     Passeger.Show();
                 }
 
