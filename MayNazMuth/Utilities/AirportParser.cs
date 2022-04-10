@@ -22,7 +22,7 @@ namespace MayNazMuth.Utilities
                 //Cut the line into the fileds
                 string[] fields = line.Trim().Split(',');
 
-                if (fields.Length != 7)
+                if (fields.Length != 8)
                 {
                     //MessageBox.Show("Problem parsing file, check format");
                     break;

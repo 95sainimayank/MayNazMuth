@@ -250,6 +250,10 @@
     <Compile Include="Migrations\20220410200220_testAirportTBALE2.designer.cs">
       <DependentUpon>20220410200220_testAirportTBALE2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220410201920_airportTable.cs" />
+    <Compile Include="Migrations\20220410201920_airportTable.designer.cs">
+      <DependentUpon>20220410201920_airportTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>

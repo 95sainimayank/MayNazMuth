@@ -74,7 +74,7 @@ namespace MayNazMuth {
                 }
                 else
                 {
-                    //int id = ap.AirportId;
+                    int id = ap.AirportId;
                     string name = ap.AirportName;                    
                     string address = ap.AirportAddress;
                     string city = ap.AirportCity;
@@ -332,7 +332,7 @@ namespace MayNazMuth {
                     newBooking.BookingStatus = bookingStatus;
                     newBooking.FlightId = flightId;
 
-                    AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
+                    //AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
                     //Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
 
                     ctx.Bookings.Add(newBooking);
