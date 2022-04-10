@@ -16,10 +16,14 @@ using System.Windows.Shapes;
 
 namespace MayNazMuth {
     public partial class AddPassengerWindow : Window {
+
         List<Booking> bookingLsit = new List<Booking>();
         int bookingId;
+
         public AddPassengerWindow() {
+
             InitializeComponent();
+                       
 
             InitializeDataGrid();
 
@@ -33,8 +37,10 @@ namespace MayNazMuth {
             using (var ctx = new CustomDbContext())
             {                 
                 bookingLsit = ctx.Bookings.ToList<Booking>();
-                bookingId= bookingLsit[bookingLsit.Count() - 1].BookingId;
+                bookingId= bookingLsit[bookingLsit.Count() - 1].BookingId;               
+
             }
+            
             PaymentWindow Payment = new PaymentWindow(bookingId);
             CloseAllWindows();
             Payment.Show();
@@ -78,6 +84,9 @@ namespace MayNazMuth {
                     db.SaveChanges();
                     InitializeDataGrid();
                 }
+
+                
+
             }
             else {
                 MessageBox.Show("One or two fields values are not correct!");
@@ -121,6 +130,8 @@ namespace MayNazMuth {
                 InitializeDataGrid();
             }
         }
+
+              
 
     }
 

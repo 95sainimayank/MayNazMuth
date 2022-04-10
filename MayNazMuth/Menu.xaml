@@ -14,6 +14,7 @@
                 <MenuItem Header="_Flight" Foreground="#FF1D1D1D" VerticalAlignment="Center" Margin="0">
                     <MenuItem Header="_Book A Flight" Click="ToBookFlightWindow" />
                     <MenuItem Header="_Flight's Detail" Click="OpenFlightDetailWindow" />
+                    <MenuItem Header="_Report" Click="OpenFlightReportWindow" />
                 </MenuItem>
                 <MenuItem Header="_Airport" Margin="8">
                     <MenuItem Header="_Add / View " Click="OpenAddAirportWindow" />
@@ -26,6 +27,9 @@
                 <MenuItem Header="_Payment" Margin="0">
                     <MenuItem Header="_Payment Window" Click="OpenPaymentWindow" />
                     <MenuItem Header="_Report" Click="OpenPaymentReportWindow" />
+                </MenuItem>
+                <MenuItem Header="_Bookings" Margin="0">
+                    <MenuItem Header="_Report" Click="OpenBookingReportWindow" />
                 </MenuItem>
             </Menu>
         </StackPanel>
