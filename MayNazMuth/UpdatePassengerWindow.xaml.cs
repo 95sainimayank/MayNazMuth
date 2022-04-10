@@ -23,6 +23,8 @@ namespace MayNazMuth {
             AllPassengerDataGrid.SelectionChanged += PopulateForm;
             btnUpdatePassenger.Click += UpdatePassenger;
 
+            comboGender.SelectedIndex = 0;
+
             InitializeDataGrid();
         }
 
@@ -30,12 +32,26 @@ namespace MayNazMuth {
             using (var db = new CustomDbContext()) {
                 AllPassengerDataGrid.ItemsSource = db.Passengers.ToList();
 
+                txtFullName.IsEnabled = false;
+                txtEmail.IsEnabled = false;
+                txtPassport.IsEnabled = false;
+                txtPhone.IsEnabled = false;
+                txtDate.IsEnabled = false;
+                comboGender.IsEnabled = false;
+
                 db.SaveChanges();
             }
         }
 
         public void PopulateForm(object sender, EventArgs args) {
                 Passenger passenger = (Passenger)AllPassengerDataGrid.SelectedItem;
+
+            txtFullName.IsEnabled = true;
+            txtEmail.IsEnabled = true;
+            txtPassport.IsEnabled = true;
+            txtPhone.IsEnabled = true;
+            txtDate.IsEnabled = true;
+            comboGender.IsEnabled = true;
 
             lblPassengerId.Content = passenger.PassengerId;
             txtFullName.Text = passenger.FullName;
@@ -62,9 +78,14 @@ namespace MayNazMuth {
         }
 
         public void UpdatePassenger(object sender, EventArgs args) {
-            Console.WriteLine();
+            string name = txtFullName.Text;
+            string email = txtEmail.Text;
+            string phone = txtPhone.Text;
+            string dob = txtDate.SelectedDate.ToString();
+            string gender = ((ComboBoxItem)comboGender.SelectedItem).Content.ToString();
+            string passport = txtPassport.Text;
 
-            if(isValid(txtFullName.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(), txtDate.SelectedDate.ToString().Trim(), comboGender.SelectedItem.ToString().Trim(), txtPassport.Text.Trim())){
+            if (isValid(name, email, phone, dob, gender, passport)){
                 using (var db = new CustomDbContext()) {
                     Passenger updatedPassenger = new Passenger(
                                         txtFullName.Text.Trim(),
@@ -82,10 +103,20 @@ namespace MayNazMuth {
                     AllPassengerDataGrid.SelectionChanged -= PopulateForm;
                     InitializeDataGrid();
                     AllPassengerDataGrid.SelectionChanged += PopulateForm;
+
+                    MessageBox.Show("Passenger details updated.");
+
+                    lblPassengerId.Content = "";
+                    txtFullName.Clear();
+                    txtEmail.Clear();
+                    txtPassport.Clear();
+                    txtPhone.Clear();
+                    txtDate.SelectedDate = null;
+                    comboGender.SelectedIndex = 0;
                 }
             }
             else {
-                MessageBox.Show("One or two fields values are not correct!");
+                MessageBox.Show("Either user not selected OR One or more field values are not correct!");
             }
         }
 
