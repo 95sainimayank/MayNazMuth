@@ -40,7 +40,50 @@ namespace MayNazMuth {
         }
         public void InitializeDataGrid() {
             using(var db = new CustomDbContext()) {
-                AllPassengersDataGrid.ItemsSource =  db.Passengers.ToList();
+                //AllPassengersDataGrid.ItemsSource =  db.Passengers.ToList();
+
+                DataGridTextColumn passengerName = new DataGridTextColumn {
+                    Header = "Passenger Name",
+                    Binding = new Binding("FullName")
+                };
+
+                DataGridTextColumn passengerPassport = new DataGridTextColumn {
+                    Header = "Passport Number",
+                    Binding = new Binding("PassportNo")
+                };
+
+                DataGridTextColumn passengerEmail = new DataGridTextColumn {
+                    Header = "Email",
+                    Binding = new Binding("Email")
+                };
+
+                DataGridTextColumn passengerPhone = new DataGridTextColumn {
+                    Header = "Phone Number",
+                    Binding = new Binding("PhoneNo")
+                };
+
+                DataGridTextColumn dateofBirth = new DataGridTextColumn {
+                    Header = "Date of Birth",
+                    Binding = new Binding("DateOfBirth")
+                };
+
+                DataGridTextColumn gender = new DataGridTextColumn {
+                    Header = "Gender",
+                    Binding = new Binding("Gender")
+                };
+
+                AllPassengersDataGrid.Columns.Add(passengerName);
+                AllPassengersDataGrid.Columns.Add(passengerEmail);
+                AllPassengersDataGrid.Columns.Add(passengerPassport);
+                AllPassengersDataGrid.Columns.Add(dateofBirth);
+                AllPassengersDataGrid.Columns.Add(passengerPhone);
+                AllPassengersDataGrid.Columns.Add(gender);
+
+                AllPassengersDataGrid.Items.Clear();
+
+                foreach (Passenger p in db.Passengers.ToList()) {
+                    AllPassengersDataGrid.Items.Add(p);
+                }
 
                 db.SaveChanges();
             }
@@ -69,9 +112,6 @@ namespace MayNazMuth {
                     db.SaveChanges();
                     InitializeDataGrid();
                 }
-
-                
-
             }
             else {
                 MessageBox.Show("One or two fields values are not correct!");
