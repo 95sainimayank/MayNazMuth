@@ -161,19 +161,26 @@ namespace MayNazMuth
         {
             using (var ctx = new CustomDbContext())
             {
-                //Pull the airport 
-                Airport AP = ctx.Airports.Where(x => x.AirportId == Convert.ToInt32(AirportIdTextBox.Text)).First();
+                try
+                {
+                    //Pull the airport 
+                    Airport AP = ctx.Airports.Where(x => x.AirportId == Convert.ToInt32(AirportIdTextBox.Text)).First();
+                    ProgressBarHandler();
 
-                ProgressBarHandler();
-
-                //Update the object
-                ctx.Airports.Remove(AP);
-                //Save my changes
-                ctx.SaveChanges();
-                //update the data grid
-                Updategrid();
-                AirportFlightReportButton.IsEnabled = false;
-                resetForm();
+                    //Update the object
+                    ctx.Airports.Remove(AP);
+                    //Save my changes
+                    ctx.SaveChanges();
+                    //update the data grid
+                    Updategrid();
+                    AirportFlightReportButton.IsEnabled = false;
+                    resetForm();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("There are some related data for this AirportId in other tables");
+                }
+               
 
             }
         }
