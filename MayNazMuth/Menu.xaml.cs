@@ -31,7 +31,7 @@ namespace MayNazMuth
         public void ToBookFlightWindow(object sender, EventArgs args)
         {            
             
-            BookFlightWindow ToBookFlight = new BookFlightWindow();
+            MainWindow ToBookFlight = new MainWindow();
             CloseAllWindows();
             ToBookFlight.Show();
 

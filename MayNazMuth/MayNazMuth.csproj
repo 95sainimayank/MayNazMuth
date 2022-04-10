@@ -185,9 +185,6 @@
     <Compile Include="AirportWindow.xaml.cs">
       <DependentUpon>AirportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BookFlightWindow.xaml.cs">
-      <DependentUpon>BookFlightWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="BookingReportWindow.xaml.cs">
       <DependentUpon>BookingReportWindow.xaml</DependentUpon>
     </Compile>
@@ -269,10 +266,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AirportWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BookFlightWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

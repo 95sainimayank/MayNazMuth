@@ -255,7 +255,7 @@ namespace MayNazMuth {
 
                     db.SaveChanges();
                 }*/
-
+                CloseAllWindows();
                 PaymentWindow paymentWindow = new PaymentWindow(bookingId, passPrice);
                 //paymentWindow.ticketPriceValueLabel.Content = lblTotalPrice;
                 //this.Hide();
