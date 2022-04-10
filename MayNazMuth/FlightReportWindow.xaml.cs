@@ -168,14 +168,15 @@ namespace MayNazMuth
             else
             {
                 MessageBox.Show("Start Date can not be later than End Date");
+                
             }
         }
 
         private void clearFilters(object sender, EventArgs args)
         {
 
-            fromDatePicker.SelectedDate = null;
-            toDatePicker.SelectedDate = null;
+            fromDatePicker.SelectedDate = DateTime.Now;
+            toDatePicker.SelectedDate = DateTime.Now;
             fromAirportTextbox.Text = "";
             populateData();
         }

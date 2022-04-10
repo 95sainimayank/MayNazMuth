@@ -30,52 +30,7 @@ namespace MayNazMuth {
 
         public void InitializeDataGrid() {
             using (var db = new CustomDbContext()) {
-                //AllPassengerDataGrid.ItemsSource = db.Passengers.ToList();
-
-                DataGridTextColumn passengerId = new DataGridTextColumn {
-                    Header = "Passenger Id",
-                    Binding = new Binding("PassengerId")
-
-                };
-                DataGridTextColumn passengerName = new DataGridTextColumn {
-                    Header = "Passenger Name",
-                    Binding = new Binding("FullName")
-                };
-                DataGridTextColumn passportNo = new DataGridTextColumn {
-                    Header = "Passport Number",
-                    Binding = new Binding("PassportNo")
-                };
-                DataGridTextColumn email = new DataGridTextColumn {
-                    Header = "Email",
-                    Binding = new Binding("Email")
-                };
-                DataGridTextColumn phone = new DataGridTextColumn {
-                    Header = "Phone Number",
-                    Binding = new Binding("PhoneNo")
-                };
-                DataGridTextColumn dateofbirth = new DataGridTextColumn {
-                    Header = "Date Of Birth",
-                    Binding = new Binding("DateOfBirth")
-                };
-                DataGridTextColumn gender = new DataGridTextColumn {
-                    Header = "Gender",
-                    Binding = new Binding("Gender")
-                };
-                    
-                AllPassengerDataGrid.Columns.Add(passengerId);
-                AllPassengerDataGrid.Columns.Add(passengerName);
-                AllPassengerDataGrid.Columns.Add(passportNo);
-                AllPassengerDataGrid.Columns.Add(email);
-                AllPassengerDataGrid.Columns.Add(phone);
-                AllPassengerDataGrid.Columns.Add(dateofbirth);
-                AllPassengerDataGrid.Columns.Add(gender);
-
-                foreach (Passenger p in db.Passengers.ToList()) {
-                    AllPassengerDataGrid.Items.Remove(p);
-                }
-                foreach (Passenger p in db.Passengers.ToList()) {
-                    AllPassengerDataGrid.Items.Add(p);
-                }
+                AllPassengerDataGrid.ItemsSource = db.Passengers.ToList();
 
                 txtFullName.IsEnabled = false;
                 txtEmail.IsEnabled = false;
@@ -141,7 +96,7 @@ namespace MayNazMuth {
                                         ((ComboBoxItem)comboGender.SelectedItem).Content.ToString());
 
                     updatedPassenger.PassengerId = Convert.ToInt32(lblPassengerId.Content);
-                    
+                    //updatedPassenger.BookingPassengers = 
                     db.Update(updatedPassenger);
                     db.SaveChanges();
 

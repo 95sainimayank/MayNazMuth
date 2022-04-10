@@ -5,23 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MayNazMuth"
         mc:Ignorable="d"
-        Title="AddPassengerToBookingWindow" Height="620" Width="1100">
+        Title="AddPassengerToBookingWindow" Height="600" Width="1100">
     <Grid>
-        <DataGrid x:Name="PassengersDataGrid" HorizontalAlignment="Left" Height="206" Margin="329,80,0,0" VerticalAlignment="Top" Width="448"/>
-        <Label Content="Full Name" HorizontalAlignment="Left" Height="26" Margin="819,115,0,0" VerticalAlignment="Top" Width="88"/>
-        <Label Content="Passport No" HorizontalAlignment="Left" Height="32" Margin="819,147,0,0" VerticalAlignment="Top" Width="88"/>
-        <Label Content="Filter user" HorizontalAlignment="Left" Height="38" Margin="904,55,0,0" VerticalAlignment="Top" Width="98" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Email" HorizontalAlignment="Left" Height="34" Margin="819,179,0,0" VerticalAlignment="Top" Width="88"/>
-        <Label Content="Phone number" HorizontalAlignment="Left" Height="32" Margin="819,219,0,0" VerticalAlignment="Top" Width="88"/>
-        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="26" Margin="926,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
-        <TextBox x:Name="txtPassport" HorizontalAlignment="Left" Height="32" Margin="926,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="30" Margin="926,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
-        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="32" Margin="926,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="38" Margin="858,269,0,0" VerticalAlignment="Top" Width="178"/>
-        <Button x:Name="btnSeeAll" Content="Reset List" HorizontalAlignment="Left" Height="40" Margin="858,337,0,0" VerticalAlignment="Top" Width="178"/>
-        <Button x:Name="btnAdd" Content="Add Passenger To Booking" HorizontalAlignment="Left" Height="44" Margin="329,298,0,0" VerticalAlignment="Top" Width="178"/>
-        <Label Content="Booking Id" HorizontalAlignment="Left" Height="32" Margin="366,44,0,0" VerticalAlignment="Top" Width="76" FontWeight="Bold"/>
-        <Label x:Name="lblBookingId" Content="" HorizontalAlignment="Left" Height="30" Margin="469,44,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.5,0.5">
+        <DataGrid x:Name="PassengersDataGrid" HorizontalAlignment="Left" Height="291" Margin="316,46,0,0" VerticalAlignment="Top" Width="448"/>
+        <Label Content="Full Name" HorizontalAlignment="Left" Height="27" Margin="786,89,0,0" VerticalAlignment="Top" Width="88"/>
+        <Label Content="Passport No" HorizontalAlignment="Left" Height="33" Margin="786,121,0,0" VerticalAlignment="Top" Width="88"/>
+        <Label Content="Search User" HorizontalAlignment="Left" Height="39" Margin="892,31,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Email" HorizontalAlignment="Left" Height="34" Margin="786,154,0,0" VerticalAlignment="Top" Width="88"/>
+        <Label Content="Phone number" HorizontalAlignment="Left" Height="32" Margin="786,194,0,0" VerticalAlignment="Top" Width="88"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="27" Margin="914,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="txtPassport" HorizontalAlignment="Left" Height="33" Margin="914,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="30" Margin="914,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="32" Margin="914,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="38" Margin="846,246,0,0" VerticalAlignment="Top" Width="178"/>
+        <Button x:Name="btnSeeAll" Content="See All Passengers" HorizontalAlignment="Left" Height="40" Margin="846,314,0,0" VerticalAlignment="Top" Width="178"/>
+        <Button x:Name="btnAdd" Content="Add Passenger To Booking" HorizontalAlignment="Left" Height="44" Margin="846,376,0,0" VerticalAlignment="Top" Width="178"/>
+        <Label Content="Booking Id" HorizontalAlignment="Left" Height="31" Margin="369,10,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="lblBookingId" Content="" HorizontalAlignment="Left" Height="29" Margin="472,10,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -31,30 +31,30 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="txtAddedPassengers" HorizontalAlignment="Left" Height="142" Margin="313,412,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"/>
-        <Label Content="Added Passengers" HorizontalAlignment="Left" Height="34" Margin="493,372,0,0" VerticalAlignment="Top" Width="222"/>
-        <Label Content="Full Name" HorizontalAlignment="Left" Height="34" Margin="8,88,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="Email" HorizontalAlignment="Left" Height="30" Margin="8,126,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="Passport Number" HorizontalAlignment="Left" Height="32" Margin="8,162,0,0" VerticalAlignment="Top" Width="112"/>
-        <Label Content="Phone Number" HorizontalAlignment="Left" Height="32" Margin="8,198,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="Date of Birth" HorizontalAlignment="Left" Height="32" Margin="8,236,0,0" VerticalAlignment="Top" Width="112"/>
-        <Label Content="Gender" HorizontalAlignment="Left" Height="32" Margin="8,282,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="34" Margin="125,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
-        <TextBox x:Name="txtEmailId" HorizontalAlignment="Left" Height="30" Margin="125,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
-        <TextBox x:Name="txtPassportNumber" HorizontalAlignment="Left" Height="32" Margin="125,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="32" Margin="125,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
-        <DatePicker x:Name="txtDateOfBirth" HorizontalAlignment="Left" Height="32" Margin="125,236,0,0" VerticalAlignment="Top" Width="153"/>
-        <ComboBox x:Name="comboGender" HorizontalAlignment="Left" Height="42" Margin="125,280,0,0" VerticalAlignment="Top" Width="153">
+        <TextBox x:Name="txtAddedPassengers" HorizontalAlignment="Left" Height="156" Margin="316,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"/>
+        <Label Content="Added Passengers" HorizontalAlignment="Left" Height="34" Margin="496,364,0,0" VerticalAlignment="Top" Width="222"/>
+        <Label Content="Full Name" HorizontalAlignment="Left" Height="33" Margin="13,72,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Email" HorizontalAlignment="Left" Height="30" Margin="13,109,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Passport Number" HorizontalAlignment="Left" Height="32" Margin="13,145,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Height="32" Margin="13,182,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Date of Birth" HorizontalAlignment="Left" Height="32" Margin="13,219,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Height="32" Margin="13,256,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="33" Margin="140,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <TextBox x:Name="txtEmailId" HorizontalAlignment="Left" Height="29" Margin="140,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <TextBox x:Name="txtPassportNumber" HorizontalAlignment="Left" Height="32" Margin="140,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="32" Margin="140,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <DatePicker x:Name="txtDateOfBirth" HorizontalAlignment="Left" Height="32" Margin="140,219,0,0" VerticalAlignment="Top" Width="153"/>
+        <ComboBox x:Name="comboGender" HorizontalAlignment="Left" Height="42" Margin="140,263,0,0" VerticalAlignment="Top" Width="153">
             <ComboBoxItem>Male</ComboBoxItem>
             <ComboBoxItem>Female</ComboBoxItem>
             <ComboBoxItem>Other</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="btnPassengerToGrid" Content="Add Passenger to List" HorizontalAlignment="Left" Height="44" Margin="59,362,0,0" VerticalAlignment="Top" Width="158"/>
-        <Button x:Name="btnToPayment" Content="Proceed for Payment" HorizontalAlignment="Left" Height="64" Margin="35,500,0,0" VerticalAlignment="Top" Width="203" Background="#FF20B200"/>
-        <Label Content="Flight Price" HorizontalAlignment="Left" Height="32" Margin="544,44,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold"/>
-        <Label x:Name="lblFlightPrice" Content="" HorizontalAlignment="Left" Height="32" Margin="634,44,0,0" VerticalAlignment="Top" Width="81"/>
-        <Label Content="Total Price:" HorizontalAlignment="Left" Height="32" Margin="556,298,0,0" VerticalAlignment="Top" Width="70"/>
-        <Label x:Name="lblTotalPrice" Content="" HorizontalAlignment="Left" Height="32" Margin="657,298,0,0" VerticalAlignment="Top" Width="77"/>
+        <Button x:Name="btnPassengerToGrid" Content="Add Passenger to List" HorizontalAlignment="Left" Height="44" Margin="62,327,0,0" VerticalAlignment="Top" Width="158"/>
+        <Button x:Name="btnToPayment" Content="Proceed for Payment" HorizontalAlignment="Left" Height="64" Margin="38,465,0,0" VerticalAlignment="Top" Width="203"/>
+        <Label Content="Flight Price" HorizontalAlignment="Left" Height="31" Margin="547,10,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="lblFlightPrice" Content="" HorizontalAlignment="Left" Height="31" Margin="637,10,0,0" VerticalAlignment="Top" Width="81"/>
+        <Label Content="Total Price:" HorizontalAlignment="Left" Height="32" Margin="846,465,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label x:Name="lblTotalPrice" Content="" HorizontalAlignment="Left" Height="32" Margin="947,465,0,0" VerticalAlignment="Top" Width="77"/>
 
     </Grid>
 </Window>
