@@ -1,12 +1,12 @@
-Flight No,DepatureDate,"	ArriveDate","	Airline ID",Airline,Source AirportID,Source Airport,Destination AirportID,Destination Airport
-UA835,3/14/2015 11:25,3/14/2015 14:50,1,Aircanada,3,Calgery,1,Vancouver
-UA199,3/20/2015 20:25,3/20/2015 16:55,1,Aircanada,2,Toronto,3,Calgery
-UA564,3/20/2015 22:45,3/20/2015 4:38,1,Aircanada,1,Vancouver,2,Toronto
-SQ12,8/19/2015 19:15,8/19/2015 13:25,1,Aircanada,2,Toronto,1,Vancouver
-UA833,3/14/2015 11:25,3/14/2015 14:50,1,Aircanada,3,Calgery,1,Vancouver
-UA192,3/20/2015 20:25,3/20/2015 16:55,1,Aircanada,2,Toronto,3,Calgery
-UA562,3/20/2015 22:45,3/20/2015 4:38,1,Aircanada,1,Vancouver,2,Toronto
-SQ122,8/19/2015 19:15,8/19/2015 13:25,1,Aircanada,2,Toronto,1,Vancouver
-SQ12222,8/19/2015 19:15,8/19/2015 13:25,1,Aircanada,2,Toronto,1,Vancouver
-UA8345,4/9/2022 2:13,4/10/2022 13:45,1,Aircanada,3,Calgery,2,Toronto
-UA9999,4/9/2022 2:13,4/10/2022 13:45,1,Aircanada,3,Calgery,2,Toronto
+Flight No,DepatureDate,"	ArriveDate",Airline,Source Airport,Destination Airport,Price
+UA835,3/14/2015 11:25,3/14/2015 14:50,Aircanada,Calgery,Vancouver,750
+UA199,3/20/2015 20:25,3/20/2015 16:55,Aircanada,Toronto,Calgery,550
+UA564,3/20/2015 22:45,3/20/2015 4:38,Aircanada,Vancouver,Toronto,1500
+SQ12,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto,Vancouver,800
+UA833,3/14/2015 11:25,3/14/2015 14:50,Aircanada,Calgery,Vancouver,679
+UA192,3/20/2015 20:25,3/20/2015 16:55,Aircanada,Toronto,Calgery,1200
+UA562,3/20/2015 22:45,3/20/2015 4:38,Aircanada,Vancouver,Toronto,900
+SQ122,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto,Vancouver,900
+SQ12222,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto,Vancouver,1200
+UA8345,4/9/2022 2:13,4/10/2022 13:45,Aircanada,Calgery,Toronto,1190
+UA9999,4/9/2022 2:13,4/10/2022 13:45,Aircanada,Calgery,Toronto,890
