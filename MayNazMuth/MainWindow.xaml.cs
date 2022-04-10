@@ -252,8 +252,6 @@ namespace MayNazMuth {
         }
 
         private void addBooking(object sender, EventArgs arg) {
-
-
             if (!(flightDataGrid.SelectedItems.Count == 1)) {
                 MessageBox.Show("Please select a flight!");
             }
@@ -274,15 +272,17 @@ namespace MayNazMuth {
                     newBooking.BookingStatus = bookingStatus;
                     newBooking.FlightId = flightId;
 
+                    AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
+                    Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
+
                     ctx.Bookings.Add(newBooking);
                     ctx.SaveChanges();
 
+                    CloseAllWindows();
+                    Passeger.Show();
                 }
 
                 //Open Passenger window when add passenger is clicked
-                AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
-                CloseAllWindows();
-                Passeger.Show();
             }
 
         }

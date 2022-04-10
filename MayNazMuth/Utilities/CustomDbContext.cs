@@ -38,9 +38,8 @@ namespace MayNazMuth.Utilities {
 
 
             //composite key for m:n
-            modelBuilder.Entity<BookingPassenger>()
-                .HasKey(p => new { p.BookingId, p.PassengerId });
-
+            /*modelBuilder.Entity<BookingPassenger>()
+                .HasKey(p => new { p.BookingId, p.PassengerId });*/
             // m : n relation with 2 foreignkey
             modelBuilder.Entity<Flight>()
                 .HasOne(p => p.SourceAirport)
@@ -51,6 +50,15 @@ namespace MayNazMuth.Utilities {
                 .HasOne(p => p.DestinationAirport)
                 .WithMany(p => p.DestinationFlights)
                 .HasForeignKey(p => p.DestinationAirportId);
+
+            //for composite key to remove identity there
+            modelBuilder.Entity<BookingPassenger>()
+            .Property(et => et.BookingId)
+            .ValueGeneratedNever();
+
+           /* modelBuilder.Entity<BookingPassenger>()
+             .Property(et => et.PassengerId)
+             .ValueGeneratedNever();*/
 
         }
     }
