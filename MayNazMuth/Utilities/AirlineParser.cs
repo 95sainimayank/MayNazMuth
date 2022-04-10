@@ -8,10 +8,10 @@ using System.Windows;
 
 namespace MayNazMuth.Utilities
 {
-    class FlightParser
+    class AirlineParser
     {
-        public static List<Flight> flightsList = new List<Flight>();
-        public static List<Flight> parseFlightFile(String contents)
+        public static List<Airline> airlineList = new List<Airline>();
+        public static List<Airline> parseAirlineFile(String contents)
         {
 
 
@@ -22,30 +22,21 @@ namespace MayNazMuth.Utilities
                 //Cut the line into the fileds
                 string[] fields = line.Trim().Split(',');
 
-                if (fields.Length != 10)
+                if (fields.Length != 1)
                 {
                     //MessageBox.Show("Problem parsing file, check format");
-                    continue;
+                    break;
 
                 }
                 else
                 {
                     try
                     {                       
-                        Flight newFlight = new Flight(                           
-                             Convert.ToInt32(fields[0]),
-                             fields[1].Trim(),
-                             Convert.ToDateTime(fields[2]),
-                             Convert.ToDateTime(fields[3]),
-                             fields[4].Trim(),
-                             fields[5].Trim(),
-                             fields[6].Trim(),
-                             Convert.ToDouble(fields[7]),
-                             Convert.ToInt32(fields[8]),
-                             Convert.ToInt32(fields[9])
+                        Airline newAirline = new Airline(
+                            fields[0].Trim()                                                      
                             );
 
-                        flightsList.Add(newFlight);
+                        airlineList.Add(newAirline);
                     }
                     catch (Exception ex)
                     {
@@ -57,7 +48,7 @@ namespace MayNazMuth.Utilities
 
             }
            
-            return flightsList;
+            return airlineList;
         }
     }
 }

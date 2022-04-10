@@ -33,6 +33,7 @@ namespace MayNazMuth {
         }
 
         public void InitializeDataGrid() {
+            int bookingId;
             using (var db = new CustomDbContext()) {
                 //PassengersDataGrid.ItemsSource = db.Passengers.ToList();
 
@@ -83,7 +84,15 @@ namespace MayNazMuth {
                 PassengersDataGrid.SelectionMode = (DataGridSelectionMode)SelectionMode.Single;
 
                 List<Booking> bookings = db.Bookings.ToList();
-                int bookingId = bookings[bookings.Count - 1].BookingId;
+                if(bookings.Count > 0)
+                {
+                     bookingId = bookings[bookings.Count - 1].BookingId;
+                }
+                else
+                {
+                    bookingId = 0;
+                }
+                
 
                 lblBookingId.Content = bookingId;
 

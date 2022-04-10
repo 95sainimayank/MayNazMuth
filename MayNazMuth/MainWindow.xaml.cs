@@ -21,9 +21,15 @@ namespace MayNazMuth {
         List<Flight> allFlightList = new List<Flight>();
         List<Flight> filteredFlightList = new List<Flight>();
 
+        List<Airport> allAirportList = new List<Airport>();
+
+        List<Airline> allAirlineList = new List<Airline>(); 
+
         //Utility Classes
         FileService fs = new FileService();
         FlightParser fp = new FlightParser();
+        AirportParser airps = new AirportParser();
+        AirlineParser alps = new AirlineParser();
 
         public MainWindow() {
             InitializeComponent();
@@ -31,12 +37,109 @@ namespace MayNazMuth {
             string fileContents = FileService.readFile(@"..\..\Data\FlightDetails.csv");
             allFlightList = FlightParser.parseFlightFile(fileContents);
 
+            string airportFileContents = FileService.readFile(@"..\..\Data\initialAirports.csv");
+            allAirportList = AirportParser.parseAirportFile(airportFileContents);
+
+            string airlineFileContents = FileService.readFile(@"..\..\Data\initialAirline.csv");
+            allAirlineList = AirlineParser.parseAirlineFile(airlineFileContents);
+
+
+            //add initial airports to database
+            AddinitialAirportsToDB();
+
+            //add oneAirline manually
+            AddinitialAirlineToDB();
+
             //call the function to initialize the datagrid
             toggleEventHandlers(false);
             addFlightData();
             initializeDataGrid();
             populateDataGrid();
             toggleEventHandlers(true);
+        }
+
+        private void AddinitialAirlineToDB()
+        {
+            List<string> AirlineNamesInDB = new List<string>();
+            List<Airline> airlineList = new List<Airline>();
+            using (var ctx = new CustomDbContext())
+
+            {
+                airlineList = ctx.Airlines.ToList<Airline>();
+                var airlineNames = airlineList.Select(x => x.AirlineName);
+
+                foreach (string pName in airlineNames)
+                {
+                    AirlineNamesInDB.Add(pName);
+                }
+
+                foreach (Airline al in allAirlineList)
+                {
+                    //check if allAirportList contains the aiport id that are already in the DB
+                    //Add records only if the relevent airport id is not in the DB
+                    if (AirlineNamesInDB.Contains(al.AirlineName))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        //int id = al.AirlineId;
+                        //string name = al.AirlineName;
+
+                        ctx.Airlines.Add(al);
+                        ctx.SaveChanges();
+                    }
+                }
+
+            }
+
+         }
+
+        private void AddinitialAirportsToDB()
+        {
+
+            List<string> AirportNamesInDB = new List<string>();
+            List<Airport> airportList = new List<Airport>();
+
+            //Add all flight numbers in the DB to flightNoInDB list
+            using (var ctx = new CustomDbContext())
+            {
+                airportList = ctx.Airports.ToList<Airport>();
+                var airporNames = airportList.Select(x => x.AirportName);
+
+                foreach (string pName in airporNames)
+                {
+                    AirportNamesInDB.Add(pName);
+                }
+            }
+            foreach (Airport ap in allAirportList)
+            {
+                //check if allAirportList contains the aiport id that are already in the DB
+                //Add records only if the relevent airport id is not in the DB
+                if (AirportNamesInDB.Contains(ap.AirportName))
+                {
+                    continue;
+                }
+                else
+                {
+                    int id = ap.AirportId;
+                    string name = ap.AirportName;                    
+                    string address = ap.AirportAddress;
+                    string city = ap.AirportCity;
+                    string country = ap.AirportCountry;
+                    string abbreviation = ap.AirportAbbreviation;
+                    string phoneno = ap.AirportPhoneno;
+                    string email = ap.AirportEmail;
+                    string website = ap.AirportWebsite;
+
+                    using (var ctx = new CustomDbContext())
+                    {
+                        Console.WriteLine(ap.AirportName);
+                        ctx.Airports.Add(ap);
+                        ctx.SaveChanges();
+                    }                    
+                }
+            }
         }
 
         private void toggleEventHandlers(bool toggle) {
@@ -277,7 +380,7 @@ namespace MayNazMuth {
                     newBooking.BookingStatus = bookingStatus;
                     newBooking.FlightId = flightId;
 
-                        //dAddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
+                    //AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
                     //Passeger.lblFlightPrice.Content = "$" + selectedFlight.Price;
 
                     ctx.Bookings.Add(newBooking);

@@ -34,9 +34,10 @@ namespace MayNazMuth.Entities {
         
 
         //constructor for Flight class
-        public Flight(string nNo, DateTime nDepart, DateTime nArrival, string nAirline, 
-            string nSourceAirport, string nDestinationAirport,double nPrice)
+        public Flight(int nAirlineID,string nNo, DateTime nDepart, DateTime nArrival, string nAirline, 
+            string nSourceAirport, string nDestinationAirport,double nPrice,int nSourceApId,int nDestinationApId)
         {
+            AirlineId = nAirlineID; 
             AirlineName = new Airline(nAirline).AirlineName;
             SourceAirportName = new Airport(nSourceAirport).AirportName;
             DestinationAirportName = new Airport(nDestinationAirport).AirportName;
@@ -44,8 +45,8 @@ namespace MayNazMuth.Entities {
             DepartureTime = nDepart;
             ArrivalTime = nArrival;
             Price = nPrice;
-
-
+            SourceAirportId = nSourceApId;
+            DestinationAirportId = nDestinationApId;
 
         }
     }

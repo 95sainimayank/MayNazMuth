@@ -1,12 +1,12 @@
-Flight No,DepatureDate,"	ArriveDate",Airline,Source Airport,Destination Airport,Price
-UA835,3/14/2015 11:25,3/14/2015 14:50,Aircanada,Calgery,Vancouver,750
-UA199,3/20/2015 20:25,3/20/2015 16:55,Aircanada,Toronto,Calgery,550
-UA564,3/20/2015 22:45,3/20/2015 4:38,Aircanada,Vancouver,Toronto,1500
-SQ12,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto,Vancouver,800
-UA833,3/14/2015 11:25,3/14/2015 14:50,Aircanada,Calgery,Vancouver,679
-UA192,3/20/2015 20:25,3/20/2015 16:55,Aircanada,Toronto,Calgery,1200
-UA562,3/20/2015 22:45,3/20/2015 4:38,Aircanada,Vancouver,Toronto,900
-SQ122,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto,Vancouver,900
-SQ12222,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto,Vancouver,1200
-UA8345,4/9/2022 2:13,4/10/2022 13:45,Aircanada,Calgery,Toronto,1190
-UA9999,4/9/2022 2:13,4/10/2022 13:45,Aircanada,Calgery,Toronto,890
+AirlineId,Flight No,DepatureDate,"	ArriveDate",Airline,Source Airport,Destination Airport,Price,SourceAirportId,DestinationAirportId
+1,UA835,3/14/2015 11:25,3/14/2015 14:50,Aircanada,Vancouver International Airport,StJohn's International Airport,750,3,1
+1,UA199,3/20/2015 20:25,3/20/2015 16:55,Aircanada,Toronto Pearson International Airport,Vancouver International Airport,550,2,3
+1,UA564,3/20/2015 22:45,3/20/2015 4:38,Aircanada,StJohn's International Airport,Toronto Pearson International Airport,1500,1,2
+1,SQ12,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto Pearson International Airport,StJohn's International Airport,800,2,1
+1,UA833,3/14/2015 11:25,3/14/2015 14:50,Aircanada,Vancouver International Airport,StJohn's International Airport,679,3,1
+1,UA192,3/20/2015 20:25,3/20/2015 16:55,Aircanada,Toronto Pearson International Airport,Vancouver International Airport,1200,2,3
+1,UA562,3/20/2015 22:45,3/20/2015 4:38,Aircanada,StJohn's International Airport,Toronto Pearson International Airport,900,1,2
+1,SQ122,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto Pearson International Airport,StJohn's International Airport,900,2,1
+1,SQ12222,8/19/2015 19:15,8/19/2015 13:25,Aircanada,Toronto Pearson International Airport,StJohn's International Airport,1200,2,1
+1,UA8345,4/9/2022 2:13,4/10/2022 13:45,Aircanada,Vancouver International Airport,Toronto Pearson International Airport,1190,3,2
+1,UA9999,4/9/2022 2:13,4/10/2022 13:45,Aircanada,Vancouver International Airport,Toronto Pearson International Airport,890,3,2

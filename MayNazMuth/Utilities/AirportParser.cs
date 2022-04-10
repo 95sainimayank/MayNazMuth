@@ -8,10 +8,10 @@ using System.Windows;
 
 namespace MayNazMuth.Utilities
 {
-    class FlightParser
+    class AirportParser
     {
-        public static List<Flight> flightsList = new List<Flight>();
-        public static List<Flight> parseFlightFile(String contents)
+        public static List<Airport> airportsList = new List<Airport>();
+        public static List<Airport> parseAirportFile(String contents)
         {
 
 
@@ -22,7 +22,7 @@ namespace MayNazMuth.Utilities
                 //Cut the line into the fileds
                 string[] fields = line.Trim().Split(',');
 
-                if (fields.Length != 10)
+                if (fields.Length != 8)
                 {
                     //MessageBox.Show("Problem parsing file, check format");
                     continue;
@@ -32,20 +32,19 @@ namespace MayNazMuth.Utilities
                 {
                     try
                     {                       
-                        Flight newFlight = new Flight(                           
-                             Convert.ToInt32(fields[0]),
-                             fields[1].Trim(),
-                             Convert.ToDateTime(fields[2]),
-                             Convert.ToDateTime(fields[3]),
-                             fields[4].Trim(),
-                             fields[5].Trim(),
-                             fields[6].Trim(),
-                             Convert.ToDouble(fields[7]),
-                             Convert.ToInt32(fields[8]),
-                             Convert.ToInt32(fields[9])
+                        Airport newAirport = new Airport(
+                            fields[0].Trim(),
+                            fields[1].Trim(),
+                            fields[2].Trim(),
+                            fields[3].Trim(),
+                            fields[4].Trim(),
+                            fields[5].Trim(),
+                            fields[6].Trim(),
+                            fields[7].Trim()
+                            
                             );
 
-                        flightsList.Add(newFlight);
+                        airportsList.Add(newAirport);
                     }
                     catch (Exception ex)
                     {
@@ -57,7 +56,7 @@ namespace MayNazMuth.Utilities
 
             }
            
-            return flightsList;
+            return airportsList;
         }
     }
 }

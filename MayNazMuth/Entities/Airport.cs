@@ -28,7 +28,7 @@ namespace MayNazMuth {
         }
 
         public Airport(string nName, string nAddress, string nCity, string nCountry,
-            string nAbr, string nEmail, string nWebsite, string nPhone) {
+            string nAbr, string nEmail, string nWebsite, string nPhone) {            
             AirportName = nName;
             AirportAddress = nAddress;
             AirportCity = nCity;
