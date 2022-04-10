@@ -50,25 +50,25 @@ namespace MayNazMuth {
         private void AddinitialAirportsToDB()
         {
 
-            List<int> AirportIdInDB = new List<int>();
+            List<string> AirportNamesInDB = new List<string>();
             List<Airport> airportList = new List<Airport>();
 
             //Add all flight numbers in the DB to flightNoInDB list
             using (var ctx = new CustomDbContext())
             {
                 airportList = ctx.Airports.ToList<Airport>();
-                var airporIds = airportList.Select(x => x.AirportId);
+                var airporNames = airportList.Select(x => x.AirportName);
 
-                foreach (int pId in airporIds)
+                foreach (string pName in airporNames)
                 {
-                    AirportIdInDB.Add(pId);
+                    AirportNamesInDB.Add(pName);
                 }
             }
             foreach (Airport ap in allAirportList)
             {
                 //check if allAirportList contains the aiport id that are already in the DB
                 //Add records only if the relevent airport id is not in the DB
-                if (AirportIdInDB.Contains(ap.AirportId))
+                if (AirportNamesInDB.Contains(ap.AirportName))
                 {
                     continue;
                 }
@@ -86,7 +86,7 @@ namespace MayNazMuth {
 
                     using (var ctx = new CustomDbContext())
                     {
-
+                        Console.WriteLine(ap.AirportName);
                         ctx.Airports.Add(ap);
                         ctx.SaveChanges();
                     }                    

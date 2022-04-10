@@ -22,10 +22,10 @@ namespace MayNazMuth.Utilities
                 //Cut the line into the fileds
                 string[] fields = line.Trim().Split(',');
 
-                if (fields.Length != 7)
+                if (fields.Length != 10)
                 {
                     //MessageBox.Show("Problem parsing file, check format");
-                    break;
+                    continue;
 
                 }
                 else
@@ -33,15 +33,16 @@ namespace MayNazMuth.Utilities
                     try
                     {                       
                         Flight newFlight = new Flight(                           
-                         
-                             fields[0].Trim(),
-                             Convert.ToDateTime(fields[1]),
+                             Convert.ToInt32(fields[0]),
+                             fields[1].Trim(),
                              Convert.ToDateTime(fields[2]),
-                             fields[3].Trim(),
+                             Convert.ToDateTime(fields[3]),
                              fields[4].Trim(),
                              fields[5].Trim(),
-                             Convert.ToDouble(fields[6])
-                                                                                      
+                             fields[6].Trim(),
+                             Convert.ToDouble(fields[7]),
+                             Convert.ToInt32(fields[8]),
+                             Convert.ToInt32(fields[9])
                             );
 
                         flightsList.Add(newFlight);

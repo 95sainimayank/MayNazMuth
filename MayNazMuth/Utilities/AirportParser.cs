@@ -25,24 +25,23 @@ namespace MayNazMuth.Utilities
                 if (fields.Length != 8)
                 {
                     //MessageBox.Show("Problem parsing file, check format");
-                    break;
+                    continue;
 
                 }
                 else
                 {
                     try
                     {                       
-                        Airport newAirport = new Airport(                           
-                           
-                            Convert.ToInt32(fields[0]),
+                        Airport newAirport = new Airport(
+                            fields[0].Trim(),
                             fields[1].Trim(),
                             fields[2].Trim(),
                             fields[3].Trim(),
                             fields[4].Trim(),
                             fields[5].Trim(),
                             fields[6].Trim(),
-                            fields[7].Trim(),
-                            fields[8].Trim()
+                            fields[7].Trim()
+                            
                             );
 
                         airportsList.Add(newAirport);
