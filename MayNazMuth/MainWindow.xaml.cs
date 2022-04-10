@@ -21,9 +21,12 @@ namespace MayNazMuth {
         List<Flight> allFlightList = new List<Flight>();
         List<Flight> filteredFlightList = new List<Flight>();
 
+        List<Airport> allAirportList = new List<Airport>();
+
         //Utility Classes
         FileService fs = new FileService();
         FlightParser fp = new FlightParser();
+        AirportParser airps = new AirportParser();
 
         public MainWindow() {
             InitializeComponent();
@@ -31,12 +34,64 @@ namespace MayNazMuth {
             string fileContents = FileService.readFile(@"..\..\Data\FlightDetails.csv");
             allFlightList = FlightParser.parseFlightFile(fileContents);
 
+            string airportFileContents = FileService.readFile(@"..\..\Data\initialAirports.csv");
+            allAirportList = AirportParser.parseAirportFile(airportFileContents);
+            //add initial airports to database
+            AddinitialAirportsToDB();
+
             //call the function to initialize the datagrid
             toggleEventHandlers(false);
             addFlightData();
             initializeDataGrid();
             populateDataGrid();
             toggleEventHandlers(true);
+        }
+
+        private void AddinitialAirportsToDB()
+        {
+
+            List<int> AirportIdInDB = new List<int>();
+            List<Airport> airportList = new List<Airport>();
+
+            //Add all flight numbers in the DB to flightNoInDB list
+            using (var ctx = new CustomDbContext())
+            {
+                airportList = ctx.Airports.ToList<Airport>();
+                var airporIds = airportList.Select(x => x.AirportId);
+
+                foreach (int pId in airporIds)
+                {
+                    AirportIdInDB.Add(pId);
+                }
+            }
+            foreach (Airport ap in allAirportList)
+            {
+                //check if allAirportList contains the aiport id that are already in the DB
+                //Add records only if the relevent airport id is not in the DB
+                if (AirportIdInDB.Contains(ap.AirportId))
+                {
+                    continue;
+                }
+                else
+                {
+                    //int id = ap.AirportId;
+                    string name = ap.AirportName;                    
+                    string address = ap.AirportAddress;
+                    string city = ap.AirportCity;
+                    string country = ap.AirportCountry;
+                    string abbreviation = ap.AirportAbbreviation;
+                    string phoneno = ap.AirportPhoneno;
+                    string email = ap.AirportEmail;
+                    string website = ap.AirportWebsite;
+
+                    using (var ctx = new CustomDbContext())
+                    {
+
+                        ctx.Airports.Add(ap);
+                        ctx.SaveChanges();
+                    }                    
+                }
+            }
         }
 
         private void toggleEventHandlers(bool toggle) {

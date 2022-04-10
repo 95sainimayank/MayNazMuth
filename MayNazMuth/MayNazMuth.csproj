@@ -234,6 +234,22 @@
     <Compile Include="Migrations\20220410080425_MayankAdded.designer.cs">
       <DependentUpon>20220410080425_MayankAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220410193415_addNewFile.cs" />
+    <Compile Include="Migrations\20220410193415_addNewFile.designer.cs">
+      <DependentUpon>20220410193415_addNewFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220410194513_TestDb.cs" />
+    <Compile Include="Migrations\20220410194513_TestDb.designer.cs">
+      <DependentUpon>20220410194513_TestDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220410195244_testAirportTBALE.cs" />
+    <Compile Include="Migrations\20220410195244_testAirportTBALE.designer.cs">
+      <DependentUpon>20220410195244_testAirportTBALE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220410200220_testAirportTBALE2.cs" />
+    <Compile Include="Migrations\20220410200220_testAirportTBALE2.designer.cs">
+      <DependentUpon>20220410200220_testAirportTBALE2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>
@@ -252,6 +268,7 @@
     </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
     <Compile Include="Utilities\FileService.cs" />
+    <Compile Include="Utilities\AirportParser.cs" />
     <Compile Include="Utilities\FlightParser.cs" />
     <Page Include="AddPassengerToBookingWindow.xaml">
       <SubType>Designer</SubType>

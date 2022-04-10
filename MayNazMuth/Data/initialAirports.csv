@@ -1,0 +1,5 @@
+AirportId,AirportName,AirportCity,AirportCountry,AirportAbbreviation,AirportEmail,AirportWebsite,AirportPhoneno
+1,St.John's International Airport,StJohn's,Canada,YYT,stJohn@test.com,stJohn.com,7788331367
+2,Toronto Pearson International Airport,Toronto,Canada,YYZ,toronto@test.com,toronto.com,7788331367
+3,Vancouver International Airport,Vancouver,Canada,YVR,vancouver@test.com,vancouver.com,7788331367
+4,Winnipeg International Airport,Winnipeg,Canada,YWG,winni@test.com,winni.com,7788331367
