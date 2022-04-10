@@ -30,5 +30,12 @@ namespace MayNazMuth.Entities {
             DateOfBirth = nDOB;
             Gender = nGender;
         }
+
+        public override string ToString() {
+            return "FullName: " + FullName + ", Passport No: " + PassportNo + ", Date of Birth: "
+                + DateOfBirth.ToString() + ", Email: " + Email + "\n";
+                
+        }
+
     }
 }

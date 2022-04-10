@@ -37,16 +37,10 @@ namespace MayNazMuth {
             initializeDataGrid();
             populateDataGrid();
             toggleEventHandlers(true);
-
-            
-
-
         }
 
-        private void toggleEventHandlers(bool toggle)
-        {
-            if (toggle)
-            {
+        private void toggleEventHandlers(bool toggle) {
+            if (toggle) {
                 //btnBackUp.Click += addFlightData;
                 btnAddPassenger.Click += addBooking;
                 flightDataGrid.SelectionChanged += displaySelectedFlightInfo;
@@ -55,12 +49,9 @@ namespace MayNazMuth {
                 btnSearch.Click += searchFlightsDepartureAndArrival;
                 btnClear.Click += clearFilters;
 
-
-
             }
-            else
-            {
-               //btnBackUp.Click -= addFlightData;
+            else {
+                //btnBackUp.Click -= addFlightData;
                 btnAddPassenger.Click -= addBooking;
                 flightDataGrid.SelectionChanged -= displaySelectedFlightInfo;
                 btnAddPassenger.Click -= addBooking;
@@ -72,8 +63,7 @@ namespace MayNazMuth {
             }
         }
 
-        private void initializeDataGrid()
-        {
+        private void initializeDataGrid() {
             flightDataGrid.IsReadOnly = true;
             // flightDataGrid.ItemsSource = allFlightList;
             //Flight No, Depature, Date  Arrive,Date Airline, Source Airport,Destination Airport
@@ -128,53 +118,44 @@ namespace MayNazMuth {
 
         }
 
-        private void populateDataGrid()
-        {
-            foreach (Flight f in allFlightList)
-            {
+        private void populateDataGrid() {
+            foreach (Flight f in allFlightList) {
                 flightDataGrid.Items.Add(f);
             }
-          
+
         }
 
-        private void SetupFlightGrid()
-        {
+        private void SetupFlightGrid() {
             //Turn off multiselect
             flightDataGrid.SelectionMode = DataGridSelectionMode.Single;
             //Make it read only
             flightDataGrid.IsReadOnly = true;
         }
 
-        private void addFlightData()
-        {
-  
+        private void addFlightData() {
+
             List<String> flightNoInDB = new List<string>();
             List<Flight> flightList = new List<Flight>();
 
             //Add all flight numbers in the DB to flightNoInDB list
-            using (var ctx = new CustomDbContext())
-            {
+            using (var ctx = new CustomDbContext()) {
                 flightList = ctx.Flights.ToList<Flight>();
                 var flightNumbers = flightList.Select(x => x.FlightNo);
 
-                foreach(String fno in flightNumbers)
-                {
+                foreach (String fno in flightNumbers) {
                     flightNoInDB.Add(fno);
                 }
             }
 
-           
+
             //allFlightList.Count();
-            foreach(Flight f in allFlightList)
-            {
+            foreach (Flight f in allFlightList) {
                 //check if allFlightList contains the flight numbers that are already in the DB
                 //Add records only if the relevent flight number is not in the DB
-                if(flightNoInDB.Contains(f.FlightNo))
-                {
+                if (flightNoInDB.Contains(f.FlightNo)) {
                     continue;
                 }
-                else
-                {
+                else {
                     string flightNumber = f.FlightNo;
                     DateTime departureTime = f.DepartureTime;
                     DateTime arrivalTime = f.ArrivalTime;
@@ -185,8 +166,7 @@ namespace MayNazMuth {
                     string sourceAirport = f.SourceAirportName;
                     string destinationAirport = f.DestinationAirportName;
 
-                    using (var ctx = new CustomDbContext())
-                    {
+                    using (var ctx = new CustomDbContext()) {
 
                         ctx.Flights.Add(f);
                         ctx.SaveChanges();
@@ -194,23 +174,20 @@ namespace MayNazMuth {
                     //lblFlightData.Content = "Flight Details are backed up.";
                 }
             }
-             
+
         }
-               
+
 
         //Populate the flight data grid
-        public void populatefileredDataGrid()
-        {
+        public void populatefileredDataGrid() {
             flightDataGrid.Items.Clear();
-            foreach (Flight flight in filteredFlightList)
-            {
+            foreach (Flight flight in filteredFlightList) {
                 flightDataGrid.Items.Add(flight);
             }
         }
 
         //filter the flights when all 3 filters are given 
-        private void searchFlightsAllFilters(object sender, EventArgs args)
-        {
+        private void searchFlightsAllFilters(object sender, EventArgs args) {
             string searchSourceAirport = txtSourceAirport.Text.Trim();
             string searchDestinationAirport = txtDestinationAirport.Text.Trim();
             var searchDepartureDate = DepartureDatePicker.SelectedDate;
@@ -230,19 +207,16 @@ namespace MayNazMuth {
         }
 
         //filter the flights when only departure and arrival airport is given
-        private void searchFlightsDepartureAndArrival(object sender, EventArgs args)
-        {
+        private void searchFlightsDepartureAndArrival(object sender, EventArgs args) {
             string searchSourceAirport = txtSourceAirport.Text.Trim();
             string searchDestinationAirport = txtDestinationAirport.Text.Trim();
 
 
-            if (searchSourceAirport.Equals("") || searchDestinationAirport.Equals(""))
-            {
+            if (searchSourceAirport.Equals("") || searchDestinationAirport.Equals("")) {
                 MessageBox.Show("Please enter your departure and arrival aiports");
                 populateDataGrid();
             }
-            else
-            {
+            else {
                 var searchResult = from s in allFlightList
                                    where s.SourceAirportName.Contains(searchSourceAirport) &&
                                    s.DestinationAirportName.Contains(searchDestinationAirport)
@@ -251,21 +225,19 @@ namespace MayNazMuth {
 
                 filteredFlightList = searchResult.ToList();
                 populatefileredDataGrid();
-            }            
+            }
 
         }
 
         //Clear all the filters
-        private void clearFilters(object sender, EventArgs args)
-        {
+        private void clearFilters(object sender, EventArgs args) {
             txtSourceAirport.Text = "";
             txtDestinationAirport.Text = "";
             DepartureDatePicker.SelectedDate = null;
             populateDataGrid();
         }
 
-        private void displaySelectedFlightInfo(object sender, EventArgs args)
-        {
+        private void displaySelectedFlightInfo(object sender, EventArgs args) {
             //clear out the text box from last time.
             txtFlightDetails.Text = "";
 
@@ -283,16 +255,13 @@ namespace MayNazMuth {
 
         }
 
-        private void addBooking(object sender, EventArgs arg)
-        {
-            
+        private void addBooking(object sender, EventArgs arg) {
 
-            if(!(flightDataGrid.SelectedItems.Count==1))
-            {
+
+            if (!(flightDataGrid.SelectedItems.Count == 1)) {
                 MessageBox.Show("Please select a flight!");
             }
-            else
-            {
+            else {
                 Booking newBooking = new Booking();
 
                 //Grab the selected
@@ -301,8 +270,7 @@ namespace MayNazMuth {
                 DateTime bookingDateTime = DateTime.Now;
                 string bookingStatus = "In Progress";
 
-                using (var ctx = new CustomDbContext())
-                {
+                using (var ctx = new CustomDbContext()) {
                     Flight fl = ctx.Flights.Where(x => x.FlightNo == flightNo).First();
                     int flightId = fl.FlightId;
 
@@ -316,18 +284,16 @@ namespace MayNazMuth {
                 }
 
                 //Open Passenger window when add passenger is clicked
-                AddPassengerWindow Passeger = new AddPassengerWindow();
+                AddPassengerToBookingWindow Passeger = new AddPassengerToBookingWindow();
                 CloseAllWindows();
                 Passeger.Show();
             }
-            
+
         }
 
         //Close all open windows
-        public void CloseAllWindows()
-        {
-            foreach (Window window in Application.Current.Windows)
-            {
+        public void CloseAllWindows() {
+            foreach (Window window in Application.Current.Windows) {
                 window.Hide();
             }
         }

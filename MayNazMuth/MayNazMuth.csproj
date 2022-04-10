@@ -173,6 +173,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPassengerToBookingWindow.xaml.cs">
+      <DependentUpon>AddPassengerToBookingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddPassengerWindow.xaml.cs">
       <DependentUpon>AddPassengerWindow.xaml</DependentUpon>
     </Compile>
@@ -232,12 +235,19 @@
     <Compile Include="PaymentReportWindow.xaml.cs">
       <DependentUpon>PaymentReportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePassengerWindow.xaml.cs">
       <DependentUpon>UpdatePassengerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CustomDbContext.cs" />
     <Compile Include="Utilities\FileService.cs" />
     <Compile Include="Utilities\FlightParser.cs" />
+    <Page Include="AddPassengerToBookingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddPassengerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,6 +307,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PaymentReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
