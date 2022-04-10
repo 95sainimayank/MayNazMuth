@@ -57,7 +57,12 @@ namespace MayNazMuth
             using (var ctx = new CustomDbContext())
             {
                 airportsList = ctx.Airports.ToList<Airport>();
-                AirportDataGrid.ItemsSource = airportsList;
+                AirportDataGrid.Items.Clear();
+                foreach (Airport AP in airportsList)
+                {
+                    AirportDataGrid.Items.Add(AP);
+                }
+                //AirportDataGrid.ItemsSource = airportsList;
             }
             totalAriportCountLable.Content = airportsList.Count();
         }
@@ -68,6 +73,54 @@ namespace MayNazMuth
             AirportDataGrid.SelectionMode = DataGridSelectionMode.Single;
             //Make it read only
             AirportDataGrid.IsReadOnly = true;
+
+
+            DataGridTextColumn AirportIdColumn = new DataGridTextColumn();
+            AirportIdColumn.Header = "#";
+            AirportIdColumn.Binding = new Binding("AirportId");
+
+            DataGridTextColumn AirportNameColumn = new DataGridTextColumn();
+            AirportNameColumn.Header = "Airport Name";
+            AirportNameColumn.Binding = new Binding("AirportName");
+
+            DataGridTextColumn AirportAddressColumn = new DataGridTextColumn();
+            AirportAddressColumn.Header = "Address";
+            AirportAddressColumn.Binding = new Binding("AirportAddress");
+
+            DataGridTextColumn AirportCityColumn = new DataGridTextColumn();
+            AirportCityColumn.Header = "City";
+            AirportCityColumn.Binding = new Binding("AirportCity");
+
+            DataGridTextColumn AirportCountryColumn = new DataGridTextColumn();
+            AirportCountryColumn.Header = "Country";
+            AirportCountryColumn.Binding = new Binding("AirportCountry");
+
+            DataGridTextColumn AirportABBVColumn = new DataGridTextColumn();
+            AirportABBVColumn.Header = "Abbreviation";
+            AirportABBVColumn.Binding = new Binding("AirportAbbreviation");
+
+            DataGridTextColumn AirportPhoneColumn = new DataGridTextColumn();
+            AirportPhoneColumn.Header = "Phone";
+            AirportPhoneColumn.Binding = new Binding("AirportPhoneno");
+
+            DataGridTextColumn AirportWebsiteColumn = new DataGridTextColumn();
+            AirportWebsiteColumn.Header = "Website";
+            AirportWebsiteColumn.Binding = new Binding("AirportWebsite");
+
+            DataGridTextColumn AirportEmailColumn = new DataGridTextColumn();
+            AirportEmailColumn.Header = "Email";
+            AirportEmailColumn.Binding = new Binding("AirportEmail");
+
+            AirportDataGrid.Columns.Add(AirportIdColumn);
+            AirportDataGrid.Columns.Add(AirportNameColumn);
+            AirportDataGrid.Columns.Add(AirportAddressColumn);
+            AirportDataGrid.Columns.Add(AirportCityColumn);
+            AirportDataGrid.Columns.Add(AirportCountryColumn);
+            AirportDataGrid.Columns.Add(AirportABBVColumn);
+            AirportDataGrid.Columns.Add(AirportPhoneColumn);
+            AirportDataGrid.Columns.Add(AirportWebsiteColumn);
+            AirportDataGrid.Columns.Add(AirportEmailColumn);
+            
         }
 
         private void ToggleEventHandlers(bool toggle)
