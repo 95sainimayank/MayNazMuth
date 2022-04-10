@@ -11,6 +11,7 @@ namespace MayNazMuth.Entities {
         public string FlightNo { get; set; }
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
+        public double Price { get; set; }
 
         //Navigational Properties
         public List<Booking> Bookings { get; set; }
@@ -32,24 +33,18 @@ namespace MayNazMuth.Entities {
 
         
 
-        public Flight(string nNo, DateTime nDepart, DateTime nArrival, int nAirlineId,string nAirline, 
-            int nSourceAirportID,string nSourceAirport, int nDestinationAIrportID, string nDestinationAirport)
+        //constructor for Flight class
+        public Flight(string nNo, DateTime nDepart, DateTime nArrival, string nAirline, 
+            string nSourceAirport, string nDestinationAirport,double nPrice)
         {
             AirlineName = new Airline(nAirline).AirlineName;
             SourceAirportName = new Airport(nSourceAirport).AirportName;
             DestinationAirportName = new Airport(nDestinationAirport).AirportName;
-            //SourceAirport = new Airport();
-            //DestinationAirport = new Airport();
-            //SourceAirportId = new Airport(nSourceAirport).AirportId;
-            //DestinationAirportId = new Airport(nDestinationAirport).AirportId;
             FlightNo = nNo;
             DepartureTime = nDepart;
             ArrivalTime = nArrival;
-            // Airline = new Airline(nAirline);
-            //Airline.AirlineName = nAirline;
-            this.AirlineId = nAirlineId;
-            this.SourceAirportId = nSourceAirportID;
-            this.DestinationAirportId = nDestinationAIrportID;
+            Price = nPrice;
+
 
 
         }
