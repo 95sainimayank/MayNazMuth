@@ -239,22 +239,22 @@ namespace MayNazMuth {
             else {
                 int bookingId = Convert.ToInt32(lblBookingId.Content);
 
-                /*using(var db = new CustomDbContext()) {
+                using (var db = new CustomDbContext()) {
                     foreach (Passenger p in addedPassengers) {
                         BookingPassenger bp = new BookingPassenger();
                         bp.BookingId = bookingId;
                         bp.PassengerId = p.PassengerId;
                         var book = from booking in db.Bookings
-                                     where booking.BookingId == bookingId
-                                     select booking;
-                        *//*bp.Booking = book.ToList().First();
-                        bp.Passenger = p;*//*
+                                   where booking.BookingId == bookingId
+                                   select booking;
+                        bp.Booking = book.ToList().First();
+                        bp.Passenger = p;
 
                         db.BookingPassengers.Add(bp);
                     }
 
                     db.SaveChanges();
-                }*/
+                }
                 CloseAllWindows();
                 PaymentWindow paymentWindow = new PaymentWindow(bookingId, passPrice);
                 //paymentWindow.ticketPriceValueLabel.Content = lblTotalPrice;
