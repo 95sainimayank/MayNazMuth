@@ -31,6 +31,7 @@ namespace MayNazMuth
         }
     
 
+        //Method to toggle event handlers
         private void ToggleEventHandlers(bool toggle)
         {
             if (toggle)
@@ -49,10 +50,12 @@ namespace MayNazMuth
             }
         }
 
+
+
         public void populateDataGrid()
         {
 
-            //bookingID, flightID, from, to, departureDate, ArrivalDate, Card HolderName, bookingStatus
+            //Query that joins Passengers, bookings and Flights table to populate data to the booking report
             using (var db = new CustomDbContext())
             {
                 var query = db.Passengers
@@ -90,17 +93,23 @@ namespace MayNazMuth
                                   bookingSatus = m.flights.bid.BookingStatus
                               });
 
+                //populare data filtered from the query to the datagrid
                 bookingsDataGrid.ItemsSource = query.ToList();
+
+                //get the total number of bookings
                 lblNumberOfBookings.Content = query.ToList().Count.ToString();
             }
         }
 
+        //method to filter data
         private void searchData(object sender, RoutedEventArgs e)
         {
+
             lblNumberOfBookings.Content = "";
             var startFrom = fromDatePicker.SelectedDate;
             var endTo = toDatePicker.SelectedDate;
 
+            //Join Passengers, bookings and Flights table and extract the neccessary column values
             using (var db = new CustomDbContext())
             {
                 var query = db.Passengers
@@ -143,6 +152,8 @@ namespace MayNazMuth
                               });
 
 
+                //Get booking details based on the given filter 
+                //check if start date is less than end date
                 if (startFrom <= endTo)
                 {
                     var searchResult = query.Where(x => (x.bookingDateTime >= startFrom && x.bookingDateTime <= endTo));
@@ -154,6 +165,7 @@ namespace MayNazMuth
                 }
                 else
                 {
+                    //show message box if start date is greater than end date
                     MessageBox.Show("Start Date can not be later than End Date");
                 }
 
@@ -161,6 +173,7 @@ namespace MayNazMuth
         }
 
 
+        //Clear all filters
         private void clearFilters(object sender, EventArgs args)
         {
 
