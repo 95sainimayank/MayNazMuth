@@ -60,13 +60,7 @@ namespace MayNazMuth
             CloseAllWindows();
             updatePassenger.Show();
         }
-        
-        public void OpenFlightDetailWindow(object sender, EventArgs args)
-        {
-            FlightDetailWindow flightDetail = new FlightDetailWindow();
-            CloseAllWindows();
-            flightDetail.Show();
-        }
+              
         public void OpenPassengerReportWindow(object sender, EventArgs args)
         {
             PassengerReportWindow PassengerReport = new PassengerReportWindow();

@@ -24,9 +24,10 @@ namespace MayNazMuth
     public partial class PaymentWindow : Window
     {
         float totalAmount =0;
-        int bkId = 0;
+        int bkId = 1;
         float tPrice;
         string bookingStatus;
+        
         public PaymentWindow(int bookingId, float TPrice)
         {
 
@@ -37,8 +38,10 @@ namespace MayNazMuth
 
             using (var ctx = new CustomDbContext())
             {
-                Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();
-                bookingStatus = AP.BookingStatus;
+             
+                    Booking AP = ctx.Bookings.Where(x => x.BookingId == bkId).First();
+                    bookingStatus = AP.BookingStatus;               
+                
             }
             bookingStatusLabel.Content = bookingStatus;
             BookingRefrenceNoValueLabel.Content = bkId;

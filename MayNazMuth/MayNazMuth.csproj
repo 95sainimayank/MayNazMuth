@@ -189,9 +189,6 @@
       <DependentUpon>BookingReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\BookingPassenger.cs" />
-    <Compile Include="FlightDetailWindow.xaml.cs">
-      <DependentUpon>FlightDetailWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FlightReportWindow.xaml.cs">
       <DependentUpon>FlightReportWindow.xaml</DependentUpon>
     </Compile>
@@ -254,6 +251,10 @@
     <Compile Include="Migrations\20220410201920_airportTable.designer.cs">
       <DependentUpon>20220410201920_airportTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220411053838_finalCheckup.cs" />
+    <Compile Include="Migrations\20220411053838_finalCheckup.designer.cs">
+      <DependentUpon>20220411053838_finalCheckup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\CustomDbContextModelSnapshot.cs" />
     <Compile Include="PassengerReportWindow.xaml.cs">
       <DependentUpon>PassengerReportWindow.xaml</DependentUpon>
@@ -292,10 +293,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookingReportWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FlightDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
