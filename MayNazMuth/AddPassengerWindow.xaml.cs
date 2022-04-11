@@ -17,20 +17,22 @@ using System.Windows.Shapes;
 namespace MayNazMuth {
     public partial class AddPassengerWindow : Window {
 
-        List<Booking> bookingLsit = new List<Booking>();
+        /*List<Booking> bookingLsit = new List<Booking>();
         int bookingId;
-
+*/
         public AddPassengerWindow() {
 
+            //Initializing the components and the data grid
             InitializeComponent();
             InitializeDataGrid();
 
+            //adding events to the button clicks
             btnAddPassenger.Click += AddPassenger;
             btnDeletePassenger.Click += DeletePassenger;
           
         }
 
-        
+        //Closes all open windows
         public void CloseAllWindows()
         {
             foreach (Window window in Application.Current.Windows)
@@ -38,10 +40,11 @@ namespace MayNazMuth {
                 window.Hide();
             }
         }
+        
+        //Initialzing the datagrid with columsn
         public void InitializeDataGrid() {
             using(var db = new CustomDbContext()) {
-                //AllPassengersDataGrid.ItemsSource =  db.Passengers.ToList();
-
+                //Adding columns to the datagrid
                 DataGridTextColumn passengerName = new DataGridTextColumn {
                     Header = "Passenger Name",
                     Binding = new Binding("FullName")
@@ -72,6 +75,7 @@ namespace MayNazMuth {
                     Binding = new Binding("Gender")
                 };
 
+                //Adding columns to the grid
                 AllPassengersDataGrid.Columns.Add(passengerName);
                 AllPassengersDataGrid.Columns.Add(passengerEmail);
                 AllPassengersDataGrid.Columns.Add(passengerPassport);
@@ -79,8 +83,10 @@ namespace MayNazMuth {
                 AllPassengersDataGrid.Columns.Add(passengerPhone);
                 AllPassengersDataGrid.Columns.Add(gender);
 
+                //clearing existing values of data grid
                 AllPassengersDataGrid.Items.Clear();
 
+                //addig values to the datagrid
                 foreach (Passenger p in db.Passengers.ToList()) {
                     AllPassengersDataGrid.Items.Add(p);
                 }
@@ -89,6 +95,7 @@ namespace MayNazMuth {
             }
         }
 
+        //Event to handle addition of passengers to db
         public void AddPassenger(object sender, EventArgs args) {
             string FullName = txtFullName.Text;
             string Email = txtEmail.Text;
@@ -97,6 +104,7 @@ namespace MayNazMuth {
             string Gender = gender.Text;
             string PassportNumber = txtPassportNumber.Text;
 
+            //checking if input is valid
             if(isValid(FullName, Email, PhoneNumber, DateOfBirth, Gender, PassportNumber)) {
                 using(var db = new CustomDbContext()) {
                     Passenger newPassenger = new Passenger(
@@ -111,6 +119,15 @@ namespace MayNazMuth {
 
                     db.SaveChanges();
                     InitializeDataGrid();
+
+                    //clearing all the fields after addition of user has been done
+                    txtFullName.Clear();
+                    txtEmail.Clear();
+                    txtPassportNumber.Clear();
+                    txtPhoneNumber.Clear();
+                    dateOfBirth.SelectedDate = null;
+                    gender.SelectedIndex = 0;
+
                 }
             }
             else {
@@ -119,6 +136,7 @@ namespace MayNazMuth {
 
         }
 
+        //Method to check validation of inputs
         public bool isValid(string fullName, string email, string phone, string dob, string gender, string passport) {
 
             if (fullName.Equals("")) {
@@ -143,26 +161,26 @@ namespace MayNazMuth {
             return true;
         }
 
+        //Deletion of passenger from the list
         public void DeletePassenger(object sender, EventArgs args) {
             using (var db = new CustomDbContext()) {
                 var selectedPassengers = AllPassengersDataGrid.SelectedItems;
 
+                //checks if the passenger is selected
                 if(selectedPassengers.Count == 0) {
                     MessageBox.Show("No Passenger selected!!");
                 }
-                else {
+                else {//removing passengers
                     foreach (Passenger p in selectedPassengers) {
                         db.Passengers.Remove(p);
-                        MessageBox.Show("Passenger deleted successfully");
                     }
+                    MessageBox.Show("Passenger(s) deleted successfully");
                 }
 
                 db.SaveChanges();
                 InitializeDataGrid();
             }
         }
-
-              
 
     }
 
