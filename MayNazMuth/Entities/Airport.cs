@@ -21,7 +21,7 @@ namespace MayNazMuth {
         public List<Flight> SourceFlights { get; set; }
         public List<Flight> DestinationFlights { get; set; }
 
-
+        //constructors
         public Airport() {
             SourceFlights = new List<Flight>();
             DestinationFlights = new List<Flight>();
