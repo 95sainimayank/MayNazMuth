@@ -230,7 +230,11 @@ namespace MayNazMuth {
         private void addFlightData() {
 
             List<String> flightNoInDB = new List<string>();
+            List<String> airlinesInDB = new List<string>();
+            //List<String> airportsInDB = new List<string>();
             List<Flight> flightList = new List<Flight>();
+            List<Airport> airportList = new List<Airport>();
+            List<Airline> airlineList = new List<Airline>();
 
             //Add all flight numbers in the DB to flightNoInDB list
             using (var ctx = new CustomDbContext()) {
@@ -242,6 +246,26 @@ namespace MayNazMuth {
                 }
             }
 
+            //Add all airport names in airport table to a list
+            using(var ctx = new CustomDbContext())
+            {
+                airportList = ctx.Airports.ToList<Airport>();
+                var airports = airportList.Select(x => x.AirportName);
+
+                
+            }
+
+            //Add all airline names in airline table to a list
+            using (var ctx = new CustomDbContext())
+            {
+                airlineList = ctx.Airlines.ToList<Airline>();
+                var airlines = airlineList.Select(x => x.AirlineName);
+
+                foreach(String al in airlines)
+                {
+                    airlinesInDB.Add(al);
+                }
+            }
 
             //allFlightList.Count();
             foreach (Flight f in allFlightList) {
@@ -249,7 +273,22 @@ namespace MayNazMuth {
                 //Add records only if the relevent flight number is not in the DB
                 if (flightNoInDB.Contains(f.FlightNo)) {
                     continue;
-                }
+                } 
+                //else if (!(airportList.Contains(f.SourceAirport)))
+                //{
+                //    MessageBox.Show(f.SourceAirport + " Departure Airport is not available. Data is not added to the database");
+                //    continue;
+                //}
+                //else if(!(airportList.Contains(f.DestinationAirport)))
+                //{
+                //    MessageBox.Show(f.SourceAirport + " is not available");
+                //    continue;
+                //}
+                //else if (!(airlinesInDB.Contains(f.AirlineName)))
+                //{
+                //    MessageBox.Show(f.AirlineName + " is not available");
+                //    continue;
+                //}
                 else {
                     string flightNumber = f.FlightNo;
                     DateTime departureTime = f.DepartureTime;
