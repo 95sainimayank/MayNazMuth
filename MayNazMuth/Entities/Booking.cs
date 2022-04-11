@@ -15,6 +15,7 @@ namespace MayNazMuth.Entities {
         public Flight Flight { get; set;}
         public List<BookingPassenger> BookingPassengers { get; set; }
 
+        //constructors
         public Booking() {
             BookingPassengers = new List<BookingPassenger>();
         }

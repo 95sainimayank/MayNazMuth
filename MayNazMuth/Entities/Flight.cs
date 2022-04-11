@@ -25,7 +25,7 @@ namespace MayNazMuth.Entities {
         public Airport SourceAirport { get; set; }
         public Airport DestinationAirport { get; set; }
 
-
+        //constructors
         public Flight()
         {
             Bookings = new List<Booking>();

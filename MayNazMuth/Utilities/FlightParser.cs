@@ -10,10 +10,12 @@ namespace MayNazMuth.Utilities
 {
     class FlightParser
     {
+
         public static List<Flight> flightsList = new List<Flight>();
+      
         public static List<Flight> parseFlightFile(String contents)
         {
-
+            flightsList.Clear();
 
             //Get the file into Lines
             string[] lines = contents.Split('\n');

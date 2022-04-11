@@ -21,11 +21,14 @@ namespace MayNazMuth {
 
             InitializeDataGrid();
 
+            //attaching event with the button click
             btnSearch.Click += searchData;
         }
 
+        //Intializing datagrid with passenger data
         public void InitializeDataGrid() {
             using(var db = new CustomDbContext()) {
+                //join to get comprehensive data from db
                 var query = db.Passengers
                               .Join(db.BookingPassengers,
                                     passengers => passengers.PassengerId,
@@ -55,12 +58,14 @@ namespace MayNazMuth {
             }
         }
 
+        //searching data based on the values in put by the user
         public void searchData(object sender, EventArgs args) {
             using (var db = new CustomDbContext()) {
                 string name = txtPassengerName.Text.Trim();
                 string contactNo = txtPassengerContact.Text.Trim();
                 string passport = txtPassengerPassport.Text.Trim();
 
+                //join query to get data from multiple tables
                 var query = db.Passengers
                               .Join(db.BookingPassengers,
                                     passengers => passengers.PassengerId,
@@ -85,6 +90,7 @@ namespace MayNazMuth {
                                   bookingDateTime = m.bid.BookingDatetime,
                               });
 
+                //filtering data
                 var selectedPassenger = from x in query
                                         where x.passengerName.Contains(name) && x.passengerPassport.Contains(passport) && x.passengerPhone.Contains(contactNo)
                                         select x;
