@@ -10,6 +10,7 @@ namespace MayNazMuth.Entities {
         public int BookingId { get; set; }
         public int PassengerId { get; set; }
 
+
         public Booking Booking { get; set; }
         public Passenger Passenger { get; set; }
     }

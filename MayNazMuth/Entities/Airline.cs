@@ -13,6 +13,7 @@ namespace MayNazMuth {
         //navigational properties
         public List<Flight> Flights{ get; set; }
 
+        //Constructors
         public Airline() {
 
         }

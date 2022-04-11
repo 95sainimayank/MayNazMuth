@@ -16,15 +16,19 @@ using System.Windows.Shapes;
 
 namespace MayNazMuth {
     public partial class AddPassengerToBookingWindow : Window {
+        //List to hold passengers added to booking
         List<Passenger> addedPassengers = new List<Passenger>();
+        //price from selecdt flight window
         float passPrice;
         public AddPassengerToBookingWindow() {
             InitializeComponent();
 
             InitializeDataGrid();
 
+            //disabling textbox to make uneditable
             txtAddedPassengers.IsEnabled = false;
 
+            //Attaching events
             btnSeeAll.Click += SeeAll;
             btnSearch.Click += SearchPassenger;
             btnAdd.Click += AddPassenger;
@@ -32,11 +36,12 @@ namespace MayNazMuth {
             btnToPayment.Click += GoToPayment;
         }
 
+        //Intialization of data grid
         public void InitializeDataGrid() {
             int bookingId;
             using (var db = new CustomDbContext()) {
-                //PassengersDataGrid.ItemsSource = db.Passengers.ToList();
 
+                //creating columns for the datagrid
                 DataGridTextColumn passengerName = new DataGridTextColumn {
                     Header = "Passenger Name",
                     Binding = new Binding("FullName")
@@ -67,6 +72,7 @@ namespace MayNazMuth {
                     Binding = new Binding("Gender")
                 };
 
+                //adding columns to the datagrid
                 PassengersDataGrid.Columns.Add(passengerName);
                 PassengersDataGrid.Columns.Add(passengerEmail);
                 PassengersDataGrid.Columns.Add(passengerPassport);
@@ -74,16 +80,20 @@ namespace MayNazMuth {
                 PassengersDataGrid.Columns.Add(passengerPhone);
                 PassengersDataGrid.Columns.Add(gender);
 
+                //clearing the data grid of any pre-existing values
                 PassengersDataGrid.Items.Clear();
 
+                //adding values to the datagrid
                 foreach(Passenger p in db.Passengers.ToList()) {
                     PassengersDataGrid.Items.Add(p);
                 }
 
-
+                //selection mode set to one 
                 PassengersDataGrid.SelectionMode = (DataGridSelectionMode)SelectionMode.Single;
 
                 List<Booking> bookings = db.Bookings.ToList();
+
+                //setting booking number on the window label
                 if(bookings.Count > 0)
                 {
                      bookingId = bookings[bookings.Count - 1].BookingId;
@@ -100,10 +110,7 @@ namespace MayNazMuth {
             }
         }
 
-        public void setFlightLabelValue() {
-
-        }
-
+        //event to see all passengers in the list
         public void SeeAll(object sender, EventArgs args) {
             InitializeDataGrid();
 
@@ -113,12 +120,14 @@ namespace MayNazMuth {
             txtPhone.Text = "";
         }
 
+        //event to handle passenger search 
         public void SearchPassenger(object sender, EventArgs args) {
             string FullName = txtFullName.Text.Trim();
             string Email = txtEmail.Text.Trim();
             string PhoneNumber = txtPhone.Text.Trim();
             string PassportNumber = txtPassport.Text.Trim();
 
+            //checking if valid values are entered 
             if (isValid(FullName, Email, PhoneNumber, PassportNumber)) {
                 if (isPhoneValid(PhoneNumber)) {
                     using (var db = new CustomDbContext()) {
@@ -138,6 +147,7 @@ namespace MayNazMuth {
 
                         List<Passenger> AllPassengers = db.Passengers.ToList();
 
+                        //getting passengers based on the filtered values
                         var passengers = from passenger in AllPassengers
                                          where passenger.FullName.Contains(FullName) ||
                                             passenger.Email.Contains(Email) ||
@@ -145,14 +155,56 @@ namespace MayNazMuth {
                                             passenger.PassportNo.Contains(PassportNumber)
                                          select passenger;
                         Console.WriteLine(passengers.Count());
-                        PassengersDataGrid.ItemsSource = passengers.ToList();
+
+                        //intializing columns for the datagrid
+                        DataGridTextColumn passengerName = new DataGridTextColumn {
+                            Header = "Passenger Name",
+                            Binding = new Binding("FullName")
+                        };
+
+                        DataGridTextColumn passengerPassport = new DataGridTextColumn {
+                            Header = "Passport Number",
+                            Binding = new Binding("PassportNo")
+                        };
+
+                        DataGridTextColumn passengerEmail = new DataGridTextColumn {
+                            Header = "Email",
+                            Binding = new Binding("Email")
+                        };
+
+                        DataGridTextColumn passengerPhone = new DataGridTextColumn {
+                            Header = "Phone Number",
+                            Binding = new Binding("PhoneNo")
+                        };
+
+                        DataGridTextColumn dateofBirth = new DataGridTextColumn {
+                            Header = "Date of Birth",
+                            Binding = new Binding("DateOfBirth")
+                        };
+
+                        DataGridTextColumn gender = new DataGridTextColumn {
+                            Header = "Gender",
+                            Binding = new Binding("Gender")
+                        };
+
+                        //adding columns for the grid
+                        PassengersDataGrid.Columns.Add(passengerName);
+                        PassengersDataGrid.Columns.Add(passengerEmail);
+                        PassengersDataGrid.Columns.Add(passengerPassport);
+                        PassengersDataGrid.Columns.Add(dateofBirth);
+                        PassengersDataGrid.Columns.Add(passengerPhone);
+                        PassengersDataGrid.Columns.Add(gender);
+
+                        PassengersDataGrid.Items.Clear();
+
+                        foreach (Passenger p in passengers.ToList()) {
+                            PassengersDataGrid.Items.Add(p);
+                        }
                     }
                 }
                 else {
                     MessageBox.Show("Phone Number should contain numbers only!");
                 }
-
-
             }
             else {
                 MessageBox.Show("Please enter atleast one value!");
@@ -160,6 +212,7 @@ namespace MayNazMuth {
 
         }
 
+        //Method to check if entered values of filter are correct
         public bool isValid(string fullName, string email, string phone, string passport) {
             if (fullName.Equals("") && email.Equals("")
                 && phone.Equals("") && passport.Equals("")) {
@@ -169,6 +222,7 @@ namespace MayNazMuth {
             return true;
         }
 
+        //checking if phone number is valid
         public bool isPhoneValid(string phone) {
             if (!phone.All(char.IsDigit)) {
                 return false;
@@ -177,12 +231,15 @@ namespace MayNazMuth {
             return true;
         }
 
+        //event to handle addition of passenger to the booking
+        //data is saved in temporary list
         public void AddPassenger(object sender, EventArgs args) {
             if (isPassengerSelected()) {
                 if (isAlreadyAdded()) {
                     MessageBox.Show("Passenger already added!!");
                 }
                 else {
+                    //Adding passagers to temporary list of passangers
                     addedPassengers.Add((Passenger)PassengersDataGrid.SelectedValue);
                     MessageBox.Show("Passenger Added!");
 
@@ -194,6 +251,7 @@ namespace MayNazMuth {
 
                     txtAddedPassengers.Text = addedPassengerString;
 
+                    //setting values for the total prices
                     lblTotalPrice.Content = "$ " + (Convert.ToDecimal(lblFlightPrice.Content.ToString().Substring(1)) *
                                                     addedPassengers.Count);
                     passPrice = (float)(Convert.ToDecimal(lblFlightPrice.Content.ToString().Substring(1)) * addedPassengers.Count);
@@ -205,6 +263,7 @@ namespace MayNazMuth {
             }
         }
 
+        //Checking if passenger is selected for addition
         public bool isPassengerSelected() {
             if (PassengersDataGrid.SelectedIndex == -1) {
                 return false;
@@ -213,6 +272,7 @@ namespace MayNazMuth {
             return true;
         }
 
+        //Checking if passenger already exists
         public bool isAlreadyAdded() {
             Passenger passenger = (Passenger)PassengersDataGrid.SelectedValue;
 
@@ -227,6 +287,7 @@ namespace MayNazMuth {
             return false;
         }
 
+        //Adding passengers to list if not present
         public void AddPassengerToGrid(object sender, EventArgs args) {
             string FullName = txtName.Text.Trim();
             string Email = txtEmailId.Text.Trim();
@@ -263,6 +324,7 @@ namespace MayNazMuth {
             }
         }
 
+        //checking if values entered to add passengers is valid or not
         public bool isValid(string fullName, string email, string phone, string dob, string gender, string passport) {
 
             if (fullName.Equals("")) {
@@ -287,13 +349,17 @@ namespace MayNazMuth {
             return true;
         }
 
+        //Event to go to next payment page and linking passenger data to booking
         public void GoToPayment(object sender, EventArgs args) {
             if (addedPassengers.Count() == 0) {
                 MessageBox.Show("Please add atleast one passenger to the booking!");
             }
+            //if passengers are added to the temporary list
             else {
+                
                 int bookingId = Convert.ToInt32(lblBookingId.Content);
 
+                //Adding passengers to booking
                 using (var db = new CustomDbContext()) {
                     foreach (Passenger p in addedPassengers) {
                         BookingPassenger bp = new BookingPassenger();
@@ -320,6 +386,7 @@ namespace MayNazMuth {
             }
         }
 
+        //To close all open windows
         public void CloseAllWindows() {
             foreach (Window window in Application.Current.Windows) {
                 window.Hide();

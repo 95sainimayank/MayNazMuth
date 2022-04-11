@@ -19,7 +19,10 @@ namespace MayNazMuth {
         public UpdatePassengerWindow() {
             InitializeComponent();
 
+            //setting selection of the datagrid data to single item at a time
             AllPassengerDataGrid.SelectionMode = (DataGridSelectionMode)SelectionMode.Single;
+
+            //attchcing events to datagrid and buttons
             AllPassengerDataGrid.SelectionChanged += PopulateForm;
             btnUpdatePassenger.Click += UpdatePassenger;
 
@@ -28,10 +31,10 @@ namespace MayNazMuth {
             InitializeDataGrid();
         }
 
+        //Initializes and populates the datagrid
         public void InitializeDataGrid() {
             using (var db = new CustomDbContext()) {
-                //AllPassengerDataGrid.ItemsSource = db.Passengers.ToList();
-
+                //Setting columns for the datagrid
                 DataGridTextColumn passengerName = new DataGridTextColumn {
                     Header = "Passenger Name",
                     Binding = new Binding("FullName")
@@ -62,6 +65,7 @@ namespace MayNazMuth {
                     Binding = new Binding("Gender")
                 };
 
+                //Adding datagrid columns
                 AllPassengerDataGrid.Columns.Add(passengerName);
                 AllPassengerDataGrid.Columns.Add(passengerEmail);
                 AllPassengerDataGrid.Columns.Add(passengerPassport);
@@ -75,7 +79,7 @@ namespace MayNazMuth {
                     AllPassengerDataGrid.Items.Add(p);
                 }
 
-
+                //disabling the textboxes and other input fields
                 txtFullName.IsEnabled = false;
                 txtEmail.IsEnabled = false;
                 txtPassport.IsEnabled = false;
@@ -87,9 +91,11 @@ namespace MayNazMuth {
             }
         }
 
+        //populates the form based on the passenger selected
         public void PopulateForm(object sender, EventArgs args) {
                 Passenger passenger = (Passenger)AllPassengerDataGrid.SelectedItem;
 
+            //enabling fields to enable editing
             txtFullName.IsEnabled = true;
             txtEmail.IsEnabled = true;
             txtPassport.IsEnabled = true;
@@ -97,6 +103,7 @@ namespace MayNazMuth {
             txtDate.IsEnabled = true;
             comboGender.IsEnabled = true;
 
+            //setting content of fields based on passenger selected
             lblPassengerId.Content = passenger.PassengerId;
             txtFullName.Text = passenger.FullName;
             txtEmail.Text = passenger.Email;
@@ -104,6 +111,7 @@ namespace MayNazMuth {
             txtPhone.Text = passenger.PhoneNo;
             txtDate.SelectedDate = passenger.DateOfBirth;
 
+            //setting gender based on the input selected
             switch (passenger.Gender) {
                 case "Male":
                     comboGender.SelectedIndex = 0;
@@ -121,7 +129,9 @@ namespace MayNazMuth {
 
         }
 
+        //EVent to update passenger
         public void UpdatePassenger(object sender, EventArgs args) {
+            //Getting values from the form
             string name = txtFullName.Text;
             string email = txtEmail.Text;
             string phone = txtPhone.Text;
@@ -129,8 +139,10 @@ namespace MayNazMuth {
             string gender = ((ComboBoxItem)comboGender.SelectedItem).Content.ToString();
             string passport = txtPassport.Text;
 
+            //Checking if the inputs are valid
             if (isValid(name, email, phone, dob, gender, passport)){
                 using (var db = new CustomDbContext()) {
+                    //creating passenger object based on input values
                     Passenger updatedPassenger = new Passenger(
                                         txtFullName.Text.Trim(),
                                         txtPassport.Text.Trim(),
@@ -140,16 +152,19 @@ namespace MayNazMuth {
                                         ((ComboBoxItem)comboGender.SelectedItem).Content.ToString());
 
                     updatedPassenger.PassengerId = Convert.ToInt32(lblPassengerId.Content);
-                    //updatedPassenger.BookingPassengers = 
+                    
                     db.Update(updatedPassenger);
                     db.SaveChanges();
 
+                    //Disabling the event to initialze the datagrid
                     AllPassengerDataGrid.SelectionChanged -= PopulateForm;
                     InitializeDataGrid();
+                    //enabling the event again
                     AllPassengerDataGrid.SelectionChanged += PopulateForm;
 
                     MessageBox.Show("Passenger details updated.");
 
+                    //refreshing the form values after data added to db
                     lblPassengerId.Content = "";
                     txtFullName.Clear();
                     txtEmail.Clear();
@@ -164,6 +179,7 @@ namespace MayNazMuth {
             }
         }
 
+        //Method to check if input valid
         public bool isValid(string fullName, string email, string phone, string dob, string gender, string passport) {
 
             if (fullName.Trim().Equals("")) {

@@ -19,10 +19,10 @@ namespace MayNazMuth.Entities {
         public int BookingId { get; set; }
         public Booking Booking { get; set; }
 
+        //constructors
         public Payment() {
 
         }
-
 
         public Payment(DateTime nDt, string nMethod, string nStatus, string nHolderName, string nCardNo, float nPrice) {
             PaymentDatetime = nDt;          

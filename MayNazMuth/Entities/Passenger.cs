@@ -17,6 +17,7 @@ namespace MayNazMuth.Entities {
         //NavigationalProperties
         public List<BookingPassenger> BookingPassengers { get; set; }
 
+        //constructors
         public Passenger() {
             BookingPassengers = new List<BookingPassenger>();
         }
